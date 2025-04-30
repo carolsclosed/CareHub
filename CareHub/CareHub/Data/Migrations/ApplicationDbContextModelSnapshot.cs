@@ -17,6 +17,127 @@ namespace CareHub.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.13");
 
+            modelBuilder.Entity("CareHub.Models.Comentarios", b =>
+                {
+                    b.Property<int>("id_com")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_post")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_util")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("texto_com")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id_com");
+
+                    b.ToTable("Comentarios");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Doutores", b =>
+                {
+                    b.Property<int>("id_paciente")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_util")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id_paciente");
+
+                    b.ToTable("Doutores");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Pacientes", b =>
+                {
+                    b.Property<int>("id_paciente")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_util")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id_paciente");
+
+                    b.ToTable("Pacientes");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Posts", b =>
+                {
+                    b.Property<int>("id_post")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("categoria")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("foto")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("id_util")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("texto_post")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id_post");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Up", b =>
+                {
+                    b.Property<int>("id_util")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_post")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id_util", "id_post");
+
+                    b.ToTable("Up");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Utilizadores", b =>
+                {
+                    b.Property<int>("id_util")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("id_doutor")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("id_paciente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("regiao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id_util");
+
+                    b.ToTable("Utilizadores");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
