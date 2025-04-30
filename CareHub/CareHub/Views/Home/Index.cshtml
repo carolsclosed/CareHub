@@ -2,9 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="main-image">
-    <img src="~/imgs/main.jpeg" alt="Logo" />
+
+<div class="container my-5">
+    <div class="position-relative rounded overflow-hidden">
+        <img src="~/imgs/main22.png" class="img-fluid w-100" alt="Banner médico" style="max-height: 500px;border-radius: 50; object-fit: contain;" />
+
+        <div class="position-absolute top-50 start-0 translate-middle-y px-4 text-white" style="z-index: 2; background-color: #146c43; font-family: Arial">
+            <h2>Procura e agenda com a <span style="color: rgb(177, 250, 233); font-family: 'American Typewriter'">CareHub</span></h2>
+        </div>
+    </div>
 </div>
+
+
 
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
@@ -46,7 +55,7 @@
         <!-- Card 4 -->
         <div class="col">
             <div class="card h-100 text-center">
-                <img src="~/imgs/MINI4.png" class="card-img-top" alt="Procedures">
+                <img src="~/imgs/MINI5.png" class="card-img-top" alt="Procedures">
                 <div class="card-body">
                     <h5 class="card-title">Tratamentos e Procedimentos</h5>
                     <p class="card-text">Conheça que procedimentos nós temos para oferecer.</p>
@@ -68,9 +77,49 @@
     </div>
 
     <div class="container my-5">
-        <h3 class="fw-bold text-center mb-4">Consult best doctors online <a href="#" class="float-end text-primary fw-bold">View All</a></h3>
+        <h3 class="fw-bold text-center mb-4">Categorias de Patologias <a href="#" class="float-end text-primary fw-bold">Ver Mais</a></h3>
         <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 text-center">
+        </div>
     </div>
-    </div>
+    
+    
+    
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Coluna 1: Marca -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">CareHub</h5>
+                    <p class="text-muted">A tua saúde, onde e quando precisas.</p>
+                </div>
+
+                <!-- Coluna 2: Links rápidos -->
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-semibold">Links Rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light">Home</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Sobre nós</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Profissionais</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Contactos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Contacto -->
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-semibold">Contactos</h6>
+                    <p class="mb-1"><i class="bi bi-envelope me-2"></i> support@carehub.com</p>
+                    <p class="mb-1"><i class="bi bi-phone me-2"></i> +111 111 111 111</p>
+                    <p><i class="bi bi-geo-alt me-2"></i> sheesh ipt</p>
+                </div>
+            </div>
+
+            <hr class="border-light" />
+
+            <!-- Copyright -->
+            <div class="text-center small text-muted">
+                &copy; 2025 HealthCare. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
 </div>
