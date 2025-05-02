@@ -17,123 +17,194 @@ namespace CareHub.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.13");
 
-            modelBuilder.Entity("CareHub.Models.Comentarios", b =>
+            modelBuilder.Entity("CareHub.Models.Comentario", b =>
                 {
-                    b.Property<int>("id_com")
+                    b.Property<int>("IdComentario")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("id_post")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("id_util")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("texto_com")
+                    b.Property<string>("Conteudo")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id_com");
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IdPost")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PostIdPost")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UtilizadorIdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdComentario");
+
+                    b.HasIndex("PostIdPost");
+
+                    b.HasIndex("UtilizadorIdUtil");
 
                     b.ToTable("Comentarios");
                 });
 
-            modelBuilder.Entity("CareHub.Models.Doutores", b =>
+            modelBuilder.Entity("CareHub.Models.Doutor", b =>
                 {
-                    b.Property<int>("id_paciente")
+                    b.Property<int>("IdDoutor")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("id_util")
+                    b.Property<string>("Especialidade")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IdUtil")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id_paciente");
+                    b.HasKey("IdDoutor");
 
                     b.ToTable("Doutores");
                 });
 
-            modelBuilder.Entity("CareHub.Models.Pacientes", b =>
+            modelBuilder.Entity("CareHub.Models.Paciente", b =>
                 {
-                    b.Property<int>("id_paciente")
+                    b.Property<int>("IdPaciente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("id_util")
+                    b.Property<int>("IdUtil")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id_paciente");
+                    b.Property<string>("NumeroUtente")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("IdPaciente");
 
                     b.ToTable("Pacientes");
                 });
 
-            modelBuilder.Entity("CareHub.Models.Posts", b =>
+            modelBuilder.Entity("CareHub.Models.Post", b =>
                 {
-                    b.Property<int>("id_post")
+                    b.Property<int>("IdPost")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("categoria")
+                    b.Property<string>("Conteudo")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("foto")
-                        .IsRequired()
+                    b.Property<DateTime>("DataCriacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("id_util")
+                    b.Property<int>("IdUtil")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("texto_post")
+                    b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id_post");
+                    b.Property<int>("UtilizadorIdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdPost");
+
+                    b.HasIndex("UtilizadorIdUtil");
 
                     b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("CareHub.Models.Up", b =>
                 {
-                    b.Property<int>("id_util")
+                    b.Property<int>("IdUp")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("id_post")
+                    b.Property<int?>("ComentarioIdComentario")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id_util", "id_post");
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Up");
+                    b.Property<int?>("IdComentario")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdPost")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PostIdPost")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UtilizadorIdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdUp");
+
+                    b.HasIndex("ComentarioIdComentario");
+
+                    b.HasIndex("IdComentario");
+
+                    b.HasIndex("IdPost");
+
+                    b.HasIndex("PostIdPost");
+
+                    b.HasIndex("UtilizadorIdUtil");
+
+                    b.ToTable("Ups");
                 });
 
             modelBuilder.Entity("CareHub.Models.Utilizadores", b =>
                 {
-                    b.Property<int>("id_util")
+                    b.Property<int>("IdUtil")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("id_doutor")
+                    b.Property<int>("DoutorIdDoutor")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("id_paciente")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("IdDoutor")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("nome")
+                    b.Property<int?>("IdPaciente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("regiao")
+                    b.Property<int>("PacienteIdPaciente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Regiao")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("telefone")
+                    b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id_util");
+                    b.HasKey("IdUtil");
+
+                    b.HasIndex("DoutorIdDoutor");
+
+                    b.HasIndex("IdDoutor")
+                        .IsUnique();
+
+                    b.HasIndex("IdPaciente")
+                        .IsUnique();
+
+                    b.HasIndex("PacienteIdPaciente");
 
                     b.ToTable("Utilizadores");
                 });
@@ -334,6 +405,98 @@ namespace CareHub.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CareHub.Models.Comentario", b =>
+                {
+                    b.HasOne("CareHub.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostIdPost")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorIdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Utilizador");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Post", b =>
+                {
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorIdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Utilizador");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Up", b =>
+                {
+                    b.HasOne("CareHub.Models.Comentario", null)
+                        .WithMany("Ups")
+                        .HasForeignKey("ComentarioIdComentario");
+
+                    b.HasOne("CareHub.Models.Comentario", "Comentario")
+                        .WithMany()
+                        .HasForeignKey("IdComentario")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CareHub.Models.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("IdPost")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CareHub.Models.Post", null)
+                        .WithMany("Ups")
+                        .HasForeignKey("PostIdPost");
+
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany("Ups")
+                        .HasForeignKey("UtilizadorIdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comentario");
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Utilizador");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Utilizadores", b =>
+                {
+                    b.HasOne("CareHub.Models.Doutor", "Doutor")
+                        .WithMany()
+                        .HasForeignKey("DoutorIdDoutor")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CareHub.Models.Doutor", null)
+                        .WithOne("Utilizador")
+                        .HasForeignKey("CareHub.Models.Utilizadores", "IdDoutor")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CareHub.Models.Paciente", null)
+                        .WithOne("Utilizador")
+                        .HasForeignKey("CareHub.Models.Utilizadores", "IdPaciente")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("CareHub.Models.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteIdPaciente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doutor");
+
+                    b.Navigation("Paciente");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -383,6 +546,33 @@ namespace CareHub.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHub.Models.Comentario", b =>
+                {
+                    b.Navigation("Ups");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Doutor", b =>
+                {
+                    b.Navigation("Utilizador")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHub.Models.Paciente", b =>
+                {
+                    b.Navigation("Utilizador")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CareHub.Models.Post", b =>
+                {
+                    b.Navigation("Ups");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Utilizadores", b =>
+                {
+                    b.Navigation("Ups");
                 });
 #pragma warning restore 612, 618
         }
