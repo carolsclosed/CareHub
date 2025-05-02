@@ -3,16 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareHub.Models { 
-    [PrimaryKey(nameof(id_util),nameof(id_post))]
+    [PrimaryKey(nameof(IdUtil),nameof(IdPost))]
     
     public class Up {
         [ForeignKey("id_util")]
-        public int id_util { get; set; }
+        public int IdUtil { get; set; }
         
         [ForeignKey("id_post")]
-        public int id_post { get; set; }
+        public int IdPost { get; set; }
         
-        //public ICollection<Comentarios> ListaComentarios { get; set; }
     }
     
 }
