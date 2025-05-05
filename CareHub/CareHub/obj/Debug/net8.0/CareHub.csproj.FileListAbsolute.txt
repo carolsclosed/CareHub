@@ -285,4 +285,3 @@
 /home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.pdb
 /home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.genruntimeconfig.cache
 /home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/Debug/net8.0/ref/CareHub.dll
-/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/bin/Debug/net8.0/app.db

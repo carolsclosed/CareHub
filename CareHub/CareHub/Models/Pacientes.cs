@@ -8,10 +8,10 @@ namespace CareHub.Models {
         [Key]  // PK, int, autonumber
         public int IdPaciente { get; set; }
         
-        [ForeignKey("id_util")]
+        [ForeignKey(nameof(Utilizador))]
         public int IdUtil { get; set; }
         
-
+        public Utilizadores Utilizador { get; set; }
     }
     
 }

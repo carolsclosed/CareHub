@@ -1,0 +1,46 @@
+@model CareHub.Models.Posts
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar a publicação</h1>
+
+<h4>Fotografias</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPost" />
+            <div class="form-group">
+                <label asp-for="TituloPost" class="control-label"></label>
+                <input asp-for="TituloPost" class="form-control" />
+                <span asp-validation-for="TituloPost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categoria" class="control-label"></label>
+                <input asp-for="Categoria" class="form-control" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input type="file" name="ficheiroFotografia" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataPost" class="control-label"></label>
+                <input asp-for="DataPost" class="form-control" />
+                <span asp-validation-for="DataPost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar às publicações</a>
+</div>
+

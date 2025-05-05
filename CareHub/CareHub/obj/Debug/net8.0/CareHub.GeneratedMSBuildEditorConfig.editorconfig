@@ -34,6 +34,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Publicacoes/Criar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHVibGljYWNvZXMvQ3JpYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Publicacoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHVibGljYWNvZXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Publicacoes/Detalhes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHVibGljYWNvZXMvRGV0YWxoZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Publicacoes/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHVibGljYWNvZXMvRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Publicacoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHVibGljYWNvZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

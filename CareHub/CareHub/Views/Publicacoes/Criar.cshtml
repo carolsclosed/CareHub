@@ -1,0 +1,39 @@
+@model CareHub.Models.Posts
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<h1>Criar</h1>
+
+<h4>Fotografias</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="TituloPost">Título</label>
+                <input asp-for="TituloPost" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="TextoPost">Texto</label>
+                <textarea asp-for="TextoPost" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Categoria">Categoria</label>
+                <input asp-for="Categoria" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Imagem">Imagem</label>
+                <input type="file" asp-for="Foto" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Criar</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar às publicações</a>
+</div>
+

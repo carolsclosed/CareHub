@@ -16,11 +16,9 @@ namespace CareHub.Models {
         
         public string Telefone { get; set; }
         
-        [ForeignKey("id_paciente")]
-        public int IdPaciente { get; set; }
-        
-        [ForeignKey("id_doutor")]
-        public int IdDoutor { get; set; }
+        public Doutores? Doutor { get; set; }
+        public Pacientes? Paciente { get; set; }
+
         
         
     }
