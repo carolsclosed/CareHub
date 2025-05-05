@@ -6,17 +6,16 @@ namespace CareHub.Models {
     public class Comentarios {
 
         [Key]  // PK, int, autonumber
-        public int id_com { get; set; }
+        public int IdCom { get; set; }
         
-        public string texto_com { get; set; }
+        public string TextoCom { get; set; }
         
-        [ForeignKey("id_util")]
-        public int id_util { get; set; }
+        [ForeignKey("IdUtil")]
+        public int IdUtil { get; set; }
         
-        [ForeignKey("id_post")]
-        public int id_post { get; set; }
+        [ForeignKey("IdPost")]
+        public int IdPost { get; set; }
         
-        //public ICollection<Comentarios> ListaComentarios { get; set; }
     }
     
 }
