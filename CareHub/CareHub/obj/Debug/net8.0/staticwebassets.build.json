@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MnyGFCktpOKh0NpjQobTHcvQipdstWyhrsSarKle0hk=",
+  "Hash": "1sxvmSVBlR7Is9zhHqYYYkWik0KkXTyn5eKP1lewWuM=",
   "Source": "CareHub",
   "BasePath": "_content/CareHub",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png",
+      "SourceId": "CareHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/",
+      "BasePath": "_content/CareHub",
+      "RelativePath": "imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png"
     },
     {
       "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/main.jpeg",

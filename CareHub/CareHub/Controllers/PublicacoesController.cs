@@ -135,9 +135,9 @@ namespace CareHub.Controllers
 
             if (post != null)
             {
-                if (post.Foto != "default.png")
+                if (post.Foto != null)
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", post.Foto);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", post.Foto);
                     if (System.IO.File.Exists(filePath))
                         System.IO.File.Delete(filePath);
                 }
