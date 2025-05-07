@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Categoria)
         </td>
         <td>
-            <img style="max-width: 400px;" src="/imagens/@item.Foto" />
+            <img style="max-width: 200px;" src="@item.Foto" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataPost)
@@ -49,9 +49,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Utilizador.Nome)
         </td>
-
+        
+        
         <td>
-            <a asp-action="Edit" asp-route-id="@item.IdPost">Editar</a> |
+            @if (@item.Utilizador.Nome == User.Identity.Name)
+            {
+                <a asp-action="Edit" asp-route-id="@item.IdPost">Editar</a> 
+            }
+            
             <a asp-action="Details" asp-route-id="@item.IdPost">Detalhes</a> |
             <a asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
         </td>

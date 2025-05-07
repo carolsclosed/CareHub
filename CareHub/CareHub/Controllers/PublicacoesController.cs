@@ -55,30 +55,27 @@ namespace CareHub.Controllers
             {
                 ModelState.AddModelError("", "Utilizador não encontrado.");
             }
-
-            if (imagem == null)
-            {
-                ModelState.AddModelError("", "Tem de submeter uma imagem.");
-            }
+            
+            post.Utilizador = utilizador;
 
             if (ModelState.IsValid)
             {
                 post.DataPost = DateOnly.FromDateTime(DateTime.Now);
                 post.IdUtil = utilizador.IdUtil;
+                
 
-                // Validar tipo de imagem
-                if ((imagem.ContentType == "image/png" || imagem.ContentType == "image/jpeg"))
+                if (imagem != null && 
+                    (imagem.ContentType == "image/png" || imagem.ContentType == "image/jpeg"))
                 {
                     haImagem = true;
                     Guid g = Guid.NewGuid();
                     nomeImagem = g + Path.GetExtension(imagem.FileName).ToLowerInvariant();
-                    post.Foto = "uploads/" + nomeImagem;
+                    post.Foto = "imagens/" + nomeImagem;
                 }
 
-                // Guardar imagem
                 if (haImagem)
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
 
                     if (!Directory.Exists(filePath))
                         Directory.CreateDirectory(filePath);
@@ -96,6 +93,7 @@ namespace CareHub.Controllers
             }
 
             return View(post);
+            
         }
 
         // GET: Publicacoes/Detalhes/5

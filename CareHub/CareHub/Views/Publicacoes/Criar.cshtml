@@ -14,18 +14,22 @@
             <div class="form-group">
                 <label for="TituloPost">Título</label>
                 <input asp-for="TituloPost" class="form-control" />
+                <span asp-validation-for="TituloPost" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label for="TextoPost">Texto</label>
-                <textarea asp-for="TextoPost" class="form-control"></textarea>
+                <input asp-for="TextoPost" class="form-control"></input>
+                <span asp-validation-for="TextoPost" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label for="Categoria">Categoria</label>
                 <input asp-for="Categoria" class="form-control" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="Imagem">Imagem</label>
-                <input type="file" asp-for="Foto" class="form-control" />
+                <label asp-for="Foto" class="control-label"></label>
+                <input type="file" name="imagem" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-primary">Criar</button>

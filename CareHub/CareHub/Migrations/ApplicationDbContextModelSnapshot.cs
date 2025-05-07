@@ -30,7 +30,6 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TextoCom")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("IdCom");
@@ -79,25 +78,21 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Categoria")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("DataPost")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Foto")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("IdUtil")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TextoPost")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TituloPost")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("IdPost");
@@ -127,19 +122,15 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Regiao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefone")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("IdUtil");
@@ -272,15 +263,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "85405bb3-f886-453e-8743-38802dcce966",
+                            ConcurrencyStamp = "b8c47991-19e0-4d2d-854f-974df3f0073f",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAENYq6ckGYsrA4Yi5K85LGUkT4OcVDUkVGMEiaRhRFV1f/unfZTqyWqYFB9SEgOYLwg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJddmuSBju8P1AVje2FTPVaNnNihkdu6+ovxiHqiOdgIiotipj/WhnudeCz/b2QZ6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "269d6c5b-a709-49c0-86d4-091e7a94019f",
+                            SecurityStamp = "8d16bfc8-964e-4436-86de-e5756a3685e0",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
