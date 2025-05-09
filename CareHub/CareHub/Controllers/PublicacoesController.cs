@@ -109,6 +109,132 @@ namespace CareHub.Controllers
 
             return View(post);
         }
+        
+        
+        // GET: Fotografias/Editar/5
+        [Authorize]
+        public async Task<IActionResult> Editar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var Publicacao =  _context.Posts
+                .Include(f => f.Utilizador)
+                .FirstOrDefault(f => f.IdPost == id);
+            
+            if (Publicacao == null)
+            {
+                return NotFound();
+            }
+
+            
+
+            if (Publicacao.Utilizador.Email != User.Identity.Name)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            
+      
+            return View(Publicacao);
+        }
+
+        // POST: Fotografias/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> Editar(int id,
+            [Bind("IdPost,TituloPost,Categoria,TextoPost")] Posts publicacao, IFormFile imagem)
+        {
+            var haImagem = false;
+            var nomeImagem = "";
+            
+            if (id != publicacao.IdPost)
+            {
+                return NotFound();
+            }
+
+            if (imagem != null && 
+                (imagem.ContentType == "image/png" || imagem.ContentType == "image/jpeg"))
+            {
+                haImagem = true;
+                Guid g = Guid.NewGuid();
+                nomeImagem = g + Path.GetExtension(imagem.FileName).ToLowerInvariant();
+                publicacao.Foto = "imagens/" + nomeImagem;
+            }
+            
+            
+            if (haImagem)
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
+
+                if (!Directory.Exists(filePath))
+                    Directory.CreateDirectory(filePath);
+
+                filePath = Path.Combine(filePath, nomeImagem);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imagem.CopyToAsync(stream);
+                }
+            }
+            
+            var publicacaoExistente = await _context.Posts
+                .FirstOrDefaultAsync(p => p.IdPost == id);
+
+            if (publicacaoExistente == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Utilizadores
+                .FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+
+            if (user == null || publicacaoExistente.IdUtil != user.IdUtil)
+            {
+                return Forbid(); // User is not the owner
+            }
+
+            if (ModelState.IsValid)
+            {
+                
+                if (publicacaoExistente.Foto != null)
+                {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", publicacaoExistente.Foto);
+                    if (System.IO.File.Exists(filePath))
+                        System.IO.File.Delete(filePath);
+                }
+                
+                publicacaoExistente.TituloPost = publicacao.TituloPost;
+                publicacaoExistente.Categoria = publicacao.Categoria;
+                publicacaoExistente.TextoPost = publicacao.TextoPost;
+                publicacaoExistente.DataPost = DateOnly.FromDateTime(DateTime.Now);
+                publicacaoExistente.Foto = publicacao.Foto;
+                
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Posts.Any(e => e.IdPost == publicacao.IdPost))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(publicacaoExistente);
+        }
+        
 
         // GET: Publicacoes/Delete/5
         [Authorize]
@@ -125,6 +251,7 @@ namespace CareHub.Controllers
             return View(post);
         }
 
+        // POST: Publicacoes/Delete/5
         // POST: Publicacoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

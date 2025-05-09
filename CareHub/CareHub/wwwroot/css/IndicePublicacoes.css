@@ -1,0 +1,93 @@
+.CriarPostDiv {
+    position: relative;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    background-color: black;
+}
+
+.CriarPost{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 4%;
+}
+
+.CriarPost:hover{
+    color: grey;
+}
+
+.Publicacoes{
+    width: 80vw;
+    background-color: black;
+    border: 3px solid black;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.NomePost{
+    margin-left: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.TituloPost{
+    margin-left: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+.CategoriaPost{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: white;
+}
+
+.TextoPost{
+    margin-left: 5px;
+    font-size: large;
+    color: white;
+}
+
+.ImagemPostDiv{
+    text-align: center;
+
+}
+
+.DataPost{
+    margin-left: 5px;
+    color: white;
+}
+
+.Detalhes{
+    margin-left: 5px;
+    color: white;
+    text-decoration: none;
+    
+}
+
+.Detalhes:hover{
+    color: gray;
+}
+
+.Editar{
+    color: white;
+    text-decoration: none;
+}
+
+.Editar:hover{
+    color: grey;
+}
+
+.Apagar{
+    color: white;
+    text-decoration: none;
+}
+
+.Apagar:hover{
+    color: grey;
+}

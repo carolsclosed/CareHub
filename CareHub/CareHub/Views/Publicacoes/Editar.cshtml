@@ -13,6 +13,7 @@
         <form asp-action="Editar" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdPost" />
+            <input type="hidden" type="datetime" name="DataPost" />   
             <div class="form-group">
                 <label asp-for="TituloPost" class="control-label"></label>
                 <input asp-for="TituloPost" class="form-control" />
@@ -24,14 +25,14 @@
                 <span asp-validation-for="Categoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input type="file" name="ficheiroFotografia" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
+                <label asp-for="TextoPost" class="control-label"></label>
+                <input asp-for="TextoPost" class="form-control" />
+                <span asp-validation-for="TextoPost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataPost" class="control-label"></label>
-                <input asp-for="DataPost" class="form-control" />
-                <span asp-validation-for="DataPost" class="text-danger"></span>
+                <label asp-for="Foto" class="control-label"></label>
+                <input type="file" name="imagem" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

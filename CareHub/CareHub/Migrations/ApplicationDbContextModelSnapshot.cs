@@ -15,7 +15,7 @@ namespace CareHub.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.13");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
 
             modelBuilder.Entity("CareHub.Models.Comentarios", b =>
                 {
@@ -263,15 +263,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8c47991-19e0-4d2d-854f-974df3f0073f",
+                            ConcurrencyStamp = "8350183b-997a-4b36-9f64-c493d7d17e7b",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJddmuSBju8P1AVje2FTPVaNnNihkdu6+ovxiHqiOdgIiotipj/WhnudeCz/b2QZ6w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELIdcOnrRuOOxI2aBv2v8vyJ14IMSpqftIRPH8e0I9ruQE5Ndu6cCkzNulaW8IwN3Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8d16bfc8-964e-4436-86de-e5756a3685e0",
+                            SecurityStamp = "a5846f1e-4d64-4a3c-a425-cd98c973be7c",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

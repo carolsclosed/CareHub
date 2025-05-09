@@ -1,66 +1,64 @@
+@using Microsoft.AspNetCore.Identity
 @model IEnumerable<CareHub.Models.Posts>
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
+    var currentUser = await UserManager.GetUserAsync(User);
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
+
+<head>
+    <title>Indice</title>
+    <link rel="stylesheet" href="css/IndicePublicacoes.css" type="text/css"/>
+</head>
 
 <h1>Indice</h1>
 
-<p>
-    <a asp-action="Criar">Criar nova publicação</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TituloPost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Foto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataPost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Utilizador)
-            </th>
+<div class="CriarPostDiv">
+    <a class="CriarPost" asp-action="Criar" >Criar nova publicação</a>
+</div>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TituloPost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria)
-        </td>
-        <td>
-            <img style="max-width: 200px;" src="@item.Foto" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataPost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Utilizador.Nome)
-        </td>
-        
-        
-        <td>
-            @if (@item.Utilizador.Nome == User.Identity.Name)
-            {
-                <a asp-action="Edit" asp-route-id="@item.IdPost">Editar</a> 
-            }
+    @foreach (var item in Model)
+    {
+
+        <div class="Publicacoes">
             
-            <a asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a> |
-            <a asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
-        </td>
-    </tr>
-}
-    </tbody>
-</table>
+            <div class="NomePost">
+                @Html.DisplayFor(modelItem => item.Utilizador.Nome)
+            </div>
+            <div class="TituloPost">
+                @Html.DisplayFor(modelItem => item.TituloPost)
+            </div>
+            <div class="CategoriaPost">
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </div>
+            <div class="TextoPost">
+                @Html.DisplayFor(modelItem => item.TextoPost)
+            </div>
+            <div class="ImagemPostDiv">
+                <img class="ImagemPost" style="max-width: 200px;" src="@item.Foto"/>
+            </div>
+            <div class="DataPost">
+                @Html.DisplayFor(modelItem => item.DataPost)
+            </div>
+
+
+
+            <div>
+
+                <a class="Detalhes" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
+
+                @if (@item.Utilizador.Email == User.Identity.Name | isAdmin)
+                {
+                    <a class="Editar" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
+                    <a class="Apagar" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
+                }
+
+
+
+            </div>
+        </div>
+    }
+  
+
