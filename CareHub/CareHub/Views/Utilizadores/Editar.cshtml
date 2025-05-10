@@ -1,0 +1,47 @@
+@using Microsoft.AspNetCore.Identity
+@model CareHub.Models.Utilizadores
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Edit";
+    var currentUser = await UserManager.GetUserAsync(User); 
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
+}
+
+<h1>Edit</h1>
+
+<h4>Utilizadores</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <!-- Usamos a tag abaixo para apresentar erros não relacionados com a tabela de Utilizador -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdUtil" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Regiao" class="control-label"></label>
+                <input asp-for="Regiao" class="form-control" />
+                <span asp-validation-for="Regiao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar ao Índice</a>
+</div>
+

@@ -49,7 +49,7 @@ namespace CareHub.Controllers
 
             // Obter o utilizador autenticado
             var utilizador = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+                .FirstOrDefaultAsync(u => u.Nome == User.Identity.Name);
 
             if (utilizador == null)
             {
@@ -131,7 +131,7 @@ namespace CareHub.Controllers
 
             
 
-            if (Publicacao.Utilizador.Email != User.Identity.Name)
+            if (Publicacao.Utilizador.Nome != User.Identity.Name)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -190,7 +190,7 @@ namespace CareHub.Controllers
             }
 
             var user = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.Email == User.Identity.Name);
+                .FirstOrDefaultAsync(u => u.Nome == User.Identity.Name);
 
             if (user == null || publicacaoExistente.IdUtil != user.IdUtil)
             {

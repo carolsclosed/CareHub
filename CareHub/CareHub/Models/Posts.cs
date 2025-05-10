@@ -30,10 +30,7 @@ namespace CareHub.Models {
 
         public Utilizadores Utilizador { get; set; }
         
-        [ForeignKey(nameof(Comentarios))]
-        public int IdCom { get; set; }
-        
-        public Comentarios Comentarios { get; set; }
+        public ICollection<Comentarios> ListaComentarios { get; set; }
     }
     
 }

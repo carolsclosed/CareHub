@@ -3,7 +3,7 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Indíce";
     var currentUser = await UserManager.GetUserAsync(User);
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
@@ -49,7 +49,7 @@
 
                 <a class="Detalhes" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
 
-                @if (@item.Utilizador.Email == User.Identity.Name | isAdmin)
+                @if (@item.Utilizador.IdentityUserName == User.Identity.Name | isAdmin)
                 {
                     <a class="Editar" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
                     <a class="Apagar" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>

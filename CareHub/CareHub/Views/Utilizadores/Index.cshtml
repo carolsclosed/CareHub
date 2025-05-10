@@ -1,0 +1,63 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<CareHub.Models.Utilizadores>
+@inject UserManager<IdentityUser> UserManager 
+
+@{
+    ViewData["Title"] = "Índice";
+    var currentUser = await UserManager.GetUserAsync(User);
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
+}
+
+<h1>Página de Utilizadores</h1>
+
+<p>
+    <a asp-action="Create">Criar Utilizador</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Regiao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Regiao)
+            </td>
+
+            
+            <td>
+                
+                <a asp-action="Detalhes" asp-route-id="@item.IdUtil">Ver Detalhes</a> 
+                @if (item.IdentityUserName == User.Identity.Name | isAdmin)
+                {
+                    <a asp-action="Editar" asp-route-id="@item.IdUtil">Editar</a> 
+                    <a asp-action="Delete" asp-route-id="@item.IdUtil">Apagar</a>
+                
+                }
+                
+            </td>
+            
+            
+        </tr>
+}
+    </tbody>
+</table>

@@ -102,6 +102,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Utilizadores/Criar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbGl6YWRvcmVzL0NyaWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Utilizadores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbGl6YWRvcmVzL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Utilizadores/Detalhes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbGl6YWRvcmVzL0RldGFsaGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Utilizadores/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbGl6YWRvcmVzL0VkaXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/Utilizadores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbGl6YWRvcmVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

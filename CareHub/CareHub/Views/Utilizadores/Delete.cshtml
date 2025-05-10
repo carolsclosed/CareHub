@@ -1,0 +1,53 @@
+@using CareHub.Controllers
+@using Microsoft.AspNetCore.Identity
+@model CareHub.Models.Utilizadores
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Apagar"; 
+    var currentUser = await UserManager.GetUserAsync(User); 
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
+    
+}
+
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Utilizadores</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Regiao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Regiao)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        
+        <a asp-action="Index">Voltar ao Índice</a>
+        
+        @if (Model.IdentityUserName == User.Identity.Name | isAdmin)
+        {
+            <input type="hidden" asp-for="IdUtil"/>
+            <input type="submit" value="Delete" class="btn btn-danger"/>
+        }
+
+    </form>
+</div>
