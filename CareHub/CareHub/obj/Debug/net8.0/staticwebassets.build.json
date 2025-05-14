@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1sxvmSVBlR7Is9zhHqYYYkWik0KkXTyn5eKP1lewWuM=",
+  "Hash": "jejpCz2xeXUshemAEk+tRLMX8zUGi8zYzfKi7io1ae0=",
   "Source": "CareHub",
   "BasePath": "_content/CareHub",
   "Mode": "Default",
@@ -1195,6 +1195,25 @@
       "OriginalItemSpec": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/Debug/net8.0/scopedcss/projectbundle/CareHub.bundle.scp.css"
     },
     {
+      "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/css/IndicePublicacoes.css",
+      "SourceId": "CareHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/",
+      "BasePath": "_content/CareHub",
+      "RelativePath": "css/IndicePublicacoes.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/IndicePublicacoes.css"
+    },
+    {
       "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/css/site.css",
       "SourceId": "CareHub",
       "SourceType": "Discovered",
@@ -1233,12 +1252,12 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
-      "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png",
+      "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg",
       "SourceId": "CareHub",
       "SourceType": "Discovered",
       "ContentRoot": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/",
       "BasePath": "_content/CareHub",
-      "RelativePath": "imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png",
+      "RelativePath": "imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1249,7 +1268,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/imagens/64638685-6ccd-42e9-9692-af4c7fd0b618.png"
+      "OriginalItemSpec": "wwwroot/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg"
+    },
+    {
+      "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png",
+      "SourceId": "CareHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/",
+      "BasePath": "_content/CareHub",
+      "RelativePath": "imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png"
     },
     {
       "Identity": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/main.jpeg",
