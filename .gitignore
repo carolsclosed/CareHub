@@ -244,3 +244,7 @@ CareHub/CareHub/obj/project.nuget.cache
 CareHub/CareHub/obj/project.packagespec.json
 CareHub/CareHub/obj/rider.project.model.nuget.info
 CareHub/CareHub/obj/rider.project.restore.info
+CareHub/CareHub/app.db-wal
+CareHub/CareHub/bin/Debug/net8.0/CareHub.dll
+CareHub/CareHub/bin/Debug/net8.0/CareHub.pdb
+CareHub/CareHub/app.db-shm
