@@ -131,7 +131,7 @@ namespace CareHub.Controllers
 
             
 
-            if (Publicacao.Utilizador.Nome != User.Identity.Name)
+            if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name)
             {
                 return RedirectToAction(nameof(Index));
             }

@@ -125,6 +125,9 @@ namespace CareHub.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Foto")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("IdentityRole")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
@@ -274,15 +277,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ac68bbd5-d393-4187-8ad0-19c697a463d1",
+                            ConcurrencyStamp = "9d701828-7289-4d53-bf85-e011cd662652",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEITpsZSVy4t87du12xDy+FcDtCOKCOLD1qTeHdcrAcCFl7kcSgL/N0LMP/tZASiKOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAYayLdguM3iC/Nn0DvIuvOxVMHG+Fe7ntiAxjpwNjSnsm/KjRefy4iQoI8V49hHLg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3e9ce40b-e7f6-4e89-b4aa-4550f9fbc15f",
+                            SecurityStamp = "16f285ac-8feb-48a5-804a-43c247742332",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

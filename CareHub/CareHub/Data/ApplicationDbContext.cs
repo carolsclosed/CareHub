@@ -51,7 +51,8 @@ namespace CareHub.Data
         public DbSet<Pacientes> Pacientes { get; set; }
         public DbSet<Posts> Posts { get; set; }
         public DbSet<Up> Ups { get; set; }
-        public DbSet<Utilizadores> Utilizadores { get; set; }
+        public DbSet<Utilizadores> 
+            Utilizadores { get; set; }
         
     }
 }

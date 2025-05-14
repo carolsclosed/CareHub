@@ -9,6 +9,8 @@ namespace CareHub.Models {
         [Key]  // PK, int, autonumber
         public int IdUtil { get; set; }
         
+        public string? Foto { get; set; }
+        
         [DisplayName("Nome")]
         [StringLength(50)]
         public string Nome { get; set; }
