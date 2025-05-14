@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,25 +7,31 @@ namespace CareHub.Models {
     public class Utilizadores {
 
         [Key]  // PK, int, autonumber
-        public int id_util { get; set; }
+        public int IdUtil { get; set; }
+        
+        [DisplayName("Nome")]
+        [StringLength(50)]
+        public string Nome { get; set; }
 
-        public string nome { get; set; }
+        [DisplayName("Região")]
+        [StringLength(30)]
+        public string Regiao { get; set; }
+        
+        [StringLength(50)] 
+        public string? IdentityUserName { get; set; }
+        
+        [StringLength(50)] 
+        public string? IdentityRole { get; set; }
+        
+        [RegularExpression("^(?:\\+351)?\\s?(?:2\\d{8}|9[1236]\\d{7})$\n")]
+        public string Telefone { get; set; }
+        
+        public Doutores? Doutor { get; set; }
+        public Pacientes? Paciente { get; set; }
 
-        public string regiao { get; set; }
+        [DisplayName("Publicações")]
+        public ICollection<Posts> ListaPosts { get; set; }
         
-        public string email { get; set; }
-        
-        public string telefone { get; set; }
-        
-        [ForeignKey("id_paciente")]
-        public int id_paciente { get; set; }
-        
-        [ForeignKey("id_doutor")]
-        public int id_doutor { get; set; }
-        
-
-
-        //public ICollection<Comentarios> ListaComentarios { get; set; }
     }
     
 }

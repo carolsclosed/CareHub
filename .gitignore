@@ -1,0 +1,30 @@
+# Ignore bin and obj folders
+bin/
+obj/
+
+# Ignore database runtime files
+*.db-shm
+*.db-wal
+
+# User-specific files
+*.user
+*.vspscc
+*.vssscc
+
+# Build results
+*.dll
+*.pdb
+*.exe
+
+# NuGet Packages
+*.nupkg
+*.nuspec
+*.snupkg
+*.sha512
+*.p7s
+
+# Others
+*.log
+*.suo
+*.tmp
+*.cache

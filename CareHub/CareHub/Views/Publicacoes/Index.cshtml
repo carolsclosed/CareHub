@@ -1,0 +1,64 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<CareHub.Models.Posts>
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Indíce";
+    var currentUser = await UserManager.GetUserAsync(User);
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
+}
+
+<head>
+    <title>Indice</title>
+    <link rel="stylesheet" href="css/IndicePublicacoes.css" type="text/css"/>
+</head>
+
+<h1>Indice</h1>
+
+<div class="CriarPostDiv">
+    <a class="CriarPost" asp-action="Criar" >Criar nova publicação</a>
+</div>
+
+    @foreach (var item in Model)
+    {
+
+        <div class="Publicacoes">
+            
+            <div class="NomePost">
+                @Html.DisplayFor(modelItem => item.Utilizador.Nome)
+            </div>
+            <div class="TituloPost">
+                @Html.DisplayFor(modelItem => item.TituloPost)
+            </div>
+            <div class="CategoriaPost">
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </div>
+            <div class="TextoPost">
+                @Html.DisplayFor(modelItem => item.TextoPost)
+            </div>
+            <div class="ImagemPostDiv">
+                <img class="ImagemPost" style="max-width: 200px;" src="@item.Foto"/>
+            </div>
+            <div class="DataPost">
+                @Html.DisplayFor(modelItem => item.DataPost)
+            </div>
+
+
+
+            <div>
+
+                <a class="Detalhes" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
+
+                @if (@item.Utilizador.IdentityUserName == User.Identity.Name | isAdmin)
+                {
+                    <a class="Editar" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
+                    <a class="Apagar" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
+                }
+
+
+
+            </div>
+        </div>
+    }
+  
+

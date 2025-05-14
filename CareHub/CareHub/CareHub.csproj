@@ -2,21 +2,24 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>aspnet-CareHub-3801eb5e-7318-47e2-9516-536d097143f0</UserSecretsId>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.13"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.13"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.13"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.13"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13"/>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+      <Folder Include="wwwroot\imagens\" />
     </ItemGroup>
 
 </Project>

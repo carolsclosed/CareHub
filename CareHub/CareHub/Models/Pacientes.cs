@@ -6,12 +6,12 @@ namespace CareHub.Models {
     public class Pacientes {
 
         [Key]  // PK, int, autonumber
-        public int id_paciente { get; set; }
+        public int IdPaciente { get; set; }
         
-        [ForeignKey("id_util")]
-        public int id_util { get; set; }
+        [ForeignKey(nameof(Utilizador))]
+        public int IdUtil { get; set; }
         
-        //public ICollection<Comentarios> ListaComentarios { get; set; }
+        public Utilizadores Utilizador { get; set; }
     }
     
 }
