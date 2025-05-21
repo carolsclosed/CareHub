@@ -1,0 +1,14 @@
+@using Microsoft.AspNetCore.Server.Kestrel.Core
+@model List<CareHub.Controllers.Diagnosticos.InfoDiagnostico>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@foreach (var item in Model )
+{
+    <h2>@item.PrimaryName</h2>
+    <h3>@(item.IsProcedure ? "SIM" : "NÃO")</h3>
+  
+}

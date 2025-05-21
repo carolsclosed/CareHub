@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets/CareHub.bundle.scp.css"
     },
     {
+      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/css/IndicePublicacoes.css",
+      "PackagePath": "staticwebassets/css/IndicePublicacoes.css"
+    },
+    {
       "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/diagnosticos.json",
+      "PackagePath": "staticwebassets/diagnosticos.json"
+    },
+    {
       "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg",
+      "PackagePath": "staticwebassets/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg"
+    },
+    {
+      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png",
+      "PackagePath": "staticwebassets/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png"
     },
     {
       "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/MINI1.png",
