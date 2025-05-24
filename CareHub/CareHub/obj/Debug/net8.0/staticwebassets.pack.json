@@ -13,8 +13,8 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/diagnosticos.json",
-      "PackagePath": "staticwebassets/diagnosticos.json"
+      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/doenças.json",
+      "PackagePath": "staticwebassets/doenças.json"
     },
     {
       "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/favicon.ico",

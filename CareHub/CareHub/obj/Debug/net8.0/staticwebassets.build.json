@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VZtegP0yMWGoy6//Fh/gGgoCkQgqp3cMiEcRxHSRfyk=",
+  "Hash": "dNtkYQXE1lB3r52Jso9X4AHm4itNZBIA/Q1R2PDU20M=",
   "Source": "CareHub",
   "BasePath": "_content/CareHub",
   "Mode": "Default",
@@ -1233,12 +1233,12 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/diagnosticos.json",
+      "Identity": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/doenças.json",
       "SourceId": "CareHub",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/",
       "BasePath": "_content/CareHub",
-      "RelativePath": "diagnosticos.json",
+      "RelativePath": "doenças.json",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1249,7 +1249,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/diagnosticos.json"
+      "OriginalItemSpec": "wwwroot/doenças.json"
     },
     {
       "Identity": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/favicon.ico",
