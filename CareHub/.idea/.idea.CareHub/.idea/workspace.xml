@@ -8,10 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="a">
+    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" afterDir="false" />
@@ -21,8 +20,6 @@
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +83,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c06673f4846f4984af370f3a7898b653d83800/89/17adb635/Monitor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -174,7 +172,7 @@
       <workItem from="1747219052504" duration="107000" />
       <workItem from="1747219180116" duration="3158000" />
       <workItem from="1747821942521" duration="4003000" />
-      <workItem from="1748093375286" duration="10031000" />
+      <workItem from="1748093375286" duration="13086000" />
     </task>
     <task id="LOCAL-00001" summary="tabelas bd">
       <option name="closed" value="true" />
@@ -280,7 +278,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748185570257</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="nao sei mais">
+      <option name="closed" value="true" />
+      <created>1748188365641</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748188365641</updated>
+    </task>
+    <task id="LOCAL-00015" summary="z">
+      <option name="closed" value="true" />
+      <created>1748188464795</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748188464795</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +333,8 @@
     <MESSAGE value="diagnosticos part 1" />
     <MESSAGE value="CATEGORIAS" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="nao sei mais" />
+    <MESSAGE value="z" />
+    <option name="LAST_COMMIT_MESSAGE" value="z" />
   </component>
 </project>

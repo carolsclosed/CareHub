@@ -1,3 +1,4 @@
+@using CareHub.Controllers
 @using Microsoft.AspNetCore.Server.Kestrel.Core
 @using Microsoft.EntityFrameworkCore.Query.SqlExpressions
 @model List<CareHub.Controllers.Diagnosticos.InfoDiagnostico>
@@ -22,15 +23,16 @@
                             @grupo.Key
                         </a>
                     </h5>
-                    <ul class="list-group list-group-flush">
-                        @foreach (var proc in grupo)
-                        {
-                            <h5 class="list-group-item">@proc.Nome</h5>
-                        }
-                    </ul>
+                 
                 </div>
             </div>
         </div>
         
-    }   
+    }
+    <ul>
+        @foreach (var Proc in Model)
+        {
+            <h5>@Proc.Nome</h5>
+        }
+    </ul>
 </div>
