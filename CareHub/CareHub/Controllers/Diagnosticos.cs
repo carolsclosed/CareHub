@@ -13,7 +13,7 @@ public class Diagnosticos : Controller
     // GET
     public IActionResult diagnosticos()
     {
-        var jsonContent = System.IO.File.ReadAllText("./wwwroot/doenças.json");
+        var jsonContent = System.IO.File.ReadAllText("./wwwroot/doencas.json");
         var doencas = JsonSerializer.Deserialize<List<InfoDiagnostico>>(jsonContent);
 
         doencas = doencas

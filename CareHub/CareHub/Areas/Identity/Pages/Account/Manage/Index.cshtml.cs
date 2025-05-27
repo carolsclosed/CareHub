@@ -134,6 +134,7 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
 
             if (Input.FotoFicheiro.ContentType == "image/png" || Input.FotoFicheiro.ContentType == "image/jpeg")
             {
+                var FotoExistente = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + utilizador.Foto);
                 var FotosCaminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImagensUtilizadores/");
                 if (!Directory.Exists(FotosCaminho))
                 {
@@ -146,6 +147,16 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
                 {
                     await Input.FotoFicheiro.CopyToAsync(fileStream);
                 }
+
+                if (System.IO.File.Exists(FotoExistente))
+                {
+                    string NomeFoto = System.IO.Path.GetFileName(FotoExistente);
+                    if (!NomeFoto.Equals("user.jpg", StringComparison.OrdinalIgnoreCase))
+                    {
+                        System.IO.File.Delete(FotoExistente);
+                    }
+                }
+                
                 utilizador.Foto = FotoCaminho;
             }
             await _context.SaveChangesAsync();

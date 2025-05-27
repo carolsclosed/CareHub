@@ -77,16 +77,16 @@ namespace CareHub.Controllers
                 return NotFound();
             }
 
-            var utilizadores = await _context.Utilizadores.FindAsync(id);
-            if (utilizadores == null)
+            var utilizador = await _context.Utilizadores.FindAsync(id);
+            if (utilizador == null)
             {
                 return NotFound();
             }
             // guardamos em sessão o id do utilizador que o utilizador quer editar
             // se ele fizer um post para um Id diferente, ele está a tentar alterar um utilizador diferente do que visualiza no ecrã
-            HttpContext.Session.SetInt32("utilizadorId", utilizadores.IdUtil);
+            HttpContext.Session.SetInt32("utilizadorId", utilizador.IdUtil);
             
-            return View(utilizadores);
+            return View(utilizador);
         }
 
         // POST: Utilizadores/Editar/5
