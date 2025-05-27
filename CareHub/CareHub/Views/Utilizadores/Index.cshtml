@@ -15,49 +15,55 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Regiao)
-            </th>
-            <th></th>
-        </tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regiao)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
+    <tr>
+        <td>
+            <img src="@item.Foto" alt="Foto de Utilizador" class="rounded-circle" width="100" height="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Regiao)
-            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Regiao)
+        </td>
 
-            
-            <td>
-                
-                <a asp-action="Detalhes" asp-route-id="@item.IdUtil">Ver Detalhes</a> 
-                @if (item.IdentityUserName == User.Identity.Name | isAdmin)
-                {
-                    <a asp-action="Editar" asp-route-id="@item.IdUtil">Editar</a> 
-                    <a asp-action="Delete" asp-route-id="@item.IdUtil">Apagar</a>
-                
-                }
-                
-            </td>
-            
-            
-        </tr>
+
+        <td>
+
+            <a asp-action="Detalhes" asp-route-id="@item.IdUtil">Ver Detalhes</a>
+            @if (item.IdentityUserName == User.Identity.Name | isAdmin)
+            {
+                <a asp-action="Editar" asp-route-id="@item.IdUtil">Editar</a>
+                <a asp-action="Delete" asp-route-id="@item.IdUtil">Apagar</a>
+
+            }
+
+        </td>
+
+
+    </tr>
 }
     </tbody>
 </table>
