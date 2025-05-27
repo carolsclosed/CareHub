@@ -1,4 +1,5 @@
 ﻿@page
+@using MailKit
 @model RegisterModel
 @{
     ViewData["Title"] = "Registro";
@@ -21,6 +22,11 @@
                 <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Leiria" />
                 <label asp-for="Input.Utilizador.Regiao">Região</label>
                 <span asp-validation-for="Input.Utilizador.Regiao" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Utilizador.Telefone" class="form-control" autocomplete="username" aria-required="true" placeholder="+351 xxxxxxxxx" />
+                <label asp-for="Input.Utilizador.Telefone">Telemóvel</label>
+                <span asp-validation-for="Input.Utilizador.Telefone" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nome@exemplo.com" />

@@ -49,7 +49,7 @@ namespace CareHub.Controllers
 
             // Obter o utilizador autenticado
             var utilizador = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.Nome == User.Identity.Name);
+                .FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
 
             if (utilizador == null)
             {

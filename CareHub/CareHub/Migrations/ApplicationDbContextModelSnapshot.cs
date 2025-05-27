@@ -277,15 +277,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9d701828-7289-4d53-bf85-e011cd662652",
+                            ConcurrencyStamp = "39244fac-1220-48a0-a72b-15d32a50511d",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAYayLdguM3iC/Nn0DvIuvOxVMHG+Fe7ntiAxjpwNjSnsm/KjRefy4iQoI8V49hHLg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDh+ImzU/BhcKcJcTyr+SRAJiOaYndxfyxXNWZPPeBzAW9nuV2cf9CN87bUq8m6uag==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "16f285ac-8feb-48a5-804a-43c247742332",
+                            SecurityStamp = "33c47355-3e95-415c-919b-3901d645c0e6",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CareHub.Data;
 using CareHub.Models;
@@ -16,10 +15,12 @@ namespace CareHub.Controllers
     public class UtilizadoresController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UtilizadoresController(ApplicationDbContext context)
+        public UtilizadoresController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Utilizadores
@@ -46,28 +47,7 @@ namespace CareHub.Controllers
 
             return View(utilizador);
         }
-
-        // GET: Utilizadores/Criar
-        public IActionResult Criar()
-        {
-            return View();
-        }
-
-        // POST: Utilizadores/Criar
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Criar([Bind("Nome,Telemovel,Regiao")] Utilizadores utilizadores)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(utilizadores);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(utilizadores);
-        }
+        
 
         // GET: Utilizadores/Editar/5
         public async Task<IActionResult> Editar(int? id)
@@ -142,8 +122,6 @@ namespace CareHub.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             
-           
-            
             if (id == null)
             {
                 return NotFound();
@@ -158,7 +136,7 @@ namespace CareHub.Controllers
             
             // guardamos em sessão o id do utilizador que o utilizador quer apagar
             // se ele fizer um post para um Id diferente, ele está a tentar apagar um utilizador diferente do que visualiza no ecrã
-            HttpContext.Session.SetInt32("utilizadorId", utilizadores.IdUtil);
+            HttpContext.Session.SetInt32("IdUtil", utilizadores.IdUtil);
 
             return View(utilizadores);
         }
@@ -168,24 +146,46 @@ namespace CareHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var utilizadores = await _context.Utilizadores.FindAsync(id);
-            if (utilizadores != null)
+            var utilizador = await _context.Utilizadores.FindAsync(id);
+            if (utilizador == null) 
             {
-                // vou buscar o id do utilizador da sessão
-                var utilizadorDaSessao = HttpContext.Session.GetInt32("utilizadorId");
-                // se o id do utilizador da sessão for diferente do que recebemos
-                // quer dizer que está a tentar apagar um utilizador diferente do que tem no ecrã
-                if (utilizadorDaSessao != id)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                
-                _context.Utilizadores.Remove(utilizadores);
+                // Caso o utilizador não exista, redireciona para o índice
+                return RedirectToAction(nameof(Index));
             }
 
-            await _context.SaveChangesAsync();
-            // impede que tente fazer o apagar do mesmo utilizador
-            HttpContext.Session.SetInt32("utilizadorId",0);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var isAdmin = currentUser != null && await _userManager.IsInRoleAsync(currentUser, "Administrador");
+            var identityUser = await _userManager.FindByNameAsync(utilizador.IdentityUserName);
+            var utilizadorDaSessao = HttpContext.Session.GetInt32("utilizadorId"); // Buscar o id do utilizador na sessão
+
+            // Administradores podem apagar qualquer utilizador
+            if (isAdmin)
+            {
+                _context.Utilizadores.Remove(utilizador);
+                // _context.Posts.RemoveRange(utilizador.ListaPosts);
+                if (identityUser != null) 
+                {
+                    await _userManager.DeleteAsync(identityUser);
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            // O utilizador só pode apagar o seu próprio registo
+            if (utilizadorDaSessao == id)
+            {
+                _context.Utilizadores.Remove(utilizador);
+                if (identityUser != null)
+                {
+                    await _userManager.DeleteAsync(identityUser);
+                }
+                await _context.SaveChangesAsync();
+                // Limpamos o id da sessão após a remoção
+                HttpContext.Session.SetInt32("utilizadorId", 0);
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Se o utilizador tentou apagar outro id, redireciona para o índice
             return RedirectToAction(nameof(Index));
         }
 
