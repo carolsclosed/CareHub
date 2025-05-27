@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/CareHub.csproj": {}
+    "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/CareHub.csproj": {}
   },
   "projects": {
-    "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/CareHub.csproj": {
+    "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/CareHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/CareHub.csproj",
+        "projectUniqueName": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/CareHub.csproj",
         "projectName": "CareHub",
-        "projectPath": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/CareHub.csproj",
-        "packagesPath": "/Users/angelacsebastiao/.nuget/packages/",
-        "outputPath": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/",
+        "projectPath": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/CareHub.csproj",
+        "packagesPath": "/home/jlfernandes/.nuget/packages/",
+        "outputPath": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/angelacsebastiao/.nuget/NuGet/NuGet.Config"
+          "/home/jlfernandes/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -83,6 +83,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -91,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

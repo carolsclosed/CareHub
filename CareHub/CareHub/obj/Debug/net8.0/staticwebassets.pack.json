@@ -1,295 +1,295 @@
 {
   "Files": [
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/scopedcss/projectbundle/CareHub.bundle.scp.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/obj/Debug/net8.0/scopedcss/projectbundle/CareHub.bundle.scp.css",
       "PackagePath": "staticwebassets/CareHub.bundle.scp.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/css/IndicePublicacoes.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/css/IndicePublicacoes.css",
       "PackagePath": "staticwebassets/css/IndicePublicacoes.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/css/site.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/doenças.json",
-      "PackagePath": "staticwebassets/doenças.json"
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/doencas.json",
+      "PackagePath": "staticwebassets/doencas.json"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/favicon.ico",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg",
       "PackagePath": "staticwebassets/imagens/a24eba0b-036b-4046-9e07-3bdcad4842a9.jpg"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png",
       "PackagePath": "staticwebassets/imagens/aef81b47-339e-4bdc-845f-ca32c040fef3.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/MINI1.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/MINI1.png",
       "PackagePath": "staticwebassets/imgs/MINI1.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/MINI2.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/MINI2.png",
       "PackagePath": "staticwebassets/imgs/MINI2.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/MINI3.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/MINI3.png",
       "PackagePath": "staticwebassets/imgs/MINI3.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/MINI5.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/MINI5.png",
       "PackagePath": "staticwebassets/imgs/MINI5.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/banner.jpg",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/banner.jpg",
       "PackagePath": "staticwebassets/imgs/banner.jpg"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/main.jpeg",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/main.jpeg",
       "PackagePath": "staticwebassets/imgs/main.jpeg"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/main22.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/main22.png",
       "PackagePath": "staticwebassets/imgs/main22.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/imgs/user.png",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/imgs/user.png",
       "PackagePath": "staticwebassets/imgs/user.png"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/js/site.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/LICENSE",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/LICENSE",
       "PackagePath": "staticwebassets/lib/bootstrap"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
       "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
       "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation/LICENSE.md",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation/LICENSE.md",
       "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/additional-methods.js",
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery/LICENSE.txt",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery/LICENSE.txt",
       "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.js",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.min.js",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.min.js",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
     },
     {
-      "Id": "/Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.min.map",
+      "Id": "/home/jlfernandes/Documents/GitHub/CareHub/CareHub/CareHub/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {

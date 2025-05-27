@@ -12,14 +12,17 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
+
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
+
     }
 
     public IActionResult Index()
     {
-        var jsonContent = System.IO.File.ReadAllText("./wwwroot/doenças.json");
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", "doencas.json");
+        var jsonContent = System.IO.File.ReadAllText(filePath);
         var doencas = JsonSerializer.Deserialize<List<InfoDiagnostico>>(jsonContent);
 
         doencas = doencas

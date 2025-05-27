@@ -23,7 +23,7 @@ namespace CareHub.Models {
         [StringLength(50)] 
         public string? IdentityRole { get; set; }
         
-        [RegularExpression("^(?:\\+351)?\\s?(?:2\\d{8}|9[1236]\\d{7})$\n")]
+        [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$")]
         public string Telefone { get; set; }
         
         public Doutores? Doutor { get; set; }

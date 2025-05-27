@@ -8,21 +8,106 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="a">
+    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/AccessDenied.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/AccessDenied.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ExternalLogin.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ForgotPassword.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ForgotPassword.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Lockout.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Lockout.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/LoginWith2fa.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/LoginWith2fa.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Logout.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Logout.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Email.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Email.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ManageNavPages.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResetPassword.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResetPassword.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/_StatusMessage.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ConfirmEmail.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/ConfirmEmail.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/Register.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/CareHub.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/CareHub.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Models/Utilizadores.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Models/Utilizadores.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/ScaffoldingReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/ScaffoldingReadMe.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/CareHub.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/CareHub.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/CareHub.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/CareHub.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.pack.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.pack.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets/msbuild.CareHub.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets/msbuild.CareHub.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/wwwroot/doenças.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/wwwroot/doencas.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +155,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/carolsclosed/CareHub.git&quot;,
-    &quot;accountId&quot;: &quot;94216859-2f5b-4aeb-b474-8f22101f7802&quot;
+    &quot;accountId&quot;: &quot;3c9a5121-01b7-4057-a9bb-c7d58d876106&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -84,12 +169,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c06673f4846f4984af370f3a7898b653d83800/89/17adb635/Monitor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8056cd3f452fefb9834f05cdb275b762dd41f27b7766cd71174e78592dc495b/Monitor.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9cf5f68d759deefc91b9c48c5ac3dd27708bb7dc38d0c485661fff5ce15b82/SafeFileHandle.Unix.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -109,7 +189,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "MelhorarUtilzador",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -175,6 +255,9 @@
       <workItem from="1747219180116" duration="3158000" />
       <workItem from="1747821942521" duration="4003000" />
       <workItem from="1748093375286" duration="10031000" />
+      <workItem from="1748364712436" duration="4000" />
+      <workItem from="1748364787072" duration="775000" />
+      <workItem from="1748366539706" duration="1240000" />
     </task>
     <task id="LOCAL-00001" summary="tabelas bd">
       <option name="closed" value="true" />
@@ -280,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748185570257</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="a">
+      <option name="closed" value="true" />
+      <created>1748363814621</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748363814621</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,5 +411,23 @@
     <MESSAGE value="CATEGORIAS" />
     <MESSAGE value="a" />
     <option name="LAST_COMMIT_MESSAGE" value="a" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
