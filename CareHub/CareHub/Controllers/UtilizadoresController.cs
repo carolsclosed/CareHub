@@ -16,10 +16,12 @@ namespace CareHub.Controllers
     public class UtilizadoresController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UtilizadoresController(ApplicationDbContext context)
+        public UtilizadoresController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Utilizadores
@@ -168,8 +170,8 @@ namespace CareHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var utilizadores = await _context.Utilizadores.FindAsync(id);
-            if (utilizadores != null)
+            var utilizador = await _context.Utilizadores.Include(p => p.ListaPosts).FirstAsync(u => u.IdUtil == id);
+            if (utilizador != null)
             {
                 // vou buscar o id do utilizador da sessão
                 var utilizadorDaSessao = HttpContext.Session.GetInt32("utilizadorId");
@@ -180,9 +182,34 @@ namespace CareHub.Controllers
                     return RedirectToAction(nameof(Index));
                 }
                 
-                _context.Utilizadores.Remove(utilizadores);
+                
+                // remover as fotos que ficam guardadas
+                foreach (var item in utilizador.ListaPosts)
+                {
+                    
+                    string localImagem = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/" + item.Foto);
+                    if (System.IO.File.Exists(localImagem))
+                    {
+                        System.IO.File.Delete(localImagem);
+                    }
+                }
+                string imagemUtilizador = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"+utilizador.Foto);
+                string nomeFoto = System.IO.Path.GetFileName(imagemUtilizador);
+                if (!nomeFoto.Equals("user.jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    System.IO.File.Delete(imagemUtilizador);
+                }
+               
+                
+                IdentityUser userIdentity = await _userManager.FindByEmailAsync(utilizador.IdentityUserName);
+                _userManager.DeleteAsync(userIdentity);
+                
+                _context.Utilizadores.Remove(utilizador);
             }
 
+            
+             
+            
             await _context.SaveChangesAsync();
             // impede que tente fazer o apagar do mesmo utilizador
             HttpContext.Session.SetInt32("utilizadorId",0);
