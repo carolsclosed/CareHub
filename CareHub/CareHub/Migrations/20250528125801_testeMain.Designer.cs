@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250528125801_testeMain")]
+    partial class testeMain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -277,15 +280,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d11209c-3ff4-4c6d-8b4e-ca0b6fad1bfd",
+                            ConcurrencyStamp = "09d888a6-44e7-4c9c-941d-d80bb9bf2f73",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMhZt+4Eo+sw1eQvWiNQjxt8JG9yD6MAwmvhsCkXIGqKlxLxwtz8khcQnVcWKkxsKQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEODk9QIlJ38mh0JzIR2v7pnqG3EdUGYiG8VhSWJZBpPyy/BXpPCthC0Thk4pNReDoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3517be1d-bf6b-428c-a181-71ad4d5ae6c7",
+                            SecurityStamp = "c77be8ec-ba56-4611-b3fa-ac8202502d29",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
