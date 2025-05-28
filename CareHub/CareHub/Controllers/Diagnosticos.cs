@@ -1,3 +1,4 @@
+using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -11,53 +12,36 @@ public class Diagnosticos : Controller
 {
    
     // GET
-    public IActionResult diagnosticos()
+    public IActionResult diagnosticos(string termo)
     {
         var jsonContent = System.IO.File.ReadAllText("./wwwroot/doencas.json");
         var doencas = JsonSerializer.Deserialize<List<InfoDiagnostico>>(jsonContent);
 
+        if (!string.IsNullOrEmpty(termo))
+        {
+            termo = termo.ToLower();
+            doencas = doencas
+                .Where(d => d.Nome.ToLower().Contains(termo) || d.Categoria.ToLower().Contains(termo))
+                .ToList();
+        }
+        
+        
         doencas = doencas
             .Where(d => !string.IsNullOrWhiteSpace(d.Categoria))   // remove categorias vazias ou nulas
-            .GroupBy(d => NormalizarTexto(d.Categoria))
-            .Select(g => g.First())
-            .OrderBy(d => d.Categoria)
             .ToList();
-
-        static string NormalizarTexto(string texto)
-        {
-            if (string.IsNullOrWhiteSpace(texto))
-                return string.Empty;
-
-            // 1. Remove espaços extras
-            texto = texto.Trim();
-
-            // 2. Converte para minúsculas
-            texto = texto.ToLowerInvariant();
-
-            // 3. Remove acentos
-            texto = texto.Normalize(NormalizationForm.FormD);
-            var builder = new StringBuilder();
-
-            foreach (var ch in texto)
-            {
-                if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
-                {
-                    builder.Append(ch);
-                }
-            }
-
-            return builder.ToString().Normalize(NormalizationForm.FormC);
-        }
-
         
+
+        ViewBag.Termo = termo;
         return View(doencas);
     }
     
-    public class InfoDiagnostico 
+    public class InfoDiagnostico
     {
         [JsonPropertyName("nome")] 
         public string Nome { get; set; }
         [JsonPropertyName("categoria")] 
         public string Categoria { get; set; }
+
+      
     }
 }
