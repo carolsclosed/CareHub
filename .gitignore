@@ -1,6 +1,6 @@
 # Ignore bin and obj folders
-bin/
-obj/
+**/bin/
+**/obj/
 
 # Ignore database runtime files
 *.db-shm
@@ -28,32 +28,9 @@ obj/
 *.suo
 *.tmp
 *.cache
-/CareHub/.idea
-/CareHub/.idea
-/CareHub/CareHub/bin/Debug
-/CareHub/.idea/.idea.CareHub/.idea
-/CareHub/.idea/.idea.CareHub
-/CareHub/.idea
-/CareHub/CareHub/bin
-CareHub/.idea/.idea.CareHub/.idea/workspace.xml
-CareHub/CareHub/bin/Debug/net8.0/CareHub.dll
-CareHub/CareHub/bin/Debug/net8.0/CareHub.pdb
-CareHub/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json
-CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs
-CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache
-CareHub/.idea/.idea.CareHub/.idea/workspace.xml
-CareHub/CareHub/bin/Debug/net8.0/CareHub.dll
-CareHub/CareHub/bin/Debug/net8.0/CareHub.pdb
-CareHub/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json
-CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs
-CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache
-CareHub/CareHub/obj/Debug/net8.0/CareHub.csproj.CoreCompileInputs.cache
-CareHub/CareHub/obj/Debug/net8.0/CareHub.dll
-CareHub/CareHub/obj/Debug/net8.0/CareHub.pdb
-CareHub/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json
-CareHub/CareHub/obj/Debug/net8.0/ref/CareHub.dll
-CareHub/CareHub/obj/Debug/net8.0/refint/CareHub.dll
-CareHub/CareHub/obj/Debug/net8.0/staticwebassets.build.json
-CareHub/CareHub/obj/Debug/net8.0/staticwebassets.development.json
-CareHub/CareHub/obj/Debug/net8.0/staticwebassets.pack.json
-CareHub/CareHub/obj/Debug/net8.0/staticwebassets/msbuild.CareHub.Microsoft.AspNetCore.StaticWebAssets.props
+
+# Rider / JetBrains
+**/.idea/
+
+# Ignore all Debug builds
+**/Debug/
