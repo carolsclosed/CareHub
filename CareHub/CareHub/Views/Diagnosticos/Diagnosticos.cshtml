@@ -6,33 +6,36 @@
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
-    var categorias = Model.GroupBy(p => p.Categoria).ToList();
+  var grupos = Model
+        .GroupBy(d => d.Categoria)
+        .OrderBy(g => g.Key);
 
 }
 
-
+@{
+  }
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-    @foreach (var grupo in categorias)
+    @foreach (var grupo in grupos)
     {
         <div class="col">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a class="text-decoration-none" data-bs-toggle="collapse"  role="button" aria-expanded="false" >
+                        <a class="text-decoration-none" data-bs-toggle="collapse" href="#cat-@grupo.Key.GetHashCode()" role="button" aria-expanded="false">
                             @grupo.Key
                         </a>
                     </h5>
-                 
+                    <div class="container" >
+                        <ul>
+                            @foreach (var proc in grupo)
+                            {
+                                <li>@proc.Nome</li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-    }
-    <ul>
-        @foreach (var Proc in Model)
-        {
-            <h5>@Proc.Nome</h5>
-        }
-    </ul>
+            </div>
+                }
 </div>
