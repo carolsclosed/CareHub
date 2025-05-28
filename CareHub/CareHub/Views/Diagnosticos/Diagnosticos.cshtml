@@ -12,9 +12,16 @@
 
 }
 
-@{
-  }
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+
+<input list="sugestoes" name="termo" class="form-control" style="margin-bottom: 10px" placeholder="Pesquisar por doenças..."/>
+<datalist id="sugestoes">
+    @foreach (var d in Model.DistinctBy(x => x.Nome))
+    {
+        <option value="@d.Nome">@d.Nome (@d.Categoria)</option>
+    }
+</datalist>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
       @foreach (var grupo in grupos)
       {
           var collapseId = $"cat-{grupo.Key.GetHashCode()}";
@@ -23,7 +30,7 @@
               <div class="card h-100 shadow-sm">
                   <div class="card-body">
                       <h5 class="card-title">
-                          <a class="text-decoration-none" data-bs-toggle="collapse" href="#@collapseId" role="button" aria-expanded="false">
+                          <a class="text-secondary text-decoration-none" data-bs-toggle="collapse" href="#@collapseId" role="button" aria-expanded="false">
                               @grupo.Key
                           </a>
                       </h5>
