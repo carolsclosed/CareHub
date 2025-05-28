@@ -9,37 +9,37 @@
 }
 
 <head>
-    <title>Indice</title>
-    <link rel="stylesheet" href="css/IndicePublicacoes.css" type="text/css"/>
+    <title>Indíce</title>
 </head>
 
-<h1>Indice</h1>
+<h1>Indíce</h1>
 
-<div class="CriarPostDiv">
-    <a class="CriarPost" asp-action="Criar" >Criar nova publicação</a>
+<div class="justify-content-center mb-2 rounded bg-black btn">
+    <a class="text-white text-decoration-none hover-gray btn " asp-action="Criar" >Criar nova publicação</a>
 </div>
 
     @foreach (var item in Model)
     {
 
-        <div class="Publicacoes">
+        <div class="w-100 bg-black border border-3 border-black rounded mb-2 px-3 py-2 container-fluid">
             
-            <div class="NomePost">
+            <div class="text-white ms-1 mb-2">
+                <img alt="imagem perfil" class="rounded-circle bg-white" width="50" height="50" src="@item.Utilizador.Foto" />
                 @Html.DisplayFor(modelItem => item.Utilizador.Nome)
             </div>
-            <div class="TituloPost">
+            <div class="text-white ms-1 h2 mb-2">
                 @Html.DisplayFor(modelItem => item.TituloPost)
             </div>
-            <div class="CategoriaPost">
+            <div class="text-white ms-2 mb-2 small">
                 @Html.DisplayFor(modelItem => item.Categoria)
             </div>
-            <div class="TextoPost">
+            <div class="text-white ms-1 fs-5">
                 @Html.DisplayFor(modelItem => item.TextoPost)
             </div>
-            <div class="ImagemPostDiv">
-                <img class="ImagemPost" style="max-width: 200px;" src="@item.Foto"/>
+            <div class="text-center">
+                <img class="img-fluid" style="max-width: 200px;" src="@item.Foto"/>
             </div>
-            <div class="DataPost">
+            <div class="text-white ms-1">
                 @Html.DisplayFor(modelItem => item.DataPost)
             </div>
 
@@ -47,12 +47,12 @@
 
             <div>
 
-                <a class="Detalhes" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
+                <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
 
                 @if (@item.Utilizador.IdentityUserName == User.Identity.Name | isAdmin)
                 {
-                    <a class="Editar" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
-                    <a class="Apagar" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
+                    <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
+                    <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
                 }
 
 
