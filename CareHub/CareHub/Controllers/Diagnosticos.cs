@@ -12,17 +12,26 @@ public class Diagnosticos : Controller
 {
    
     // GET
-    public IActionResult diagnosticos()
+    public IActionResult diagnosticos(string termo)
     {
         var jsonContent = System.IO.File.ReadAllText("./wwwroot/doenças.json");
         var doencas = JsonSerializer.Deserialize<List<InfoDiagnostico>>(jsonContent);
 
+        if (!string.IsNullOrEmpty(termo))
+        {
+            termo = termo.ToLower();
+            doencas = doencas
+                .Where(d => d.Nome.ToLower().Contains(termo) || d.Categoria.ToLower().Contains(termo))
+                .ToList();
+        }
+        
+        
         doencas = doencas
             .Where(d => !string.IsNullOrWhiteSpace(d.Categoria))   // remove categorias vazias ou nulas
             .ToList();
         
 
-        
+        ViewBag.Termo = termo;
         return View(doencas);
     }
     

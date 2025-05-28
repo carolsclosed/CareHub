@@ -14,28 +14,30 @@
 
 @{
   }
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      @foreach (var grupo in grupos)
+      {
+          var collapseId = $"cat-{grupo.Key.GetHashCode()}";
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-    @foreach (var grupo in grupos)
-    {
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a class="text-decoration-none" data-bs-toggle="collapse" href="#cat-@grupo.Key.GetHashCode()" role="button" aria-expanded="false">
-                            @grupo.Key
-                        </a>
-                    </h5>
-                    <div class="container" >
-                        <ul>
-                            @foreach (var proc in grupo)
-                            {
-                                <li>@proc.Nome</li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
-                }
-</div>
+          <div class="col">
+              <div class="card h-100 shadow-sm">
+                  <div class="card-body">
+                      <h5 class="card-title">
+                          <a class="text-decoration-none" data-bs-toggle="collapse" href="#@collapseId" role="button" aria-expanded="false">
+                              @grupo.Key
+                          </a>
+                      </h5>
+
+                      <div class="collapse" id="@collapseId">
+                          <div class="dropdown-menu d-block position-static p-2 shadow rounded" style="max-height: 200px; overflow-y: auto;">
+                              @foreach (var proc in grupo)
+                              {
+                                  <a class="dropdown-item" href="#">@proc.Nome</a>
+                              }
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      }
+  </div>

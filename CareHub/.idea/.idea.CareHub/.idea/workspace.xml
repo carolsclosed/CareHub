@@ -8,7 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="up">
+    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="json">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/Controllers/Diagnosticos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Controllers/Diagnosticos.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" afterDir="false" />
@@ -177,7 +177,7 @@
       <workItem from="1747219180116" duration="3158000" />
       <workItem from="1747821942521" duration="4003000" />
       <workItem from="1748093375286" duration="13086000" />
-      <workItem from="1748363466635" duration="4665000" />
+      <workItem from="1748363466635" duration="7567000" />
     </task>
     <task id="LOCAL-00001" summary="tabelas bd">
       <option name="closed" value="true" />
@@ -307,7 +307,39 @@
       <option name="project" value="LOCAL" />
       <updated>1748363482806</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="more">
+      <option name="closed" value="true" />
+      <created>1748422762488</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748422762488</updated>
+    </task>
+    <task id="LOCAL-00018" summary="more">
+      <option name="closed" value="true" />
+      <created>1748422769494</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748422769494</updated>
+    </task>
+    <task id="LOCAL-00019" summary="json">
+      <option name="closed" value="true" />
+      <created>1748422791812</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748422791812</updated>
+    </task>
+    <task id="LOCAL-00020" summary="json">
+      <option name="closed" value="true" />
+      <created>1748422797285</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748422797285</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +380,8 @@
     <MESSAGE value="nao sei mais" />
     <MESSAGE value="z" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="more" />
+    <MESSAGE value="json" />
+    <option name="LAST_COMMIT_MESSAGE" value="json" />
   </component>
 </project>
