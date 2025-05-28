@@ -54,10 +54,11 @@
 </div>
 <div>
     
-    <a asp-action="Index">Voltar ao Índice</a>
+    <a asp-controller="Publicacoes" asp-action="Index">Voltar às Publicações</a>
 
     @if (Model.IdentityUserName == User.Identity.Name | isAdmin)
     {
+        <a asp-action="Index">Voltar ao Índice</a>
         <a asp-action="Editar" asp-route-id="@Model?.IdUtil">Editar</a>
     }
 

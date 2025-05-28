@@ -12,34 +12,24 @@
         <form id="profile-form" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Insira o seu nome" disabled />
-                <label asp-for="Username" class="form-label">Nome</label>
+                <input asp-for="Input.Nome" class="form-control" placeholder="Por favor, escolha o seu nome de utilizador." disabled />
+                <label asp-for="Input.Nome" class="form-label"></label>
             </div>
-            
-            <!-- Adcionar região -->
             <div class="form-floating mb-3">
-                <input asp-for="@Model.Utilizador.Regiao" class="form-control" placeholder="Insira a sua Região" disabled/>
-                <label asp-for="@Model.Utilizador.Regiao" class="form-label">Região</label>
-                <span asp-validation-for="@Model.Utilizador.Regiao" class="text-danger"></span>
+                <input asp-for="Input.Regiao" class="form-control" placeholder="Por favor, introduza o seu número de telefone." disabled/>
+                <label asp-for="Input.Regiao" class="form-label"></label>
+                <span asp-validation-for="Input.Regiao" class="text-danger"></span>
             </div>
-            
             <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Insira o seu número de telefone"/>
-                <label asp-for="Input.PhoneNumber" class="form-label">Número de telefone</label>
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Por favor, introduza o seu número de telefone."/>
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            
-            
-            
             <div class="form-floating mb-3">
-                
-                @if (!string.IsNullOrEmpty(Model.Utilizador?.Foto))
-                {
-                    <img src="@Model.Utilizador.Foto" alt="Foto do perfil" class="img-thumbnail mt-2" style="max-width: 200px;"/>
-                }
-                <input type="file" asp-for="Input.Foto" class="form-control" placeholder="Insira uma foto"/>
-            </div>
+                <img alt="Foto de perfil" src="@Model.Input.Foto" class="rounded-circle" width="150" height="150" />
+                <input asp-for="Input.FotoFicheiro" class="form-control" type="file" />
 
+            </div>
             
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Guardar</button>
         </form>

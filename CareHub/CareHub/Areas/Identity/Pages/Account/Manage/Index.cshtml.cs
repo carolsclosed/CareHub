@@ -3,14 +3,13 @@
 #nullable disable
 
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Drawing.Printing;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using CareHub.Data;
 using CareHub.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -20,27 +19,26 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
     public class IndexModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ApplicationDbContext _context;
-        
+
         public IndexModel(
             UserManager<IdentityUser> userManager,
-            ApplicationDbContext context)
+            SignInManager<IdentityUser> signInManager,ApplicationDbContext context)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _context = context;
         }
-
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public Utilizadores Utilizador { get; set; }
-
+        
+        [DisplayName("Nome")]
         public string Username { get; set; }
-        
-        public string Foto { get; set; }
-        
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -66,42 +64,40 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Phone]
-            [Display(Name = "Número de Telefone")]
+            [Display(Name = "Número de telefone")]
             public string PhoneNumber { get; set; }
-            
-            [Display(Name = "Nome")]
-            public string Nome { get; set; }
 
-            public IFormFile Foto { get; set; }
+            [DisplayName("Nome")]
+            public string Nome { get; set; }
+            
+            [DisplayName("Região")]
+            public string Regiao { get; set; }
+            
+            public string Foto { get; set; }
+            
+            
+            public IFormFile FotoFicheiro { get; set; }
         }
 
         private async Task LoadAsync(IdentityUser user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-        
-            // Get Utilizador data
-            var utilizador = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.IdentityUserName == userName);
-
-            Username = utilizador.Nome;
-            Utilizador = utilizador;
-            Foto = utilizador.Foto;
+            var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
             
             Input = new InputModel
             {
-                PhoneNumber = utilizador?.Telefone ?? phoneNumber,
+                PhoneNumber = utilizador?.Telefone,
+                Regiao = utilizador?.Regiao,
+                Foto = utilizador?.Foto,
                 Nome = utilizador?.Nome
             };
         }
-
 
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Não foi possível carregar o user ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -110,10 +106,11 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            var utilizador = await _context.Utilizadores.FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Não foi possível carregar o user ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -122,63 +119,49 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var utilizador = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.IdentityUserName == user.UserName);
-
-            if (utilizador != null)
-            {
-                
-                utilizador.Telefone = Input.PhoneNumber;
-                if (Input.Foto != null && (Input.Foto.ContentType == "image/png" || Input.Foto.ContentType == "image/jpeg"))
-                {
-                    
-                    string pastaFicheiro = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/imagensUtilizadores");
-                    string nomefoto =  Path.Combine("/imagensUtilizadores/",Guid.NewGuid().ToString() + Path.GetExtension(Input.Foto.FileName).ToLower()) ;
-                    
-                    
-                    if (!Directory.Exists(pastaFicheiro))
-                    {
-                        Directory.CreateDirectory(pastaFicheiro);
-                    }
-            
-                   
-                    using (var fileStream = new FileStream(Directory.GetCurrentDirectory()+"/wwwroot"+nomefoto, FileMode.Create))
-                    {
-                        await Input.Foto.CopyToAsync(fileStream);
-                    }
-
-                    if (utilizador.Foto != null)
-                    {
-                        string localFoto = utilizador.Foto;
-                        string ficheiroFoto = Directory.GetCurrentDirectory() + "/wwwroot" +localFoto;
-                        if (System.IO.File.Exists(ficheiroFoto))
-                            System.IO.File.Delete(ficheiroFoto);
-                    }
-                    
-                    utilizador.Foto = nomefoto;
-                }
-
-                _context.Update(utilizador);
-                await _context.SaveChangesAsync();
-            }
-
-            await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-
-
-            
-            
-            if (Input.PhoneNumber != utilizador.Telefone)
+            var numeroTelefone = await _userManager.GetPhoneNumberAsync(user);
+            if (Input.PhoneNumber != numeroTelefone)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Erro inesperado ao tentar alterar o número de telefone.";
+                    StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+                utilizador.Telefone = Input.PhoneNumber;
             }
+            
 
+            if (Input.FotoFicheiro.ContentType == "image/png" || Input.FotoFicheiro.ContentType == "image/jpeg")
+            {
+                var FotoExistente = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + utilizador.Foto);
+                var FotosCaminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImagensUtilizadores/");
+                if (!Directory.Exists(FotosCaminho))
+                {
+                    Directory.CreateDirectory(FotosCaminho);
+                }
+                var FotoNome = Guid.NewGuid().ToString() + Path.GetExtension(Input.FotoFicheiro.FileName);
+                var FotoCaminho = Path.Combine("/ImagensUtilizadores/"+FotoNome);
+                
+                using(var fileStream = new FileStream(FotosCaminho+FotoNome, FileMode.Create))
+                {
+                    await Input.FotoFicheiro.CopyToAsync(fileStream);
+                }
 
-            StatusMessage = "O seu perfil foi atualizado";
+                if (System.IO.File.Exists(FotoExistente))
+                {
+                    string NomeFoto = System.IO.Path.GetFileName(FotoExistente);
+                    if (!NomeFoto.Equals("user.jpg", StringComparison.OrdinalIgnoreCase))
+                    {
+                        System.IO.File.Delete(FotoExistente);
+                    }
+                }
+                
+                utilizador.Foto = FotoCaminho;
+            }
+            await _context.SaveChangesAsync();
+            await _signInManager.RefreshSignInAsync(user);
+            StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
     }

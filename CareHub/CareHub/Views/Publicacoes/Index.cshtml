@@ -3,62 +3,53 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Indíce";
+    ViewData["Title"] = "Índice";
     var currentUser = await UserManager.GetUserAsync(User);
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
 
 <head>
-    <title>Indíce</title>
+    <title>Índice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 </head>
 
-<h1>Indíce</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Publicações do Fórum</h1>
 
-<div class="justify-content-center mb-2 rounded bg-black btn">
-    <a class="text-white text-decoration-none hover-gray btn " asp-action="Criar" >Criar nova publicação</a>
-</div>
+    <div class="text-center mb-4">
+        <a class="btn btn-outline-secondary" asp-action="Criar">Criar nova publicação</a>
+    </div>
 
     @foreach (var item in Model)
     {
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="@item.Utilizador.Foto" alt="Foto do utilizador" class="rounded-circle me-3" width="50" height="50" />
+                    <strong>@item.Utilizador.Nome</strong>
+                </div>
 
-        <div class="w-100 bg-black border border-3 border-black rounded mb-2 px-3 py-2 container-fluid">
-            
-            <div class="text-white ms-1 mb-2">
-                <img alt="imagem perfil" class="rounded-circle bg-white" width="50" height="50" src="@item.Utilizador.Foto" />
-                @Html.DisplayFor(modelItem => item.Utilizador.Nome)
-            </div>
-            <div class="text-white ms-1 h2 mb-2">
-                @Html.DisplayFor(modelItem => item.TituloPost)
-            </div>
-            <div class="text-white ms-2 mb-2 small">
-                @Html.DisplayFor(modelItem => item.Categoria)
-            </div>
-            <div class="text-white ms-1 fs-5">
-                @Html.DisplayFor(modelItem => item.TextoPost)
-            </div>
-            <div class="text-center">
-                <img class="img-fluid" style="max-width: 200px;" src="@item.Foto"/>
-            </div>
-            <div class="text-white ms-1">
-                @Html.DisplayFor(modelItem => item.DataPost)
-            </div>
+                <h5 class="card-title">@item.TituloPost</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Categoria</h6>
+                <p class="card-text">@item.TextoPost</p>
 
-
-
-            <div>
-
-                <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
-
-                @if (@item.Utilizador.IdentityUserName == User.Identity.Name | isAdmin)
+                @if (!string.IsNullOrEmpty(item.Foto))
                 {
-                    <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
-                    <a class="text-white text-decoration-none ms-1 hover-gray" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
+                    <img src="@item.Foto" alt="Imagem da publicação" class="img-fluid rounded mb-3" style="max-width: 100%;" />
                 }
 
+                <p class="text-muted">@item.DataPost.ToShortDateString()</p>
 
+                <div>
+                    <a class="btn btn-sm btn-outline-secondary me-2" asp-action="Detalhes" asp-route-id="@item.IdPost">Detalhes</a>
 
+                    @if (item.Utilizador.IdentityUserName == User.Identity.Name || isAdmin)
+                    {
+                        <a class="btn btn-sm btn-outline-primary me-2" asp-action="Editar" asp-route-id="@item.IdPost">Editar</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdPost">Apagar</a>
+                    }
+                </div>
             </div>
         </div>
     }
-  
-
+</div>

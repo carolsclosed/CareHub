@@ -12,6 +12,9 @@ namespace CareHub.Models {
         [DisplayName("Nome")]
         [StringLength(50)]
         public string Nome { get; set; }
+        
+        [DisplayName("Foto")]
+        public string Foto { get; set; }
 
         [DisplayName("Região")]
         [StringLength(30)]
