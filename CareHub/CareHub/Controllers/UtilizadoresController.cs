@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CareHub.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     public class UtilizadoresController : Controller
     {
         private readonly ApplicationDbContext _context;
