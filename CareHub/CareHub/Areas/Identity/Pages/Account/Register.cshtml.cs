@@ -89,9 +89,9 @@ namespace CareHub.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "A {0} deve ter pelo menos {2} caracteres e no máximo {1} caracteres.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "A {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Palavra-passe")]
             public string Password { get; set; }
 
             /// <summary>
@@ -99,13 +99,11 @@ namespace CareHub.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "A palavra-passe e a confirmação não correspondem.")]
+            [Display(Name = "Confirmar palavra-passe")]
+            [Compare("Password", ErrorMessage = "A palavra-passe e a confirmação não coincidem.")]
             public string ConfirmPassword { get; set; }
             
             public Utilizadores Utilizador { get; set; }
-            
-            public string PhoneNumber { get; set; } 
         }
 
 
@@ -122,33 +120,22 @@ namespace CareHub.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                // imagem utilizador padrão
-                string fotoPadrao = "/imagensUtilizadores/user.png";
-                
-                
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Utilizador criou uma nova conta com palavra-passe.");
                     
                     //cria o utilizador na tabela Utilizadores
                     Input.Utilizador.IdentityUserName = user.UserName;
+                    Input.Utilizador.Foto = "/ImagensUtilizadores/user.jpg";
                     _context.Add(Input.Utilizador);
+                    
                     _context.SaveChanges();
-                    
-                    var utilizador = _context.Utilizadores.FirstOrDefault(u => u.IdentityUserName == user.UserName);
-                    if (utilizador != null)
-                    {
-                        utilizador.Foto = fotoPadrao;
-                        
-                        _context.SaveChanges();
-                    }
-                    
-                    
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -158,8 +145,8 @@ namespace CareHub.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirme o seu email",
+                        $"Por favor confirme a sua conta <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicando aqui</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

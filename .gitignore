@@ -1,6 +1,6 @@
 # Ignore bin and obj folders
-bin/
-obj/
+**/bin/
+**/obj/
 
 # Ignore database runtime files
 *.db-shm
@@ -28,6 +28,9 @@ obj/
 *.suo
 *.tmp
 *.cache
-/CareHub/.idea
-/CareHub/.idea
-/CareHub/.idea
+
+# Rider / JetBrains
+**/.idea/
+
+# Ignore all Debug builds
+**/Debug/

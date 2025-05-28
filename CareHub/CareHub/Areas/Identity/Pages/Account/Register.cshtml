@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Registro";
+    ViewData["Title"] = "Registar";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,21 +9,21 @@
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Criar Conta</h2>
+            <h2>Crie uma nova conta</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Utilizador.Nome" class="form-control" autocomplete="username" aria-required="true" placeholder="João" />
+                <input asp-for="Input.Utilizador.Nome" class="form-control" autocomplete="username" aria-required="true" placeholder="Nome completo" />
                 <label asp-for="Input.Utilizador.Nome">Nome</label>
                 <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Leiria" />
+                <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" />
                 <label asp-for="Input.Utilizador.Regiao">Região</label>
                 <span asp-validation-for="Input.Utilizador.Regiao" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Utilizador.Telefone" class="form-control" autocomplete="username" aria-required="true" placeholder="+351 xxxxxxxxx" />
+                <input asp-for="Input.Utilizador.Telefone" class="form-control"  aria-required="true" placeholder="+351 xxxxxxxxx" />
                 <label asp-for="Input.Utilizador.Telefone">Telemóvel</label>
                 <span asp-validation-for="Input.Utilizador.Telefone" class="text-danger"></span>
             </div>
@@ -33,29 +33,29 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="palavra passe" />
-                <label asp-for="Input.Password">Palavra passe</label>
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                <label asp-for="Input.Password">Password</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirmar palavra passe</label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar Password" />
+                <label asp-for="Input.ConfirmPassword">Confirmar Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registro</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registar</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to register.</h3>
+            <h3>Registar usando outro serviço</h3>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            Não existem serviços de autenticação externa configurados. Consulte este <a href="https://go.microsoft.com/fwlink/?LinkID=532715">artigo
+                            sobre como configurar esta aplicação ASP.NET para permitir login através de serviços externos</a>.
                         </p>
                     </div>
                 }
@@ -66,7 +66,7 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins!)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Iniciar sessão usando a conta @provider.DisplayName">@provider.DisplayName</button>
                                 }
                             </p>
                         </div>
