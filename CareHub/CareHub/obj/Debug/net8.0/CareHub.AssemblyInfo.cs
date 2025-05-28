@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CareHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5541880bf91de56b4bc594fe1dcff4ee317945b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72c64074d56ef617615520196173012c6ba2710d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CareHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CareHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

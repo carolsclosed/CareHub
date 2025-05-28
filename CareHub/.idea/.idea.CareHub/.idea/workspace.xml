@@ -8,9 +8,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="melhorar categorias">
+    <list default="true" id="d2b4beff-7b43-46e3-9af9-8068d763ba7e" name="Changes" comment="yo">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareHub/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Views/Diagnosticos/Diagnosticos.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Controllers/Diagnosticos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Controllers/Diagnosticos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/bin/Debug/net8.0/CareHub.staticwebassets.runtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/CareHub.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/ref/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/refint/CareHub.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.pack.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets.pack.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets/msbuild.CareHub.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareHub/obj/Debug/net8.0/staticwebassets/msbuild.CareHub.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +91,7 @@
     <setting file="mock:///Users/angelacsebastiao/Documents/GitHub/CareHub/CareHub/obj/Debug/net8.0/CareHub.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c06673f4846f4984af370f3a7898b653d83800/89/17adb635/Monitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8056cd3f452fefb9834f05cdb275b762dd41f27b7766cd71174e78592dc495b/Monitor.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9cf5f68d759deefc91b9c48c5ac3dd27708bb7dc38d0c485661fff5ce15b82/SafeFileHandle.Unix.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -164,7 +180,7 @@
       <workItem from="1747219180116" duration="3158000" />
       <workItem from="1747821942521" duration="4003000" />
       <workItem from="1748093375286" duration="13086000" />
-      <workItem from="1748363466635" duration="8197000" />
+      <workItem from="1748363466635" duration="8888000" />
     </task>
     <task id="LOCAL-00001" summary="tabelas bd">
       <option name="closed" value="true" />
@@ -334,7 +350,31 @@
       <option name="project" value="LOCAL" />
       <updated>1748427721732</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="more">
+      <option name="closed" value="true" />
+      <created>1748428391731</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748428391731</updated>
+    </task>
+    <task id="LOCAL-00023" summary="more">
+      <option name="closed" value="true" />
+      <created>1748428416208</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748428416208</updated>
+    </task>
+    <task id="LOCAL-00024" summary="yo">
+      <option name="closed" value="true" />
+      <created>1748428877590</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748428877590</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,9 +415,10 @@
     <MESSAGE value="nao sei mais" />
     <MESSAGE value="z" />
     <MESSAGE value="up" />
-    <MESSAGE value="more" />
     <MESSAGE value="json" />
     <MESSAGE value="melhorar categorias" />
-    <option name="LAST_COMMIT_MESSAGE" value="melhorar categorias" />
+    <MESSAGE value="more" />
+    <MESSAGE value="yo" />
+    <option name="LAST_COMMIT_MESSAGE" value="yo" />
   </component>
 </project>
