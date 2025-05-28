@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CareHub.Data;
 using CareHub.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 namespace CareHub.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UtilizadoresController : Controller
     {
         private readonly ApplicationDbContext _context;
