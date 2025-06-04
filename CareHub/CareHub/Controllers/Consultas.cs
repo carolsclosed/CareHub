@@ -9,4 +9,19 @@ public class Consultas : Controller
     {
         return View();
     }
+
+    public async Task<IActionResult> onlinePresencial()
+    {
+        return View();
+    }
+    
+    public async Task<IActionResult> presencial()
+    {
+        return View();
+    }
+    
+    public async Task<IActionResult> online()
+    {
+        return View();
+    }
 }
