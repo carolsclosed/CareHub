@@ -21,6 +21,7 @@ namespace CareHub.Controllers
         public async Task<IActionResult> Index()
         {
             var listaPosts = _context.Posts
+                .Include(p => p.ListaUp)
                 .Include(p => p.Utilizador);
             return View(await listaPosts.ToListAsync());
         }

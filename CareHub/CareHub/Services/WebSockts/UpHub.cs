@@ -34,7 +34,7 @@ public class UpHub : Hub
             return;
         
         //id utilizador
-        var IdUtil = _context.Utilizadores.Find(Context.User.Identity.Name);
+        var IdUtil = _context.Utilizadores.First(u => u.IdentityUserName == Context.User.Identity.Name);
         if (IdUtil == null)
         {
             return;
@@ -63,6 +63,8 @@ public class UpHub : Hub
         }
 
         _context.SaveChanges();
+        
+        Clients.All.SendAsync("AtualizarUpvotes", idPublicacao, _context.Ups.Where(up => up.IdPost == idPublicacao).Count() );
         
     }
     
