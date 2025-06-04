@@ -280,5 +280,8 @@ namespace CareHub.Controllers
         {
             return _context.Posts.Any(e => e.IdPost == id);
         }
+        
+        
+
     }
 }

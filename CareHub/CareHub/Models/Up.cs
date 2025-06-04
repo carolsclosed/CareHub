@@ -4,14 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CareHub.Models { 
     [PrimaryKey(nameof(IdUtil),nameof(IdPost))]
-    
-    public class Up {
-        [ForeignKey("id_util")]
-        public int IdUtil { get; set; }
+    public class Up
+    {
+        // Foreign Keys
+        [ForeignKey(nameof(Utilizador))]
+        public int IdUtil { get; set; }    
         
-        [ForeignKey("id_post")]
+        [ForeignKey(nameof(Post))]
         public int IdPost { get; set; }
-        
+
+        // Navigation properties
+        public Utilizadores Utilizador { get; set; }
+        public Posts Post { get; set; }
     }
-    
 }

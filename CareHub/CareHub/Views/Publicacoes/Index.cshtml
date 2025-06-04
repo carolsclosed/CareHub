@@ -38,6 +38,14 @@
                     <img src="@item.Foto" alt="Imagem da publicação" class="img-fluid rounded mb-3" style="max-width: 100%;" />
                 }
 
+                <div class="d-flex align-items-center mb-2">
+                    <button class="btn btn-outline-success btn-sm me-2" onclick="AtualizaUpvote(@item.IdPost)">
+                        <i class="bi bi-arrow-up"></i> <!-- icon bootstrap -->
+                    </button>
+                    <span id="upvote-count-@item.IdPost">@item.ListaUp.Count</span> <!-- contador de upvote -->
+                </div>
+
+                
                 <p class="text-muted">@item.DataPost.ToShortDateString()</p>
 
                 <div>
@@ -53,3 +61,29 @@
         </div>
     }
 </div>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/UpSocket")
+        .withAutomaticReconnect()
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    async function start() {
+        try {
+            await connection.start();
+            console.log("SignalR Connected.");
+        } catch (err) {
+            console.log(err);
+            setTimeout(start, 5000);
+        }
+    };
+
+    function AtualizarUpvotes(){
+        connection.invoke("AtualizarUpvotes", idPub);AtualizaUpvote
+        
+    }
+    
+    // Start the connection.
+    start();
+</script>

@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250604085954_testeUp")]
+    partial class testeUp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -32,14 +35,9 @@ namespace CareHub.Migrations
                     b.Property<string>("TextoCom")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UtilizadoresIdUtil")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("IdCom");
 
                     b.HasIndex("IdPost");
-
-                    b.HasIndex("UtilizadoresIdUtil");
 
                     b.ToTable("Comentarios");
                 });
@@ -284,15 +282,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "46fd44f8-b1fa-4f51-b4f7-5dc4fd569b32",
+                            ConcurrencyStamp = "33923791-6ef6-4f1a-843c-b34551b892b8",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAECj0JQdevKwfvSbOsXDya1PZSAqtckCE0Zi55LkgYAXBAf2q7o2M0Bnp7QwHPkWu6g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ0aORmoztZV/eYFiArDQCEGZmg1QztnFZFf2vLz4KfCk+zcHsnfBXZMMWMLzBdG9g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d90c35de-2cbc-4771-bc41-5476f70287d7",
+                            SecurityStamp = "1302e718-7b09-40d9-bf20-8f96c5c6531d",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
@@ -396,10 +394,6 @@ namespace CareHub.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CareHub.Models.Utilizadores", null)
-                        .WithMany("ListaComentarios")
-                        .HasForeignKey("UtilizadoresIdUtil");
-
                     b.Navigation("Post");
                 });
 
@@ -445,7 +439,7 @@ namespace CareHub.Migrations
                         .IsRequired();
 
                     b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
-                        .WithMany("ListaUp")
+                        .WithMany()
                         .HasForeignKey("IdUtil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -517,11 +511,7 @@ namespace CareHub.Migrations
                 {
                     b.Navigation("Doutor");
 
-                    b.Navigation("ListaComentarios");
-
                     b.Navigation("ListaPosts");
-
-                    b.Navigation("ListaUp");
 
                     b.Navigation("Paciente");
                 });

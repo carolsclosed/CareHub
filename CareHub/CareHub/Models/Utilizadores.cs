@@ -35,6 +35,9 @@ namespace CareHub.Models {
         [DisplayName("Publicações")]
         public ICollection<Posts> ListaPosts { get; set; }
         
+        public ICollection<Comentarios> ListaComentarios { get; set; }
+        
+        public ICollection<Up> ListaUp { get; set; } = [];
     }
     
 }

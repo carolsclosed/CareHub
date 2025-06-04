@@ -31,6 +31,8 @@ namespace CareHub.Models {
         public Utilizadores Utilizador { get; set; }
         
         public ICollection<Comentarios> ListaComentarios { get; set; }
+
+        public ICollection<Up> ListaUp { get; set; } = [];
     }
     
 }

@@ -14,10 +14,10 @@ namespace CareHub.Models {
         public int IdPost { get; set; }
         public Posts Post { get; set; }
         
-        [ForeignKey("IdUtil")]
+        [ForeignKey(nameof(Utilizador))]
         public int IdUtil { get; set; }
         
-        
+        public Utilizadores Utilizador { get; set; }
     }
     
 }
