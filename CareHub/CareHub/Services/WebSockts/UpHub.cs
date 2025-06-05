@@ -33,15 +33,14 @@ public class UpHub : Hub
         if (publicacao == null)
             return;
         
-        //id utilizador
-        var IdUtil = _context.Utilizadores.First(u => u.IdentityUserName == Context.User.Identity.Name);
-        if (IdUtil == null)
+        //utilizador
+        var utilizador = _context.Utilizadores.Include(u => u.ListaUp).First(u => u.IdentityUserName == Context.User.Identity.Name);
+        if (utilizador == null)
         {
             return;
         }
         
-        //o utilizador
-        var utilizador = _context.Utilizadores.Include(u => u.ListaUp).FirstOrDefault(u => u.IdUtil == IdUtil.IdUtil);
+        
         if (utilizador == null)
         {
             return;

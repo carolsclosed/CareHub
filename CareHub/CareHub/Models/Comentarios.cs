@@ -10,13 +10,15 @@ namespace CareHub.Models {
         
         public string TextoCom { get; set; }
         
+        public DateOnly DataCom { get; set; }
+        
         [ForeignKey(nameof(Post))]
         public int IdPost { get; set; }
-        public Posts Post { get; set; }
         
         [ForeignKey(nameof(Utilizador))]
         public int IdUtil { get; set; }
         
+        public Posts Post { get; set; }
         public Utilizadores Utilizador { get; set; }
     }
     
