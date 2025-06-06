@@ -3,6 +3,7 @@ using CareHub.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace CareHub.Services.WebSockts;
 
@@ -37,14 +38,11 @@ public class UpHub : Hub
         var utilizador = _context.Utilizadores.Include(u => u.ListaUp).First(u => u.IdentityUserName == Context.User.Identity.Name);
         if (utilizador == null)
         {
+            Clients.Caller.SendAsync("IniciarSessao");
             return;
+
         }
         
-        
-        if (utilizador == null)
-        {
-            return;
-        }
         //verificar se a relação já existe
         var jaUp = utilizador.ListaUp.FirstOrDefault(u => u.IdPost == idPublicacao);
         
