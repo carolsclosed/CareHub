@@ -34,3 +34,4 @@
 
 # Ignore all Debug builds
 **/Debug/
+CareHub/CareHub/app.db
