@@ -28,9 +28,13 @@ public class ComentariosController : Controller
             return RedirectToAction("Index", "Publicacoes");
         }
         
+        comentario.Utilizador = utilizador;
+        
         comentario.DataCom= DateOnly.FromDateTime(DateTime.Today);
         
         comentario.IdUtil = utilizador.IdUtil;
+        
+        
         
         _context.Comentarios.Add(comentario);
         await _context.SaveChangesAsync();

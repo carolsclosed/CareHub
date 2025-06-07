@@ -24,7 +24,7 @@ namespace CareHub.Controllers
             var listaPosts = _context.Posts
                 .Include(p => p.ListaUp)
                 .Include(p => p.Utilizador)
-                .Include(p => p.ListaComentarios);
+                .Include(p => p.ListaComentarios).ThenInclude(c => c.Utilizador);
             return View(await listaPosts.ToListAsync());
         }
 
