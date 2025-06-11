@@ -45,6 +45,7 @@ public class UpHub : Hub
         
         //verificar se a relação já existe
         var jaUp = utilizador.ListaUp.FirstOrDefault(u => u.IdPost == idPublicacao);
+        var Islike = false;
         
         if (jaUp != null)
         {
@@ -57,12 +58,13 @@ public class UpHub : Hub
                IdPost = idPublicacao,
                IdUtil = utilizador.IdUtil
            });
+           Islike = true;
         }
 
         _context.SaveChanges();
         
         Clients.All.SendAsync("AtualizarUpvotes", idPublicacao, _context.Ups.Where(up => up.IdPost == idPublicacao).Count() );
-        
+        Clients.Caller.SendAsync("AtualizarUpvotesPersonal", idPublicacao, Islike);
     }
     
 }

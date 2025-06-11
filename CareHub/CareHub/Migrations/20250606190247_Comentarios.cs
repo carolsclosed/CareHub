@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CareHub.Migrations
 {
     /// <inheritdoc />
-    public partial class Comentarios : Migration
+    public partial class Comentariosteste : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

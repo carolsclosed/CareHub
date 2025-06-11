@@ -63,15 +63,15 @@
                     }
                 </div>
                 
-                <form id="form-comentario-@item.IdPost" class="mt-3" method="post" asp-action="Comentar" asp-controller="Comentarios">
+                <div  class="mt-3" >
                     <div class="input-group">
-                        <textarea class="form-control rounded-pill" id="comentarioInput-@item.IdPost"
+                        <textarea class="form-control rounded-pill" id="textoComentario-@item.IdPost"
                                     name="TextoCom" placeholder="Escreva um comentário" required style="resize: none; 
                       overflow: hidden; height: 50px;" oninput="this.style.height=''; this.style.height= this.scrollHeight + 'px'"></textarea>
-                        <input type="hidden" name="IdPost" value="@item.IdPost" />
-                        <button class="btn btn-primary rounded-pill"  type="submit">Comentar</button>
+                        <input type="hidden"  id="IdPost-@item.IdPost" value="@item.IdPost" />
+                        <button  class="btn btn-primary rounded-pill" onclick="EnviarComentario(@item.IdPost)">Comentar</button>
                     </div>
-                </form>
+                </div>
                 <div class="text-muted mt-2">
                    @if (item.ListaComentarios?.Any() != true)
                    {
@@ -103,6 +103,8 @@
     }
 </div>
 
+
+
 <script>
     const connection = new signalR.HubConnectionBuilder()
         .withUrl("/UpSocket")
@@ -110,6 +112,10 @@
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
+    
+
+    
+    
     async function start() {
         try {
             await connection.start();
@@ -118,6 +124,16 @@
             connection.on("AtualizarUpvotes", (idPub, upvotes) => {
                 document.getElementById(`upvote-count-${idPub}`).innerText = upvotes;
             });
+
+            connection.on("AtualizarUpvotesPersonal", (idPub, isLike) => {
+
+                if(isLike){
+                    document.getElementById(`like-button-${idPub}`).className = "btn btn-success btn-sm me-2";
+                }else{
+                    document.getElementById(`like-button-${idPub}`).className = "btn btn-outline-secondary btn-sm me-2";
+                }
+                
+            });
             
             
         } catch (err) {
@@ -125,12 +141,26 @@
             setTimeout(start, 5000);
         }
     };
-
-   
+    
     
     function AtualizarUpvotes(idPub){
         connection.invoke("AtualizarUpvotes", idPub);
         
+    }
+
+    function EnviarComentario(idPost) {
+        const texto = document.getElementById(`textoComentario-${idPost}`).value;
+        const comentario = {
+            TextoCom: texto,
+            IdPost: idPost
+        };
+
+        if (!texto.trim()) {
+            alert("Escreve algo antes de comentar!");
+            return;
+        }
+        connection.invoke("Comentar", comentario)
+            .catch(err => console.error(err.toString()));
     }
     
     // Start the connection.

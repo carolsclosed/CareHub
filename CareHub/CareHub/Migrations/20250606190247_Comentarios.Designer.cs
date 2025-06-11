@@ -12,7 +12,7 @@ namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250606190247_Comentarios")]
-    partial class Comentarios
+    partial class Comentariosteste
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
