@@ -193,7 +193,7 @@ namespace CareHub.Controllers
             }
 
             var user = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.Nome == User.Identity.Name);
+                .FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
 
             if (user == null || publicacaoExistente.IdUtil != user.IdUtil)
             {
@@ -202,19 +202,23 @@ namespace CareHub.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                if (publicacaoExistente.Foto != null)
+                if (haImagem)
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", publicacaoExistente.Foto);
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
+                    if (publicacaoExistente.Foto != null)
+                    {
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", publicacaoExistente.Foto);
+                        if (System.IO.File.Exists(filePath))
+                            System.IO.File.Delete(filePath);
+                    }
+                    publicacaoExistente.Foto = publicacao.Foto;
                 }
+                
                 
                 publicacaoExistente.TituloPost = publicacao.TituloPost;
                 publicacaoExistente.Categoria = publicacao.Categoria;
                 publicacaoExistente.TextoPost = publicacao.TextoPost;
                 publicacaoExistente.DataPost = DateOnly.FromDateTime(DateTime.Now);
-                publicacaoExistente.Foto = publicacao.Foto;
+                
                 
                 try
                 {

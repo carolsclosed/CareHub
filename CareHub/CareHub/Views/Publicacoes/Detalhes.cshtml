@@ -7,60 +7,53 @@
     ViewData["Title"] = "Detalhes";
     var currentUser = await UserManager.GetUserAsync(User);
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
-
 }
 
+<h1 class="mb-4">Detalhes da Publicação</h1>
 
-<h1>Detalhes</h1>
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">@Model.TituloPost</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3 fw-semibold">Categoria</dt>
+            <dd class="col-sm-9">@Model.Categoria</dd>
 
-<div>
-    <h4>Fotografias</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TituloPost)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TituloPost)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Categoria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categoria)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-        <dd class="col-sm-10">
-            <img style="max-width: 400px;" src="/@Model.Foto" />
-            
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataPost)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataPost)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Utilizador)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Utilizador.Nome)
-            <a asp-action="Detalhes" asp-controller="Utilizadores" asp-route-id="@Model.IdUtil">  Ver perfil</a>
-        </dd>
-    </dl>
+            <dt class="col-sm-3 fw-semibold">Data do Post</dt>
+            <dd class="col-sm-9">@Model.DataPost.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3 fw-semibold">Utilizador</dt>
+            <dd class="col-sm-9">
+                @Model.Utilizador.Nome
+                @if (isAdmin)
+                {
+                    <a asp-action="Detalhes" asp-controller="Utilizadores" asp-route-id="@Model.IdUtil" class="ms-2 btn btn-sm btn-outline-primary">Ver Perfil</a>    
+                }
+                
+            </dd>
+
+            <dt class="col-sm-3 fw-semibold align-self-start">Foto</dt>
+            <dd class="col-sm-9">
+                <img src="/@Model.Foto" alt="Foto da publicação" class="img-fluid rounded shadow-sm" style="max-height: 400px;" />
+            </dd>
+
+            <dt class="col-sm-3 fw-semibold align-self-start">Texto</dt>
+            <dd class="col-sm-9">
+                <p class="fs-5">@Model.TextoPost</p>
+            </dd>
+        </dl>
+    </div>
 </div>
-<div>
 
-    <a asp-action="Index">Voltar ao Índice</a>
-    
-    @if (Model.Utilizador.IdentityUserName == User.Identity.Name | isAdmin)
+<div class="d-flex justify-content-between align-items-center">
+    <a asp-action="Index" class="btn btn-secondary">&larr; Voltar aos Utilizadores</a>
+
+    @if (Model.Utilizador.IdentityUserName == User.Identity.Name || isAdmin)
     {
-        <a asp-action="Editar" asp-route-id="@Model?.IdPost">Editar</a> 
-        <a class="Delete" asp-action="Delete" asp-route-id="@Model.IdPost">Apagar</a>
+        <div>
+            <a asp-action="Editar" asp-route-id="@Model.IdPost" class="btn btn-warning me-2">Editar</a>
+            <a asp-action="Delete" asp-route-id="@Model.IdPost" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja apagar esta publicação?');">Apagar</a>
+        </div>
     }
-    
-   
-    
 </div>

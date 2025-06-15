@@ -51,28 +51,6 @@ namespace CareHub.Controllers
             return View(utilizador);
         }
 
-        // GET: Utilizadores/Criar
-        public IActionResult Criar()
-        {
-            return View();
-        }
-
-        // POST: Utilizadores/Criar
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Criar([Bind("Nome,Telemovel,Regiao")] Utilizadores utilizadores)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(utilizadores);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(utilizadores);
-        }
-
         // GET: Utilizadores/Editar/5
         public async Task<IActionResult> Editar(int? id)
         {

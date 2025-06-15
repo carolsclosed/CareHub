@@ -8,7 +8,7 @@
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
-    <div class="col-md-6">
+    <div class="card shadow p-4">
         <form id="profile-form" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
@@ -20,16 +20,48 @@
                 <label asp-for="Input.Regiao" class="form-label"></label>
                 <span asp-validation-for="Input.Regiao" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Por favor, introduza o seu número de telefone."/>
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            <div class="input-group mb-3">
+                
+                <div class="form-floating flex-grow-1">
+                    <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Número de telefone" />
+                    <label asp-for="Input.PhoneNumber"></label>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <img alt="Foto de perfil" src="@Model.Input.Foto" class="rounded-circle" width="150" height="150" />
-                <input asp-for="Input.FotoFicheiro" class="form-control" type="file" />
+            <div class="mb-3 text-center">
+                <span class="fw-bold mb-2 me-2">Foto de Perfil</span>
+                <img src="@Model.Input.Foto" class="rounded-circle mb-3 d-inline" width="150" height="150" alt="Foto de perfil" />
+                <input id="FotoFicheiro" asp-for="Input.FotoFicheiro" class="form-control" type="file" />
+            </div>
+            <script>
+                    const inputImagem = document.querySelector('input[id="FotoFicheiro"]');
+                    const containerTemporario = document.createElement('div');
+                    containerTemporario.style.marginTop = '10px';
+                    
+                    inputImagem.parentNode.appendChild(containerTemporario);
 
-            </div>
+                    inputImagem.addEventListener('change', function () {
+                    containerTemporario.innerHTML = ''; 
+                    
+
+                    const file = this.files[0];
+                    if (file) {
+                        const img = document.createElement('img');
+                        img.style.width = '150px';
+                        img.style.height = '150px';
+                        img.className = 'rounded-circle mb-3';
+                        img.src = URL.createObjectURL(file);
+
+                        const span = document.createElement('span');
+                        span.textContent = 'Nova Foto de Perfil';
+                        span.style.display = 'block';
+                        span.className = 'fw-bold mb-2 me-2 d-inline';
+                        
+
+                        containerTemporario.appendChild(span);
+                        containerTemporario.appendChild(img);
+                    }
+                    });
+                </script>
             
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Guardar</button>
         </form>

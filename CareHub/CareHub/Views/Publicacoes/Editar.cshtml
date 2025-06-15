@@ -4,44 +4,57 @@
     ViewData["Title"] = "Editar";
 }
 
-<h1>Editar a publicação</h1>
+<h1 class="mb-4">Editar a publicação</h1>
 
-<h4>Fotografias</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Editar" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdPost" />
-            <input type="hidden" type="datetime" name="DataPost" />   
-            <div class="form-group">
-                <label asp-for="TituloPost" class="control-label"></label>
-                <input asp-for="TituloPost" class="form-control" />
-                <span asp-validation-for="TituloPost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Categoria" class="control-label"></label>
-                <input asp-for="Categoria" class="form-control" />
-                <span asp-validation-for="Categoria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TextoPost" class="control-label"></label>
-                <input asp-for="TextoPost" class="form-control" />
-                <span asp-validation-for="TextoPost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input type="file" name="imagem" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow p-4">
+            <form asp-action="Editar" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="IdPost" />
+                <input type="hidden" type="datetime" name="DataPost" />
+
+                <div class="form-floating mb-3">
+                    <input asp-for="TituloPost" class="form-control" placeholder="Título da publicação" />
+                    <label asp-for="TituloPost">Título</label>
+                    <span asp-validation-for="TituloPost" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Categoria" class="form-control" placeholder="Categoria" />
+                    <label asp-for="Categoria">Categoria</label>
+                    <span asp-validation-for="Categoria" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea asp-for="TextoPost" class="form-control" placeholder="Conteúdo da publicação" style="height: 120px;"></textarea>
+                    <label asp-for="TextoPost">Texto</label>
+                    <span asp-validation-for="TextoPost" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Foto" class="form-label">Foto</label>
+                    <input type="file" name="imagem" class="form-control" />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+                
+                @if (!string.IsNullOrEmpty(Model.Foto))
+                {
+                    <div class="mb-3 text-center">
+                        <p>Foto atual:</p>
+                        <img src="/@Model.Foto" alt="Foto atual" class="img-fluid rounded" style="max-height: 200px;" />
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-primary w-100">Guardar alterações</button>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Voltar às publicações</a>
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-link">&larr; Voltar às publicações</a>
 </div>
-
