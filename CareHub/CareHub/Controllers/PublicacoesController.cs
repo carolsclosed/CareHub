@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using CareHub.Data;
 using CareHub.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CareHub.Controllers
 {
@@ -22,7 +23,8 @@ namespace CareHub.Controllers
         {
             var listaPosts = _context.Posts
                 .Include(p => p.ListaUp)
-                .Include(p => p.Utilizador);
+                .Include(p => p.Utilizador)
+                .Include(p => p.ListaComentarios).ThenInclude(c => c.Utilizador);
             return View(await listaPosts.ToListAsync());
         }
 
@@ -132,7 +134,7 @@ namespace CareHub.Controllers
 
             
 
-            if (Publicacao.Utilizador.Nome != User.Identity.Name)
+            if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -276,13 +278,7 @@ namespace CareHub.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-        private bool PostExists(int id)
-        {
-            return _context.Posts.Any(e => e.IdPost == id);
-        }
         
         
-
     }
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,6 +9,8 @@ namespace CareHub.Models {
         [Key]  // PK, int, autonumber
         public int IdCom { get; set; }
         
+        [DisplayName("Texto comentário")]
+        [StringLength(250)]
         public string TextoCom { get; set; }
         
         public DateOnly DataCom { get; set; }

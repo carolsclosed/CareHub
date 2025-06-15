@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250607101611_ComentariosFix6")]
+    partial class ComentariosFix6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -285,15 +288,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a49f2693-0f22-4570-ae81-9b1f61349ba1",
+                            ConcurrencyStamp = "1f78344f-beea-4cd5-a814-dbd01cba84f6",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEB/4DMdIEWxvyjk9E6hZCNbqhz03uP0sxeuKeJpz+a78UAeEdhGTLMBeriHtyZ3iA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA09ZOdLO9e9VAPAdy95smR87/tC8bHv+Ec5c6kUslrZItsGdJ/Z3rEsK2JVCuuKFw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d3191c85-2b21-4f63-93a6-1a92e2c21885",
+                            SecurityStamp = "8a452cae-2592-4d79-9cad-36b0861917dd",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250606190247_Comentarios")]
+    partial class Comentariosteste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -285,15 +288,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a49f2693-0f22-4570-ae81-9b1f61349ba1",
+                            ConcurrencyStamp = "86b16bd7-9bf6-4ddf-b70e-39498085d340",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEB/4DMdIEWxvyjk9E6hZCNbqhz03uP0sxeuKeJpz+a78UAeEdhGTLMBeriHtyZ3iA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPL3QaikHjMwrizzPL6qyhpQYYmhtqxUA4+3BqXHdiHnzMVSxL/Xac9Cv3VPUiOxbQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d3191c85-2b21-4f63-93a6-1a92e2c21885",
+                            SecurityStamp = "49c10776-712a-4422-a62b-aa1717c018a1",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
