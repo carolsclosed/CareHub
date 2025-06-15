@@ -99,10 +99,10 @@ public class UpHub : Hub
     public void ApagarComentario(int idComentario, int idUtil)
     {
         var utilizador = _context.Utilizadores.First(u => u.IdentityUserName == Context.User.Identity.Name);
-        if (utilizador == null || utilizador.IdUtil != idUtil)
+        if ((utilizador == null || utilizador.IdUtil != idUtil) && utilizador.IdentityRole != "Administrador")
         {
-            Clients.Caller.SendAsync("Erro", "Utilizador inválido");
-            return;
+            throw new HubException("Utilizador inválido");
+            
         }
         var comentario = _context.Comentarios.Find(idComentario);
 

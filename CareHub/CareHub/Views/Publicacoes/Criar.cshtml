@@ -4,40 +4,66 @@
     ViewData["Title"] = "Criar";
 }
 
-<h1>Criar</h1>
-
-<h4>Fotografias</h4>
+<h1>Criar Publicação</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="TituloPost">Título</label>
-                <input asp-for="TituloPost" class="form-control" />
-                <span asp-validation-for="TituloPost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="TextoPost">Texto</label>
-                <input asp-for="TextoPost" class="form-control"></input>
-                <span asp-validation-for="TextoPost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="Categoria">Categoria</label>
-                <input asp-for="Categoria" class="form-control" />
-                <span asp-validation-for="Categoria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input type="file" name="imagem" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
-            </div>
 
-            <button type="submit" class="btn btn-primary">Criar</button>
-        </form>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card p-4 shadow-sm">
+            <form method="post" enctype="multipart/form-data" novalidate>
+                <div class="mb-3">
+                    <label asp-for="TituloPost" class="form-label">Título</label>
+                    <input asp-for="TituloPost" class="form-control" />
+                    <span asp-validation-for="TituloPost" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TextoPost" class="form-label" >Texto</label>
+                    <textarea asp-for="TextoPost" class="form-control " rows="4" style="resize: none"></textarea>
+                    <span asp-validation-for="TextoPost" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Categoria" class="form-label">Categoria</label>
+                    <input asp-for="Categoria" class="form-control" />
+                    <span asp-validation-for="Categoria" class="invalid-feedback"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Foto" class="form-label">Foto</label>
+                    <input type="file" name="imagem" class="form-control" />
+                    <span asp-validation-for="Foto" class="invalid-feedback"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Criar</button>
+                <script>
+                    const inputImagem = document.querySelector('input[name="imagem"]');
+                    const containerTemporario = document.createElement('div');
+                    containerTemporario.style.marginTop = '10px';
+
+                    inputImagem.parentNode.appendChild(containerTemporario);
+
+                    inputImagem.addEventListener('change', function () {
+                    containerTemporario.innerHTML = ''; 
+
+                    const file = this.files[0];
+                    if (file) {
+                        const img = document.createElement('img');
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '300px';
+                        img.style.borderRadius = '5px';
+                        img.src = URL.createObjectURL(file);
+                        containerTemporario.appendChild(img);
+                    }
+                    });
+                </script>
+                
+            </form>
+        </div>
+
+        <div class="mt-3 text-center">
+            <a asp-action="Index" class="text-decoration-none">&larr; Voltar às publicações</a>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar às publicações</a>
 </div>
 

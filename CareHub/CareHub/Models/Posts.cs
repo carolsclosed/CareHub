@@ -15,7 +15,7 @@ namespace CareHub.Models {
         
         public string? Foto { get; set; }
         
-        [DisplayName("Texto do post")]
+        [DisplayName("Texto da Publicação")]
         public string TextoPost { get; set; }
         
         [DisplayName("Categoria da doença")]
