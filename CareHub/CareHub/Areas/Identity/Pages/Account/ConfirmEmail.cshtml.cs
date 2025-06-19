@@ -44,7 +44,7 @@ namespace CareHub.Areas.Identity.Pages.Account
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+            StatusMessage = result.Succeeded ? "Obrigado por confirmares o teu e-mail." : "Ocorreu um erro ao confirmar o teu e-mail.";
             return Page();
         }
     }
