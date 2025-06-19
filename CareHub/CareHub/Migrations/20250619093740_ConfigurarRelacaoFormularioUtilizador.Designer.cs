@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250619093740_ConfigurarRelacaoFormularioUtilizador")]
+    partial class ConfigurarRelacaoFormularioUtilizador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -75,9 +78,6 @@ namespace CareHub.Migrations
 
                     b.Property<string>("nome")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("presencial")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("regiao")
                         .HasColumnType("TEXT");
@@ -165,9 +165,6 @@ namespace CareHub.Migrations
 
                     b.Property<string>("Foto")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("IdentityRole")
                         .HasMaxLength(50)
@@ -318,15 +315,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cdde0a72-7b2e-41f5-89d5-9d20235a603a",
+                            ConcurrencyStamp = "c09946f4-53dd-4e1d-92cc-b839cbcff485",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAECyghcjeZ3d2jh4xLqw43dQp9XyQngzt5H6HTBPAh0sgDrn0gUWJ57Hzmb24dPaZnw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED7P1KhBbPsuGV6jHqrJ/Vuw6OLgdlprvKyTnyAuEQiu96l05OO+NxuHxGP0zGeJmQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "838adf88-601e-4489-8872-1161b9dd69e9",
+                            SecurityStamp = "5efc1f8d-5d48-4b39-bbbd-5f57b8f4860f",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

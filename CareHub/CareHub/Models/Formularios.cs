@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Sqlite.Query.SqlExpressions.Internal;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace CareHub.Models;
@@ -11,8 +12,8 @@ public class Formularios
     [Key]  // PK, int, autonumber
     public int IdForm { get; set; }
         
-    [ForeignKey(nameof(Utilizador))]
-    public int IdUtil { get; set; }
+   [ForeignKey(nameof(Utilizador))]
+   public int IdUtil { get; set; }
       
     public string nome { get; set; }
     
@@ -22,6 +23,7 @@ public class Formularios
     [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n")]
     public string email { get; set; }
     
+    public bool presencial { get; set; }
     public string regiao { get; set; }
     
     public string descricao { get; set; }
