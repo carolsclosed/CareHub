@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using CareHub.Data;
 using CareHub.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CareHub.Controllers
 {
@@ -21,7 +22,9 @@ namespace CareHub.Controllers
         public async Task<IActionResult> Index()
         {
             var listaPosts = _context.Posts
-                .Include(p => p.Utilizador);
+                .Include(p => p.ListaUp)
+                .Include(p => p.Utilizador)
+                .Include(p => p.ListaComentarios).ThenInclude(c => c.Utilizador);
             return View(await listaPosts.ToListAsync());
         }
 
@@ -131,7 +134,7 @@ namespace CareHub.Controllers
 
             
 
-            if (Publicacao.Utilizador.Nome != User.Identity.Name)
+            if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -190,7 +193,7 @@ namespace CareHub.Controllers
             }
 
             var user = await _context.Utilizadores
-                .FirstOrDefaultAsync(u => u.Nome == User.Identity.Name);
+                .FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
 
             if (user == null || publicacaoExistente.IdUtil != user.IdUtil)
             {
@@ -199,19 +202,23 @@ namespace CareHub.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                if (publicacaoExistente.Foto != null)
+                if (haImagem)
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", publicacaoExistente.Foto);
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
+                    if (publicacaoExistente.Foto != null)
+                    {
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", publicacaoExistente.Foto);
+                        if (System.IO.File.Exists(filePath))
+                            System.IO.File.Delete(filePath);
+                    }
+                    publicacaoExistente.Foto = publicacao.Foto;
                 }
+                
                 
                 publicacaoExistente.TituloPost = publicacao.TituloPost;
                 publicacaoExistente.Categoria = publicacao.Categoria;
                 publicacaoExistente.TextoPost = publicacao.TextoPost;
                 publicacaoExistente.DataPost = DateOnly.FromDateTime(DateTime.Now);
-                publicacaoExistente.Foto = publicacao.Foto;
+                
                 
                 try
                 {
@@ -275,13 +282,7 @@ namespace CareHub.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-        private bool PostExists(int id)
-        {
-            return _context.Posts.Any(e => e.IdPost == id);
-        }
         
         
-
     }
 }

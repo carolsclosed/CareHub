@@ -15,7 +15,7 @@ namespace CareHub.Models {
         
         public string? Foto { get; set; }
         
-        [DisplayName("Texto do post")]
+        [DisplayName("Texto da Publicação")]
         public string TextoPost { get; set; }
         
         [DisplayName("Categoria da doença")]
@@ -30,7 +30,7 @@ namespace CareHub.Models {
 
         public Utilizadores Utilizador { get; set; }
         
-        public ICollection<Comentarios> ListaComentarios { get; set; }
+        public ICollection<Comentarios> ListaComentarios { get; set; } = new List<Comentarios>();
 
         public ICollection<Up> ListaUp { get; set; } = [];
     }

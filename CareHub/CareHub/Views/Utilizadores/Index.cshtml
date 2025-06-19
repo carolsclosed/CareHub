@@ -8,62 +8,39 @@
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
 
-<h1>Página de Utilizadores</h1>
+<h1 class="mb-4">Página de Utilizadores</h1>
 
-<p>
-    <a asp-action="Create">Criar Utilizador</a>
-</p>
-<table class="table">
-    <thead>
+
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Regiao)
-        </th>
-        <th></th>
+        <th scope="col" style="width:110px;">Foto</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Região</th>
+        <th scope="col" style="width:180px;">Ações</th>
     </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="@item.Foto" alt="Foto de Utilizador" class="rounded-circle" width="100" height="100"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Regiao)
-        </td>
-
-
-        <td>
-
-            <a asp-action="Detalhes" asp-route-id="@item.IdUtil">Ver Detalhes</a>
-            @if (item.IdentityUserName == User.Identity.Name | isAdmin)
-            {
-                <a asp-action="Editar" asp-route-id="@item.IdUtil">Editar</a>
-                <a asp-action="Delete" asp-route-id="@item.IdUtil">Apagar</a>
-
-            }
-
-        </td>
-
-
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.Foto" alt="Foto de @item.Nome" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" />
+            </td>
+            <td>@item.Nome</td>
+            <td>@item.Telefone</td>
+            <td>@item.Regiao</td>
+            <td>
+                <a asp-action="Detalhes" asp-route-id="@item.IdUtil" class="btn btn-sm btn-info me-1">Ver Detalhes</a>
+                @if (item.IdentityUserName == User.Identity.Name || isAdmin)
+                {
+                    <a asp-action="Editar" asp-route-id="@item.IdUtil" class="btn btn-sm btn-warning me-1">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdUtil" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Tem certeza que deseja apagar este utilizador?');">Apagar</a>
+                }
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
