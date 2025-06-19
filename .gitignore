@@ -35,3 +35,6 @@
 # Ignore all Debug builds
 **/Debug/
 CareHub/CareHub/app.db
+ 
+ #Ignore mailkit mail and password
+ **/CareHub/appsettings.Development.json
