@@ -2,8 +2,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CareHub.Data;
 using CareHub.Services.WebSockts;
+using CareHub.Services.MailKit;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CareHub.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ConfigEmail>(builder.Configuration.GetSection("ConfigEmail"));
+builder.Services.AddSingleton<IMailer, Mailer>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
@@ -26,7 +34,6 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddSignalR();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

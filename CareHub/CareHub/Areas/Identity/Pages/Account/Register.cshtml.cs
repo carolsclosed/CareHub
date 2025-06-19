@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using CareHub.Data;
 using CareHub.Models;
+using CareHub.Services.MailKit;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CareHub.Areas.Identity.Pages.Account
 {
+    
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -30,7 +32,7 @@ namespace CareHub.Areas.Identity.Pages.Account
         private readonly IUserStore<IdentityUser> _userStore;
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly IMailer _emailSender;
         private readonly ApplicationDbContext _context;
         
         public RegisterModel(
@@ -38,7 +40,7 @@ namespace CareHub.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
+            IMailer emailSender,
             ApplicationDbContext context)
         {
             _userManager = userManager;
