@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250507170822_fixEdit2")]
-    partial class fixEdit2
+    [Migration("20250623135934_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,10 @@ namespace CareHub.Migrations
 
                     b.HasKey("IdCom");
 
+                    b.HasIndex("IdPost");
+
+                    b.HasIndex("IdUtil");
+
                     b.ToTable("Comentarios");
                 });
 
@@ -55,6 +59,40 @@ namespace CareHub.Migrations
                         .IsUnique();
 
                     b.ToTable("Doutores");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Formularios", b =>
+                {
+                    b.Property<int>("IdForm")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdUtil")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("descricao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("nome")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("presencial")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("regiao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("telefone")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdForm");
+
+                    b.HasIndex("IdUtil");
+
+                    b.ToTable("Formularios");
                 });
 
             modelBuilder.Entity("CareHub.Models.Pacientes", b =>
@@ -81,6 +119,7 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Categoria")
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<DateOnly>("DataPost")
@@ -96,6 +135,7 @@ namespace CareHub.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TituloPost")
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.HasKey("IdPost");
@@ -115,6 +155,8 @@ namespace CareHub.Migrations
 
                     b.HasKey("IdUtil", "IdPost");
 
+                    b.HasIndex("IdPost");
+
                     b.ToTable("Ups");
                 });
 
@@ -124,13 +166,26 @@ namespace CareHub.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Foto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("IdentityRole")
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IdentityUserName")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Regiao")
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefone")
@@ -266,15 +321,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8350183b-997a-4b36-9f64-c493d7d17e7b",
+                            ConcurrencyStamp = "84843ded-3a28-4f8c-a9da-cc60bbfc723e",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAELIdcOnrRuOOxI2aBv2v8vyJ14IMSpqftIRPH8e0I9ruQE5Ndu6cCkzNulaW8IwN3Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOkJXMTCpAGjdxG6SnSDpdNIG4gRnukwt/eVumje4npJL5uv1lHi7VIHiNbDG3ClGw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5846f1e-4d64-4a3c-a425-cd98c973be7c",
+                            SecurityStamp = "fc7d3220-a981-421c-8302-d3501f86d71b",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
@@ -370,11 +425,41 @@ namespace CareHub.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CareHub.Models.Comentarios", b =>
+                {
+                    b.HasOne("CareHub.Models.Posts", "Post")
+                        .WithMany("ListaComentarios")
+                        .HasForeignKey("IdPost")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany("ListaComentarios")
+                        .HasForeignKey("IdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Utilizador");
+                });
+
             modelBuilder.Entity("CareHub.Models.Doutores", b =>
                 {
                     b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
                         .WithOne("Doutor")
                         .HasForeignKey("CareHub.Models.Doutores", "IdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Utilizador");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Formularios", b =>
+                {
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("IdUtil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -395,10 +480,29 @@ namespace CareHub.Migrations
             modelBuilder.Entity("CareHub.Models.Posts", b =>
                 {
                     b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
-                        .WithMany()
+                        .WithMany("ListaPosts")
                         .HasForeignKey("IdUtil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Utilizador");
+                });
+
+            modelBuilder.Entity("CareHub.Models.Up", b =>
+                {
+                    b.HasOne("CareHub.Models.Posts", "Post")
+                        .WithMany("ListaUp")
+                        .HasForeignKey("IdPost")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CareHub.Models.Utilizadores", "Utilizador")
+                        .WithMany("ListaUp")
+                        .HasForeignKey("IdUtil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("Utilizador");
                 });
@@ -454,9 +558,22 @@ namespace CareHub.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CareHub.Models.Posts", b =>
+                {
+                    b.Navigation("ListaComentarios");
+
+                    b.Navigation("ListaUp");
+                });
+
             modelBuilder.Entity("CareHub.Models.Utilizadores", b =>
                 {
                     b.Navigation("Doutor");
+
+                    b.Navigation("ListaComentarios");
+
+                    b.Navigation("ListaPosts");
+
+                    b.Navigation("ListaUp");
 
                     b.Navigation("Paciente");
                 });

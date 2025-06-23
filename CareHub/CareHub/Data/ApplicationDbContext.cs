@@ -44,6 +44,13 @@ namespace CareHub.Data
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string> { UserId = "admin", RoleId = "a" });
         
+            // relaçao utilizador comentarios
+            modelBuilder.Entity<Comentarios>()
+                .HasOne(c => c.Utilizador) // cada comentario tem um utilizador
+                .WithMany(u => u.ListaComentarios) // um utilzador pode ter muitos comentarios
+                .HasForeignKey(c => c.IdUtil); // chave estrangeira para o utilizador
+
+
         }
 
         public DbSet<Comentarios> Comentarios { get; set; }
@@ -52,7 +59,7 @@ namespace CareHub.Data
         public DbSet<Posts> Posts { get; set; }
         public DbSet<Up> Ups { get; set; }
         public DbSet<Utilizadores> Utilizadores { get; set; }
-        public DbSet<Formularios>  Formularios { get; set; }
-
+        public DbSet<Formularios> Formularios { get; set; }
+        
     }
 }
