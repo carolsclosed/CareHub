@@ -18,7 +18,14 @@
                 <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" />
+                <!-- <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" /> -->
+                <select asp-for="Input.Utilizador.Regiao" asp-controller="Formularios" class="form-control" id="regiao">
+                    <option value="">Selecione uma região</option>
+                    @foreach (var regiao in ViewBag.Regioes as List<string>)
+                    {
+                        <option value="@regiao">@regiao</option>
+                    }
+                </select>
                 <label asp-for="Input.Utilizador.Regiao">Região</label>
                 <span asp-validation-for="Input.Utilizador.Regiao" class="text-danger"></span>
             </div>

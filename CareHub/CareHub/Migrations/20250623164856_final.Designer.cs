@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250623153349_Doutoresnome")]
-    partial class Doutoresnome
+    [Migration("20250623164856_final")]
+    partial class final
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,9 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("email")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("nCedula")
@@ -336,15 +339,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "26032608-40b2-468e-80a5-ab21259f5958",
+                            ConcurrencyStamp = "6bfcc32c-5364-4872-85d0-3bad772d1edb",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB0vvYGCwcp6UzquxmkQMeuezUVh282LgLjwAEVPGkhdjWZiozYxutJSX/W0ExmSmw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAIsbjO1mv+GfKpxcL5Vz/fjuA2Om4HQLqIaD2sAord/IzCQjhAato30liu2X0mM5A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b8440d29-885d-4689-9477-63430e2e7d8a",
+                            SecurityStamp = "8b7a820f-e8ee-459d-b78e-75bcba58b20f",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
