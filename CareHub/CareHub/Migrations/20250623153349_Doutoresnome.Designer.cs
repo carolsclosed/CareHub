@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250623153349_Doutoresnome")]
+    partial class Doutoresnome
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -60,9 +63,6 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("email")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("nCedula")
@@ -336,15 +336,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f25652fa-867e-4c94-86d5-3ccfd9440941",
+                            ConcurrencyStamp = "26032608-40b2-468e-80a5-ab21259f5958",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDqdCmxYXHLQBSOxxuqGKDttClwoNA0sFG9N38sMH7pARF2ZyL4b5Ly5fkWyfyMGfQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB0vvYGCwcp6UzquxmkQMeuezUVh282LgLjwAEVPGkhdjWZiozYxutJSX/W0ExmSmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6a1c131-c7c7-411c-aea9-254b63d66a8e",
+                            SecurityStamp = "b8440d29-885d-4689-9477-63430e2e7d8a",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

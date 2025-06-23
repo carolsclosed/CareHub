@@ -50,6 +50,7 @@ namespace CareHub.Data
                 .WithMany(u => u.ListaComentarios) // um utilzador pode ter muitos comentarios
                 .HasForeignKey(c => c.IdUtil); // chave estrangeira para o utilizador
 
+            
 
         }
 
