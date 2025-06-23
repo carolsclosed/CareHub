@@ -12,9 +12,15 @@
         </h3>
         <form asp-controller="FormMedico" method="post">
             <div class="mb-3">
-                <!-- Apenas se "Nome" estiver mesmo em Doutores -->
-                <!-- Se não estiver, tens de buscá-lo via Model.Utilizador.Nome -->
+                <input asp-for="Doutor.Nome" type="text" class="form-control" placeholder="Insira o seu Nome completo:">
+            </div>
+
+            <div class="mb-3">
                 <input asp-for="Doutor.nCedula" type="text" class="form-control" placeholder="Insira o seu número de cédula:">
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Doutor.email" type="text" class="form-control" placeholder="Insira o seu E-mail:">
             </div>
 
             <div class="mb-3">

@@ -22,7 +22,7 @@ namespace CareHub.Controllers
         }
 
         // GET: Formulário
-        public IActionResult FormMedico(string? termo)
+        public IActionResult FormMedico()
         {
             var identityUserName = User.Identity.Name;
 
@@ -33,35 +33,36 @@ namespace CareHub.Controllers
             if (utilizador == null)
                 return Unauthorized();
 
-            // Se já existe doutor para este utilizador, mostra aviso logo aqui
             if (utilizador.Doutor != null)
             {
-                return View("Aviso");  // View aviso a informar que já existe registo
+                // Se já existe doutor, mostra aviso pendente
+                ViewBag.MensagemTitulo = "A aguardar resposta";
+                ViewBag.MensagemCorpo = "Agradecemos o seu interesse na CareHub.";
+                return View("Aviso");
             }
 
-            // Caso contrário, carrega as regiões e mostra o formulário
-            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
-            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
-            var regioesDropdown = regioes
-                .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
-                .Distinct()
-                .OrderBy(x => x)
-                .ToList();
-
-            var doutor = new Doutores
-            {
-                IdUtil = utilizador.IdUtil
-            };
-
+            // Se não tiver doutor, mostra formulário
             var vm = new FormMedicoViewModel
             {
-                Doutor = doutor,
-                Regioes = regioesDropdown
+                Doutor = new Doutores { IdUtil = utilizador.IdUtil },
+                Regioes = CarregarRegioes()
             };
 
             return View(vm);
         }
 
+        private List<string> CarregarRegioes()
+        {
+            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
+            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
+
+            return regioes
+                .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+        }
+// POST: Submeter o formulário do doutor
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult FormMedico(Doutores doutor)
@@ -77,35 +78,27 @@ namespace CareHub.Controllers
 
             if (utilizador.Doutor != null)
             {
-                // Já existe doutor -> volta para aviso
+                ModelState.AddModelError("", "Já existe um registo de doutor para este utilizador.");
+            }
+            else
+            {
+                doutor.IdUtil = utilizador.IdUtil;
+                _context.Doutores.Add(doutor);
+                _context.SaveChanges();
+
+                ViewBag.MensagemTitulo = "O seu registo como doutor foi submetido com sucesso!";
+                ViewBag.MensagemCorpo = "Agradecemos o seu interesse na CareHub.";
                 return View("Aviso");
             }
 
-            doutor.IdUtil = utilizador.IdUtil;
-
-            if (!ModelState.IsValid)
+            // Em caso de erro, voltar ao formulário
+            var vm = new FormMedicoViewModel
             {
-                var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
-                var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
-                var regioesDropdown = regioes
-                    .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
-                    .Distinct()
-                    .OrderBy(x => x)
-                    .ToList();
+                Doutor = doutor,
+                Regioes = CarregarRegioes()
+            };
 
-                var vm = new FormMedicoViewModel
-                {
-                    Doutor = doutor,
-                    Regioes = regioesDropdown
-                };
-
-                return View(vm);
-            }
-
-            _context.Doutores.Add(doutor);
-            _context.SaveChanges();
-
-            return View("Aviso");
+            return View(vm);
         }
 
 

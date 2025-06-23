@@ -1,30 +1,30 @@
-@model CareHub.Models.Doutores
+@model List<CareHub.Models.Doutores>
 
 @{
     ViewBag.Title = "Doutores";
     Layout = "_Layout";
 }
-<!-- FAZER GET , FOREACH COM OS DOUTORES -->
+
 <div class="p-3" style="background-color: #412B45FF">
     <div style="background-color: #F2D5F7FF">
         <h3 class="mb-4 text-center" style="font-family: 'American Typewriter'">Conheça a nossa equipa CareHub!</h3>
         <div class="">
             <h4>Se for doutor venha fazer parte da nossa equipa</h4>
-            <a class="btn btn-outline-secondary">Candidatar-se</a>
+            <a asp-controller="FormMedico" asp-action="FormMedico" class="btn btn-outline-secondary">Candidatar-se</a>
         </div>
-        <div class="d-flex align-items-start p-3 border rounded shadow-sm" style="max-width: 500px;">
-            <img src="~/ImagensUtilizadores/user.png" class="img-fluid rounded-circle me-3" alt="Dr. x x" style="width: 80px; height: 80px;">
 
-            <div class="d-flex flex-column">
-                <h5 class="mb-1">Dr. x x</h5>
-                <p class="mb-1 text-muted">especialidade</p>
-                <p class="mb-1 text-muted">certificado onde estudou</p>
-                <p class="mb-0"><strong>Experiencia:</strong> 18880 years</p>
+        @foreach (var doutor in Model)
+        {
+            <div class="d-flex align-items-start p-3 border rounded shadow-sm mb-3" style="max-width: 500px;">
+                <img src="~/ImagensUtilizadores/user.jpg" class="img-fluid rounded-circle me-3" alt="Dr. @doutor.Utilizador.Nome" style="width: 80px; height: 80px;">
+
+                <div class="d-flex flex-column">
+                    <h5 class="mb-1">Dr. @doutor.Utilizador.Nome</h5>
+                    <p class="mb-1 text-muted">@doutor.Especialidade</p>
+                    <p class="mb-1 text-muted">@doutor.DistritoProfissional</p>
+                    <p class="mb-0"><strong>Descrição:</strong> @doutor.Descricao</p>
+                </div>
             </div>
-        </div>
-
-
-
-
+        }
     </div>
 </div>
