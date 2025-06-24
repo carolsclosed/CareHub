@@ -6,6 +6,8 @@ namespace CareHub.Models {
 
     public class Utilizadores {
 
+        public int Id { get; set; }
+        
         [Key]  // PK, int, autonumber
         public int IdUtil { get; set; }
         

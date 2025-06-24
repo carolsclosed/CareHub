@@ -11,10 +11,10 @@
 
 <div class="container my-5">
     <div class="position-relative rounded overflow-hidden">
-        <img src="~/imgs/banner.jpg" class="img-fluid w-100" alt="Banner médico" style="max-height: 500px; object-fit: contain;" />
+        <img src="~/imgs/main22.jpeg" class="img-fluid w-100" alt="Banner médico" style="max-height: 500px; object-fit: contain;" />
 
         <div class="position-absolute top-50 start-0 translate-middle-y px-4 text-white" style="z-index: 2; background-color: #412b45; font-family: Arial">
-            <h2>Procura e agenda com a <span style="color: rgb(177, 250, 233); font-family: 'American Typewriter'">CareHub</span></h2>
+            <h2>Procura e agenda com a <span style="color: rgb(255, 171, 247); font-family: 'American Typewriter'">CareHub</span></h2>
         </div>
     </div>
 </div>
@@ -29,7 +29,7 @@
                     <h5 class="card-title">Consultas Online</h5>
                     <p class="card-text">Requisitar uma consulta online com um dos nossos especialistas.</p>
                 </div>
-                <img src="~/imgs/MINI1.png" class="card-img-bottom"  alt="Consulta Online">
+                <img src="~/imgs/online.jpg" class="card-img-bottom"  alt="Consulta Online">
 
             </div>
         </div>
@@ -37,7 +37,7 @@
         <!-- Card 2 -->
         <div class="col">
             <div class="card h-100 text-center">
-                <img src="~/imgs/MINI3.png" class="card-img-top" alt="In-Clinic Appointments">
+                <img src="~/imgs/pessoa.jpg" class="card-img-top" alt="In-Clinic Appointments">
                 <div class="card-body">
                     <h5 class="card-title">Consulta Presencial</h5>
                     <p class="card-text">Agendar uma consulta numa das nossas clínicas com um dos nossos profissionais.</p>
@@ -53,14 +53,14 @@
                     <h5 class="card-title">Análises Clínicas</h5>
                     <p class="card-text">Requisitar um pedido para efetuar a sua análise clínica connosco.</p>
                 </div>
-                <img src="~/imgs/MINI5.png" class="card-img-bottom" alt="Lab Tests">
+                <img src="~/imgs/bisturi.jpeg" class="card-img-bottom" alt="Lab Tests">
             </div>
         </div>
 
         <!-- Card 4 -->
         <div class="col">
             <div class="card h-100 text-center">
-                <img src="~/imgs/MINI5.png" class="card-img-top" alt="Procedures">
+                <img src="~/imgs/cirurgia.jpeg" class="card-img-top" alt="Procedures">
                 <div class="card-body">
                     <h5 class="card-title">Tratamentos e Procedimentos</h5>
                     <p class="card-text">Conheça que procedimentos nós temos para oferecer.</p>
@@ -76,7 +76,7 @@
                     <h5 class="card-title">Fármacos</h5>
                     <p class="card-text">Conhecimento abrangente sobre diversos medicamentos.</p>
                 </div>
-                <img src="~/imgs/MINI1.png" class="card-img-top" alt="Medicines">
+                <img src="~/imgs/farmacos.jpeg" class="card-img-top" alt="Medicines">
             </div>
         </div>
     </div>
@@ -107,32 +107,29 @@
 
 
 
-        <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+<footer class="bg-secondary pt-5 pb-3 mt-5">
         <div class="container">
             <div class="row">
                 <!-- Coluna 1: Marca -->
                 <div class="col-md-4 mb-4">
-                    <h5 class="fw-bold">CareHub</h5>
-                    <p class="text-muted">A tua saúde, onde e quando precisas.</p>
+                    <h5 class="fw-bold text-white">CareHub</h5>
+                    <p class="text-white">A tua saúde, onde e quando precisas.</p>
                 </div>
 
                 <!-- Coluna 2: Links rápidos -->
                 <div class="col-md-4 mb-4">
-                    <h6 class="fw-semibold">Links Rápidos</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none text-light">Home</a></li>
-                        <li><a href="#" class="text-decoration-none text-light">Sobre nós</a></li>
-                        <li><a href="#" class="text-decoration-none text-light">Profissionais</a></li>
-                        <li><a href="#" class="text-decoration-none text-light">Contactos</a></li>
+                        <li><a asp-controller="Home" asp-action="Index" class="text-decoration-none text-white">Home</a></li>
+                        <li><a asp-controller="SobreNos" asp-action="Index" class="text-decoration-none text-white">Sobre nós</a></li>
+                        <li><a asp-controller="Doutores" asp-action="doutores" class="text-decoration-none text-white">Profissionais</a></li>
                     </ul>
                 </div>
 
                 <!-- Coluna 3: Contacto -->
                 <div class="col-md-4 mb-4">
-                    <h6 class="fw-semibold">Contactos</h6>
-                    <p class="mb-1"><i class="bi bi-envelope me-2"></i> support@carehub.com</p>
-                    <p class="mb-1"><i class="bi bi-phone me-2"></i> +111 111 111 111</p>
-                    <p><i class="bi bi-geo-alt me-2"></i> sheesh ipt</p>
+                    <h6 class="fw-semibold text-white">Contactos</h6>
+                    <p class="mb-1 text-white"><i class="bi bi-envelope me-2"></i> support@carehub.com</p>
+                    <p class="mb-1 text-white"><i class="bi bi-phone me-2"></i> +111 111 111 111</p>
                 </div>
             </div>
 

@@ -8,6 +8,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using CareHub.Data;
@@ -111,9 +113,41 @@ namespace CareHub.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            // Read the JSON file
+            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
+            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
+
+            // Ensure regioes is not null before proceeding
+            if (regioes != null)
+            {
+                // Filter the regions based on some condition, if necessary
+                regioes = regioes.Where(r =>
+                    r.Provincia != null && r.Distritos != null && r.Regioes != null && r.Nome != null
+                ).ToList();
+        
+                // Create a dropdown list with unique values (name, district, province, region)
+                var regioesDropdown = regioes
+                    .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
+                    .Where(x => !string.IsNullOrWhiteSpace(x)) // Ensure no null or empty entries
+                    .Distinct()
+                    .OrderBy(x => x)
+                    .ToList();
+
+                // Assign values to ViewBag
+                ViewData["Regioes"] = regioesDropdown ?? new List<string>();
+            }
+            else
+            {
+                ViewData["Regioes"] = new List<string>(); // Default empty list if null
+            }
+
+
             ReturnUrl = returnUrl;
+
+            // Initialize external logins
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
+
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
@@ -192,5 +226,19 @@ namespace CareHub.Areas.Identity.Pages.Account
             }
             return (IUserEmailStore<IdentityUser>)_userStore;
         }
+    }
+    
+    public class InfoRegiao
+    {
+        [JsonPropertyName("name")] 
+        public string Nome { get; set; }
+        [JsonPropertyName("district")] 
+        public string Distritos { get; set; }
+        [JsonPropertyName("region")] 
+        public string Regioes { get; set; }
+        [JsonPropertyName("province")] 
+        public string Provincia { get; set; }
+
+      
     }
 }

@@ -6,55 +6,51 @@
 
 <h1 class="text-center mb-4">@ViewData["Title"]</h1>
 
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow p-4 mb-4">
-            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <h2 class="h5 text-center mb-3">Crie uma nova conta</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Utilizador.Nome" class="form-control" placeholder="Nome completo" />
-                    <label asp-for="Input.Utilizador.Nome">Nome</label>
-                    <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Utilizador.Regiao" class="form-control" placeholder="Região" />
-                    <label asp-for="Input.Utilizador.Regiao">Região</label>
-                    <span asp-validation-for="Input.Utilizador.Regiao" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Utilizador.Telefone" class="form-control" placeholder="+351 xxxxxxxxx" />
-                    <label asp-for="Input.Utilizador.Telefone">Telemóvel</label>
-                    <span asp-validation-for="Input.Utilizador.Telefone" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" placeholder="nome@exemplo.com" />
-                    <label asp-for="Input.Email">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" placeholder="Password" type="password" />
-                    <label asp-for="Input.Password">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirmar Password" type="password" />
-                    <label asp-for="Input.ConfirmPassword">Confirmar Password</label>
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-
-                <div class="d-grid">
-                    <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg">Registar</button>
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Crie uma nova conta</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Utilizador.Nome" class="form-control" autocomplete="username" aria-required="true" placeholder="Nome completo" />
+                <label asp-for="Input.Utilizador.Nome">Nome</label>
+                <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <!-- <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" /> -->
+                <select asp-for="Input.Utilizador.Regiao" asp-controller="Formularios" class="form-control" id="regiao">
+                    <option value="">Selecione uma região</option>
+                    @foreach (var regiao in ViewBag.Regioes as List<string>)
+                    {
+                        <option value="@regiao">@regiao</option>
+                    }
+                </select>
+                <label asp-for="Input.Utilizador.Regiao">Região</label>
+                <span asp-validation-for="Input.Utilizador.Regiao" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Utilizador.Telefone" class="form-control"  aria-required="true" placeholder="+351 xxxxxxxxx" />
+                <label asp-for="Input.Utilizador.Telefone">Telemóvel</label>
+                <span asp-validation-for="Input.Utilizador.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nome@exemplo.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                <label asp-for="Input.Password">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar Password" />
+                <label asp-for="Input.ConfirmPassword">Confirmar Password</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registar</button>
+        </form>
     </div>
 
     <div class="col-md-6 col-lg-5">

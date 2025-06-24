@@ -1,0 +1,34 @@
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<div class="container my-5">
+    <div class="row g-4">
+
+        <!-- Cartão 1 -->
+        <div class="col-md-6">
+            <div class="p-5 rounded-4 d-flex flex-column align-items-center justify-content-center text-center shadow-sm"
+                 style="background-color: #f2e1f5; min-height: 480px; font-family: 'American Typewriter'">
+                <h3 class="fw text-dark mb-4">Agendar Consulta Presencial...</h3>
+                <a asp-area="" asp-controller="Formularios" asp-action="presencialForm" class="btn btn-secondary px-4">
+                    Agendar
+                </a>
+            </div>
+        </div>
+
+        <!-- Cartão 2 -->
+        <div class="col-md-6">
+            <div class="p-5 rounded-4 d-flex flex-column align-items-center justify-content-center text-center shadow-sm"
+                 style="background-color: #ffe8f4; min-height: 480px; font-family: 'American Typewriter'">
+                <h3 class="fw text-dark mb-4">Agendar Consulta Online...</h3>
+                <a asp-area="" asp-controller="Formularios" asp-action="onlineForm" class="btn btn-secondary px-4">
+                    Agendar
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

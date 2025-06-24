@@ -1,0 +1,50 @@
+@model Formularios
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<div class="container p-3" style="background-color: #412B45FF">
+    <div class="card shadow p-4" style="background-color: #f2e1f5">
+        <h3 class="mb-4 text-center" style="font-family: 'American Typewriter'">Agende a sua consulta online com a CareHub!</h3>
+        <form asp-controller="Formularios" asp-action="onlineForm" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input asp-for="nome" type="text" class="form-control" id="nome" placeholder="Insira o seu nome completo"> 
+            </div>
+
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Contacto Telefónico</label>
+                <input asp-for="telefone" type="text" class="form-control" id="telefone" placeholder="Ex: 912345678">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input asp-for="email" type="email" class="form-control" id="email" placeholder="Ex: exemplo@email.com">
+            </div>
+
+            <div class="mb-3">
+                <label for="regiao" class="form-label">Região</label>
+                <select asp-for="regiao" class="form-control" id="regiao">
+                    <option value="">Selecione uma região</option>
+                    @foreach (var regiao in ViewBag.Regioes as List<string>)
+                    {
+                        <option value="@regiao">@regiao</option>
+                    }
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea asp-for="descricao" class="form-control" id="descricao" rows="3" placeholder="Descreva o motivo da consulta"></textarea>
+            </div>
+        
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Submeter</button>
+            </div>
+        </form>
+    </div>    
+</div>

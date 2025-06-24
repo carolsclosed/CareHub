@@ -1,0 +1,49 @@
+@model CareHub.Controllers.FormMedicoController.FormMedicoViewModel
+
+@{
+    ViewBag.Title = "Agendar Consulta";
+    Layout = "_Layout";
+}
+
+<div class="container p-3" style="background-color: #412B45FF">
+    <div class="card shadow p-4" style="background-color: #f2e1f5">
+        <h3 class="mb-4 text-center" style="font-family: 'American Typewriter'">
+            Agende a sua consulta online com a CareHub!
+        </h3>
+        <form asp-controller="FormMedico" method="post">
+            <div class="mb-3">
+                <input asp-for="Doutor.Nome" type="text" class="form-control" placeholder="Insira o seu Nome completo:">
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Doutor.nCedula" type="text" class="form-control" placeholder="Insira o seu número de cédula:">
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Doutor.email" type="text" class="form-control" placeholder="Insira o seu E-mail:">
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Doutor.Especialidade" type="text" class="form-control" placeholder="Insira a sua especialidade:">
+            </div>
+
+            <div class="mb-3">
+                <select asp-for="Doutor.DistritoProfissional" class="form-control">
+                    <option value="">Selecione a região</option>
+                    @foreach (var regiao in Model.Regioes)
+                    {
+                        <option value="@regiao">@regiao</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Doutor.Descricao" type="text" class="form-control" placeholder="Porque quer trabalhar com a CareHub?">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Submeter</button>
+            </div>
+        </form>
+    </div>
+</div>

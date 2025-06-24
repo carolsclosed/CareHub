@@ -3,6 +3,7 @@ using System;
 using CareHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareHub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250623164856_final")]
+    partial class final
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -23,9 +26,6 @@ namespace CareHub.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("DataCom")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("IdPost")
                         .HasColumnType("INTEGER");
 
@@ -33,7 +33,6 @@ namespace CareHub.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TextoCom")
-                        .HasMaxLength(250)
                         .HasColumnType("TEXT");
 
                     b.HasKey("IdCom");
@@ -340,18 +339,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-
                             ConcurrencyStamp = "6bfcc32c-5364-4872-85d0-3bad772d1edb",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-
                             PasswordHash = "AQAAAAIAAYagAAAAEAIsbjO1mv+GfKpxcL5Vz/fjuA2Om4HQLqIaD2sAord/IzCQjhAato30liu2X0mM5A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "8b7a820f-e8ee-459d-b78e-75bcba58b20f",
-
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });
