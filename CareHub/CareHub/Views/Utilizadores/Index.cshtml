@@ -16,8 +16,7 @@
     <tr>
         <th scope="col" style="width:110px;">Foto</th>
         <th scope="col">Nome</th>
-        <th scope="col">Telefone</th>
-        <th scope="col">Região</th>
+
         <th scope="col" style="width:180px;">Ações</th>
     </tr>
     </thead>
@@ -29,15 +28,19 @@
                 <img src="@item.Foto" alt="Foto de @item.Nome" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" />
             </td>
             <td>@item.Nome</td>
-            <td>@item.Telefone</td>
-            <td>@item.Regiao</td>
+          
             <td>
                 <a asp-action="Detalhes" asp-route-id="@item.IdUtil" class="btn btn-sm btn-info me-1">Ver Detalhes</a>
                 @if (item.IdentityUserName == User.Identity.Name || isAdmin)
                 {
                     <a asp-action="Editar" asp-route-id="@item.IdUtil" class="btn btn-sm btn-warning me-1">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdUtil" class="btn btn-sm btn-danger"
-                       onclick="return confirm('Tem certeza que deseja apagar este utilizador?');">Apagar</a>
+                    
+                    @if (item.IdentityRole != "Administrator")
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.IdUtil" class="btn btn-sm btn-danger"
+                           onclick="return confirm('Tem certeza que deseja apagar este utilizador?');">Apagar</a>    
+                    }
+                    
                 }
             </td>
         </tr>

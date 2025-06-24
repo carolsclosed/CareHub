@@ -188,9 +188,6 @@ namespace CareHub.Migrations
                     b.Property<string>("Foto")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("IdentityRole")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
@@ -213,6 +210,15 @@ namespace CareHub.Migrations
                     b.HasKey("IdUtil");
 
                     b.ToTable("Utilizadores");
+
+                    b.HasData(
+                        new
+                        {
+                            IdUtil = 1,
+                            IdentityRole = "Administrator",
+                            IdentityUserName = "admin@mail.pt",
+                            Nome = "Administrador"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -340,18 +346,15 @@ namespace CareHub.Migrations
                         {
                             Id = "admin",
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "6bfcc32c-5364-4872-85d0-3bad772d1edb",
+                            ConcurrencyStamp = "b983cc1c-6314-40e1-a2d5-febdd5f4ad09",
                             Email = "admin@mail.pt",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.PT",
                             NormalizedUserName = "ADMIN@MAIL.PT",
-
-                            PasswordHash = "AQAAAAIAAYagAAAAEAIsbjO1mv+GfKpxcL5Vz/fjuA2Om4HQLqIaD2sAord/IzCQjhAato30liu2X0mM5A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPpYsr6Ad3xHOROwVBek95Hko94p0Uz9TpsKlN7K4wqTZ+o3chA8NPpOsTTVmJGSqw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b7a820f-e8ee-459d-b78e-75bcba58b20f",
-
+                            SecurityStamp = "640e385a-25e9-48fa-868a-15ec770caf34",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.pt"
                         });

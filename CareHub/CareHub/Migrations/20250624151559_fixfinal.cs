@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CareHub.Migrations
 {
     /// <inheritdoc />
-    public partial class final : Migration
+    public partial class fixfinal : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,7 +56,6 @@ namespace CareHub.Migrations
                 {
                     IdUtil = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
                     Nome = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     Foto = table.Column<string>(type: "TEXT", nullable: true),
                     Regiao = table.Column<string>(type: "TEXT", maxLength: 30, nullable: true),
@@ -274,7 +273,8 @@ namespace CareHub.Migrations
                 {
                     IdCom = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TextoCom = table.Column<string>(type: "TEXT", nullable: true),
+                    TextoCom = table.Column<string>(type: "TEXT", maxLength: 250, nullable: true),
+                    DataCom = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     IdPost = table.Column<int>(type: "INTEGER", nullable: false),
                     IdUtil = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -327,7 +327,12 @@ namespace CareHub.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "admin", 0, "6bfcc32c-5364-4872-85d0-3bad772d1edb", "admin@mail.pt", true, false, null, "ADMIN@MAIL.PT", "ADMIN@MAIL.PT", "AQAAAAIAAYagAAAAEAIsbjO1mv+GfKpxcL5Vz/fjuA2Om4HQLqIaD2sAord/IzCQjhAato30liu2X0mM5A==", null, false, "8b7a820f-e8ee-459d-b78e-75bcba58b20f", false, "admin@mail.pt" });
+                values: new object[] { "admin", 0, "b983cc1c-6314-40e1-a2d5-febdd5f4ad09", "admin@mail.pt", true, false, null, "ADMIN@MAIL.PT", "ADMIN@MAIL.PT", "AQAAAAIAAYagAAAAEPpYsr6Ad3xHOROwVBek95Hko94p0Uz9TpsKlN7K4wqTZ+o3chA8NPpOsTTVmJGSqw==", null, false, "640e385a-25e9-48fa-868a-15ec770caf34", false, "admin@mail.pt" });
+
+            migrationBuilder.InsertData(
+                table: "Utilizadores",
+                columns: new[] { "IdUtil", "Foto", "IdentityRole", "IdentityUserName", "Nome", "Regiao", "Telefone" },
+                values: new object[] { 1, null, "Administrator", "admin@mail.pt", "Administrador", null, null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

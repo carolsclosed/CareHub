@@ -40,6 +40,19 @@ namespace CareHub.Data
                     PasswordHash = hasher.HashPassword(null, "Aa0_aa")
                 }
             );
+            
+            modelBuilder.Entity<Utilizadores>().HasData(
+                new Utilizadores
+                {
+                    IdUtil = 1, 
+                    IdentityRole = "Administrator", 
+                    IdentityUserName = "admin@mail.pt",
+                    Nome = "Administrador",
+                    Foto = "/ImagensUtilizadores/user.jpg"
+                    
+                    
+                }
+            );
             // Associar este utilizador à role ADMIN
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string> { UserId = "admin", RoleId = "a" });
