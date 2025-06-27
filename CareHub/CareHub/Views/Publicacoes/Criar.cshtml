@@ -7,7 +7,7 @@
 <h1>Criar Publicação</h1>
 <hr />
 
-<div class="row justify-content-center">
+<div class="row justify-content-center"style="background-color: #f8dfff; padding: 2%; margin: auto">
     <div class="col-md-6 col-lg-5">
         <div class="card p-4 shadow-sm">
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -25,8 +25,14 @@
 
                 <div class="mb-3">
                     <label asp-for="Categoria" class="form-label">Categoria</label>
-                    <input asp-for="Categoria" class="form-control" />
                     <span asp-validation-for="Categoria" class="invalid-feedback"></span>
+                    <select asp-for="Categoria" class="form-control" id="categoria">
+                        <option value="">Selecione uma categoria</option>
+                        @foreach (var categoria in ViewBag.Categorias as List<string>)
+                        {
+                            <option value="@categoria">@categoria</option>
+                        }
+                    </select>
                 </div>
 
                 <div class="mb-3">

@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -30,12 +32,34 @@ namespace CareHub.Controllers
 
         // GET: Publicacoes/Criar
         [Authorize]
-        public IActionResult Criar()
+        public IActionResult Criar(string? id, string? termo)
         {
-            Console.WriteLine("Current logged in user: " + User.Identity.Name);
+       
+            var jsonContent = System.IO.File.ReadAllText("./wwwroot/doencas.json");
+            var categorias = JsonSerializer.Deserialize<List<InfoCategoria>>(jsonContent);
+
+            if (!string.IsNullOrEmpty(termo))
+            {
+                termo = termo.ToLower();
+                categorias = categorias
+                    .Where(r =>
+                        r.Categoria.ToLower().Contains(termo))
+                    .ToList();
+            }
+
+            // Junta todas as strings únicas (nome, distrito, provincia)
+            var categoriasDropdown = categorias
+                .SelectMany(r => new[] { r.Categoria})
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+
+            ViewBag.Categorias = categoriasDropdown ?? new List<string>();
+            ViewBag.Termo = termo;
 
             
-            // optional dropdown logic here
+            Console.WriteLine("Current logged in user: " + User.Identity.Name);
+
             return View();
         }
 
@@ -95,9 +119,24 @@ namespace CareHub.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            // Recarregar categorias para o dropdown
+            var jsonContent = System.IO.File.ReadAllText("./wwwroot/doencas.json");
+            var categorias = JsonSerializer.Deserialize<List<InfoCategoria>>(jsonContent);
+            var categoriasDropdown = categorias
+                .SelectMany(r => new[] { r.Categoria })
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+
+            ViewBag.Categorias = categoriasDropdown ?? new List<string>();
+
+            
             return View(post);
             
         }
+        
+        
+    
 
         // GET: Publicacoes/Detalhes/5
         public async Task<IActionResult> Detalhes(int? id)
@@ -283,6 +322,13 @@ namespace CareHub.Controllers
             return RedirectToAction(nameof(Index));
         }
         
-        
+       
+        public class InfoCategoria
+        {
+            [JsonPropertyName("nome")] 
+            public string Nome { get; set; }
+            [JsonPropertyName("categoria")] 
+            public string Categoria { get; set; }
+        }
     }
 }

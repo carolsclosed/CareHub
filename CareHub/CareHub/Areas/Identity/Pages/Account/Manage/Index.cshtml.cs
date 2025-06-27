@@ -125,43 +125,48 @@ namespace CareHub.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "Erro inesperado.";
                     return RedirectToPage();
                 }
                 utilizador.Telefone = Input.PhoneNumber;
             }
-            
 
-            if (Input.FotoFicheiro.ContentType == "image/png" || Input.FotoFicheiro.ContentType == "image/jpeg")
+
+            if (Input.FotoFicheiro != null)
             {
-                var FotoExistente = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + utilizador.Foto);
-                var FotosCaminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImagensUtilizadores/");
-                if (!Directory.Exists(FotosCaminho))
+                if (Input.FotoFicheiro.ContentType == "image/png" || Input.FotoFicheiro.ContentType == "image/jpeg")
                 {
-                    Directory.CreateDirectory(FotosCaminho);
-                }
-                var FotoNome = Guid.NewGuid().ToString() + Path.GetExtension(Input.FotoFicheiro.FileName);
-                var FotoCaminho = Path.Combine("/ImagensUtilizadores/"+FotoNome);
-                
-                using(var fileStream = new FileStream(FotosCaminho+FotoNome, FileMode.Create))
-                {
-                    await Input.FotoFicheiro.CopyToAsync(fileStream);
-                }
-
-                if (System.IO.File.Exists(FotoExistente))
-                {
-                    string NomeFoto = System.IO.Path.GetFileName(FotoExistente);
-                    if (!NomeFoto.Equals("user.jpg", StringComparison.OrdinalIgnoreCase))
+                    var FotoExistente = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + utilizador.Foto);
+                    var FotosCaminho = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImagensUtilizadores/");
+                    if (!Directory.Exists(FotosCaminho))
                     {
-                        System.IO.File.Delete(FotoExistente);
+                        Directory.CreateDirectory(FotosCaminho);
                     }
-                }
+                    var FotoNome = Guid.NewGuid().ToString() + Path.GetExtension(Input.FotoFicheiro.FileName);
+                    var FotoCaminho = Path.Combine("/ImagensUtilizadores/"+FotoNome);
                 
-                utilizador.Foto = FotoCaminho;
+                    using(var fileStream = new FileStream(FotosCaminho+FotoNome, FileMode.Create))
+                    {
+                        await Input.FotoFicheiro.CopyToAsync(fileStream);
+                    }
+
+                    if (System.IO.File.Exists(FotoExistente))
+                    {
+                        string NomeFoto = System.IO.Path.GetFileName(FotoExistente);
+                        if (!NomeFoto.Equals("user.jpg", StringComparison.OrdinalIgnoreCase))
+                        {
+                            System.IO.File.Delete(FotoExistente);
+                        }
+                    }
+                
+                    utilizador.Foto = FotoCaminho;
+                }
             }
+            
+            
             await _context.SaveChangesAsync();
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "O seu perfil foi atualizado com sucesso.";
             return RedirectToPage();
         }
     }
