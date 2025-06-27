@@ -173,7 +173,7 @@ namespace CareHub.Controllers
 
             
 
-            if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name)
+            if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name && User.Identity.Name != "admin@mail.pt")
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -234,7 +234,7 @@ namespace CareHub.Controllers
             var user = await _context.Utilizadores
                 .FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
 
-            if (user == null || publicacaoExistente.IdUtil != user.IdUtil)
+            if (user == null && User.Identity.Name != "admin@mail.pt" || publicacaoExistente.IdUtil != user.IdUtil && User.Identity.Name != "admin@mail.pt")
             {
                 return Forbid(); // User is not the owner
             }
