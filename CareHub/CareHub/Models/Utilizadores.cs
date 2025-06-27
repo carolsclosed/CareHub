@@ -12,6 +12,7 @@ namespace CareHub.Models {
         [Key]  // PK, int, autonumber
         public int IdUtil { get; set; }
         
+        [Required]
         [DisplayName("Nome")]
         [StringLength(50)]
         public string Nome { get; set; }
