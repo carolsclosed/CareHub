@@ -16,7 +16,7 @@
             </div>
 
             <div class="mb-3">
-                <input asp-for="Doutor.nCedula" type="text" class="form-control" placeholder="Insira o seu número de cédula:">
+                <input asp-for="Doutor.nCedula" type="text" class="form-control" placeholder="Insira o seu número de cédula:" value="">
             </div>
 
             <div class="mb-3">
@@ -28,11 +28,11 @@
             </div>
 
             <div class="mb-3">
-                <select asp-for="Doutor.DistritoProfissional" class="form-control">
-                    <option value="">Selecione a região</option>
+                <select asp-for="Doutor.DistritoProfissional" class="form-control" style="cursor: pointer">
+                    <option>Selecione a região</option>
                     @foreach (var regiao in Model.Regioes)
                     {
-                        <option value="@regiao">@regiao</option>
+                        <option style="cursor: pointer" value="@regiao">@regiao</option>
                     }
                 </select>
             </div>

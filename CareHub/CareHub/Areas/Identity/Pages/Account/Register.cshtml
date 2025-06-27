@@ -6,8 +6,8 @@
 
 <h1 class="text-center mb-4">@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Crie uma nova conta</h2>
             <hr />
@@ -19,11 +19,11 @@
             </div>
             <div class="form-floating mb-3">
                 <!-- <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" /> -->
-                <select asp-for="Input.Utilizador.Regiao" asp-controller="Formularios" class="form-control" id="regiao">
-                    <option value="">Selecione uma região</option>
+                <select style="cursor: pointer" asp-for="Input.Utilizador.Regiao" asp-controller="Formularios" class="form-control" id="regiao">
+                    <option >Selecione uma região</option>
                     @foreach (var regiao in ViewBag.Regioes as List<string>)
                     {
-                        <option value="@regiao">@regiao</option>
+                        <option style="cursor: pointer" value="@regiao">@regiao</option>
                     }
                 </select>
                 <label asp-for="Input.Utilizador.Regiao">Região</label>
@@ -52,34 +52,7 @@
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registar</button>
         </form>
     </div>
-
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow p-4">
-            <h3 class="h5 text-center mb-3">Registar usando outro serviço</h3>
-            <hr />
-            @if ((Model.ExternalLogins?.Count ?? 0) == 0)
-            {
-                <div class="alert alert-warning">
-                    Não existem serviços de autenticação externa configurados. Consulte este 
-                    <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank">artigo</a>
-                    sobre como configurar esta aplicação ASP.NET para permitir login através de serviços externos.
-                </div>
-            }
-            else
-            {
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <div class="d-grid gap-2">
-                        @foreach (var provider in Model.ExternalLogins!)
-                        {
-                            <button type="submit" class="btn btn-outline-primary" name="provider" value="@provider.Name">
-                                Registar com @provider.DisplayName
-                            </button>
-                        }
-                    </div>
-                </form>
-            }
-        </div>
-    </div>
+    
 </div>
 
 @section Scripts {

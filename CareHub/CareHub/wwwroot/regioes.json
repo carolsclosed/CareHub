@@ -97,7 +97,7 @@
         "province": "Cávado"
     },
     {
-        "name": "Cabeceiras de Basto[2]",
+        "name": "Cabeceiras de Basto",
         "district": "Braga",
         "region": "Região do Norte",
         "province": "Ave"
@@ -115,7 +115,7 @@
         "province": "Ave"
     },
     {
-        "name": "Mondim de Basto[2]",
+        "name": "Mondim de Basto",
         "district": "Vila Real",
         "region": "Região do Norte",
         "province": "Ave"
@@ -205,7 +205,7 @@
         "province": "Área Metropolitana do Porto"
     },
     {
-        "name": "Santo Tirso[2]",
+        "name": "Santo Tirso",
         "district": "Porto",
         "region": "Região do Norte",
         "province": "Área Metropolitana do Porto"
@@ -217,7 +217,7 @@
         "province": "Área Metropolitana do Porto"
     },
     {
-        "name": "Trofa[2]",
+        "name": "Trofa",
         "district": "Porto",
         "region": "Região do Norte",
         "province": "Área Metropolitana do Porto"
@@ -499,7 +499,7 @@
         "province": "Terras de Trás-os-Montes"
     },
     {
-        "name": "Vila Flor[2]",
+        "name": "Vila Flor",
         "district": "Bragança",
         "region": "Região do Norte",
         "province": "Terras de Trás-os-Montes"
@@ -625,7 +625,7 @@
         "province": "Região de Coimbra"
     },
     {
-        "name": "Mealhada[2]",
+        "name": "Mealhada",
         "district": "Aveiro",
         "region": "Região do Centro",
         "province": "Região de Coimbra"
@@ -649,7 +649,7 @@
         "province": "Região de Coimbra"
     },
     {
-        "name": "Mortágua[2]",
+        "name": "Mortágua",
         "district": "Viseu",
         "region": "Região do Centro",
         "province": "Região de Coimbra"
@@ -1069,7 +1069,7 @@
         "province": "Médio Tejo"
     },
     {
-        "name": "Mação [5]",
+        "name": "Mação ",
         "district": "Santarém",
         "region": "Região do Centro",
         "province": "Médio Tejo"
@@ -1405,7 +1405,7 @@
         "province": "Alto Alentejo"
     },
     {
-        "name": "Sousel[4]",
+        "name": "Sousel",
         "district": "Portalegre",
         "region": "Alentejo",
         "province": "Alto Alentejo"
@@ -1447,7 +1447,7 @@
         "province": "Alentejo Central"
     },
     {
-        "name": "Mora[4]",
+        "name": "Mora",
         "district": "Évora",
         "region": "Alentejo",
         "province": "Alentejo Central"

@@ -52,34 +52,7 @@
             </form>
         </div>
     </div>
-
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow p-4">
-            <h3 class="h5 text-center mb-3">Use outro serviço para iniciar sessão</h3>
-            <hr />
-            @if ((Model.ExternalLogins?.Count ?? 0) == 0)
-            {
-                <div class="alert alert-warning">
-                    Não existem serviços de autenticação externa configurados. Veja este
-                    <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank">artigo</a>
-                    sobre como configurar esta aplicação ASP.NET para suportar login via serviços externos.
-                </div>
-            }
-            else
-            {
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <div class="d-grid gap-2">
-                        @foreach (var provider in Model.ExternalLogins!)
-                        {
-                            <button type="submit" class="btn btn-outline-primary" name="provider" value="@provider.Name" title="Iniciar sessão usando a sua conta @provider.DisplayName">
-                                Iniciar sessão com @provider.DisplayName
-                            </button>
-                        }
-                    </div>
-                </form>
-            }
-        </div>
-    </div>
+    
 </div>
 
 @section Scripts {
