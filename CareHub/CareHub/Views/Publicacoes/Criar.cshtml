@@ -26,8 +26,8 @@
                 <div class="mb-3">
                     <label asp-for="Categoria" class="form-label">Categoria</label>
                     <span asp-validation-for="Categoria" class="invalid-feedback"></span>
-                    <select asp-for="Categoria" class="form-control" id="categoria">
-                        <option value="">Selecione uma categoria</option>
+                    <select style="cursor: pointer" asp-for="Categoria" class="form-control" id="categoria">
+                        <option  value="">Selecione uma categoria</option>
                         @foreach (var categoria in ViewBag.Categorias as List<string>)
                         {
                             <option value="@categoria">@categoria</option>
