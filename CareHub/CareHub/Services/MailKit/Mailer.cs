@@ -6,6 +6,7 @@ using MimeKit;
 using System;
 using System.Threading.Tasks;
 using CareHub.Services;
+using MailKit.Security;
 
 namespace CareHub.Services.MailKit
 {
@@ -55,11 +56,15 @@ namespace CareHub.Services.MailKit
                     client.ServerCertificateValidationCallback = (s, c, h, e) => true;
                 }
 
-                // Use the same connection settings for both environments
-                await client.ConnectAsync(
-                    _smtpSettings.Server,
-                    _smtpSettings.Port,
-                    _smtpSettings.UseSsl);
+                var socketOptions = SecureSocketOptions.Auto;
+
+                if (_smtpSettings.Port == 465)
+                    socketOptions = SecureSocketOptions.SslOnConnect;
+                else if (_smtpSettings.Port == 587)
+                    socketOptions = SecureSocketOptions.StartTls;
+
+                await client.ConnectAsync(_smtpSettings.Server, _smtpSettings.Port, socketOptions);
+
 
                 // Only authenticate if credentials are provided
                 if (!string.IsNullOrEmpty(_smtpSettings.UserName) && !string.IsNullOrEmpty(_smtpSettings.Password))

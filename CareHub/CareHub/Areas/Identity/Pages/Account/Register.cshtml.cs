@@ -159,6 +159,19 @@ namespace CareHub.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                var emailExists = await _userManager.FindByEmailAsync(Input.Email);
+                var nomeExists = await _userManager.FindByNameAsync(Input.Utilizador.Nome);
+                if (emailExists != null)
+                {
+                    ModelState.AddModelError("Input.Email", "Já existe uma conta com este email.");
+                    return Page(); // Reexibe o formulário com erro
+                }
+
+                if (nomeExists != null)
+                {
+                    ModelState.AddModelError("Input.Utilizador.Nome","Já existe alguem com este nome");
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

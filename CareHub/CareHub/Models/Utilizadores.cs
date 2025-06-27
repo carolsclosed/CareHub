@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
+using Newtonsoft.Json.Serialization;
 
 namespace CareHub.Models {
 
@@ -10,6 +12,7 @@ namespace CareHub.Models {
         [Key]  // PK, int, autonumber
         public int IdUtil { get; set; }
         
+        [Required]
         [DisplayName("Nome")]
         [StringLength(50)]
         public string Nome { get; set; }
@@ -27,7 +30,9 @@ namespace CareHub.Models {
         [StringLength(50)] 
         public string? IdentityRole { get; set; }
         
-        [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$")]
+        [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$", ErrorMessage = "Não corresponde ao formato português")]
+        [DisplayName("Número de Telefone")]
+        
         public string Telefone { get; set; }
         
         public Doutores? Doutor { get; set; }
