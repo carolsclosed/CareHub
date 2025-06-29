@@ -1,36 +1,32 @@
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore.Sqlite.Query.SqlExpressions.Internal;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel; // Para DisplayName.
+using System.ComponentModel.DataAnnotations; // Para validações (Key, RegularExpression, EmailAddress).
+using System.ComponentModel.DataAnnotations.Schema; // Para ForeignKey.
 
+namespace CareHub.Models; // Modelos da aplicação.
 
-namespace CareHub.Models;
-
+// Entidade para dados de formulários submetidos.
 public class Formularios
 {
-    
-    [Key]  // PK, int, autonumber
-    public int IdForm { get; set; }
+    [Key]  // Chave primária.
+    public int IdForm { get; set; } // ID do formulário.
         
-   [ForeignKey(nameof(Utilizador))]
-   public int IdUtil { get; set; }
+    [ForeignKey(nameof(Utilizador))] // Chave estrangeira para o Utilizador.
+    public int IdUtil { get; set; } // ID do utilizador que submeteu.
       
-    public string nome { get; set; }
+    public string nome { get; set; } // Nome do remetente do formulário.
     
-    [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$", ErrorMessage = "Não corresponde ao formato português")]
-    [DisplayName("Número de Telefone")]
-    public int telefone { get; set; }
+    [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$", ErrorMessage = "Não corresponde ao formato português")] // Validação de telefone português.
+    [DisplayName("Número de Telefone")] // Nome visível na UI.
+    public int telefone { get; set; } // Número de telefone .
     
-    [EmailAddress]
-    [DisplayName("Email")]
-    public string email { get; set; }
+    [EmailAddress] // Validação de formato de email.
+    [DisplayName("Email")] // Nome visível na UI.
+    public string email { get; set; } // Endereço de email.
     
-    public bool presencial { get; set; }
-    public string regiao { get; set; }
+    public bool presencial { get; set; } // Indica se é atendimento presencial (true) ou online (false).
+    public string regiao { get; set; } // Região associada ao formulário.
     
-    public string descricao { get; set; }
+    public string descricao { get; set; } // Descrição ou detalhes do formulário.
 
-    
-    public Utilizadores Utilizador { get; set; } 
+    public Utilizadores Utilizador { get; set; } // Objeto Utilizador relacionado.
 }
