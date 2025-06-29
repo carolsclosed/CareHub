@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Sqlite.Query.SqlExpressions.Internal;
@@ -17,10 +18,12 @@ public class Formularios
       
     public string nome { get; set; }
     
-    [RegularExpression("^(?:(?:\\+|00)351)?\\s?(9[1236]\\d{7}|2\\d{8})$\n", ErrorMessage = "Formato incorreto")]
+    [RegularExpression("^(?:\\+351\\s?)?(9[1236]\\d{7})$", ErrorMessage = "Não corresponde ao formato português")]
+    [DisplayName("Número de Telefone")]
     public int telefone { get; set; }
     
-    [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n", ErrorMessage = "Formato incorreto")]
+    [EmailAddress]
+    [DisplayName("Email")]
     public string email { get; set; }
     
     public bool presencial { get; set; }

@@ -3,6 +3,9 @@ using System.Text.Json; // Importa o namespace System.Text.Json para funcionalid
 using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
 using CareHub.Data; // Importa o namespace CareHub.Data
 using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using CareHub.Services.MailKit;
 
 namespace CareHub.Controllers; // Declara o namespace para o controller.
 [Authorize] // Atributo que garante que apenas utilizadores autenticados podem aceder a qualquer action deste controller.
@@ -10,6 +13,9 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
 {
     private readonly ApplicationDbContext _context; // Declara uma variavel  para a instância applicationdbcontext.
 
+    private readonly IMailer _mailer;
+    
+    
     // Construtor da classe FormulariosController.
     // Recebe uma instância de ApplicationDbContext.
     // A instância é atribuída a variavel _context, permitindo a interação com a base de dados.
@@ -101,9 +107,9 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
     // POST: Recebe os dados do formulário tipo online
     //action method que responde a requisições HTTP POST quando o formulário tipo online é submetido.
     [HttpPost]
-    public IActionResult onlineForm(Models.Formularios form) // O objeto 'form' é preenchido automaticamente com os dados do formulário.
+    public async Task<IActionResult> onlineForm(Models.Formularios form) // O objeto 'form' é preenchido automaticamente com os dados do formulário.
     {
-        form.presencial = false; // Define a propriedade 'presencial' como falso, indicando que é um formulário online.
+        form.presencial = false; // Define a propriedade 'presencial' como falso, indicando que é um formulário para consulta online.
 
         // Obtém o nome do utilizador atualmente autenticado.
         var identityUserName = User.Identity.Name;
@@ -133,7 +139,23 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
 
             ViewBag.Regioes = regioesDropdown ?? new List<string>(); // preenche a ViewBag.Regioes para a view.
 
-        
+            //preparar o email
+            var emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos o seu doutor para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: {form.presencial}<br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            var emailAssunto = "Confirmação do formulário";
+
+            try
+            {
+                //enviar email de confirmação
+                await _mailer.SendEmailAsync(form.email, emailAssunto, emailCorpo);
+                ViewBag.MensagemCorpo =
+                    "Obrigada por efetuar a submissão irá receber um email de confirmação brevemente";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MensagemCorpo =
+                    "Formulário submitido com sucesso, mas ocorreu um erro ao enviar o email de confirmação";
+            }
+                
             ViewBag.MensagemCorpo = "Obrigada por efetuar a submissão de formulário, será contactado em breve..";
 
         }
@@ -189,6 +211,27 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         return View("Aviso");
 
     }
+
+    [HttpPost]
+    public async Task<IActionResult> EnviarEmail([FromForm] string email, [FromForm] string subject,
+        [FromForm] string body)
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(body))
+        {
+            return BadRequest("All fields are required.");
+        }
+
+        try
+        {
+            await _mailer.SendEmailAsync(email, subject, body);
+            return Ok("Email has been sent successfully.");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Failed to send email: {ex.Message}");
+        }
+    }
+
 
     // Classe interna  para desserializar as informações de região de um arquivo JSON.
     public class InfoRegiao
