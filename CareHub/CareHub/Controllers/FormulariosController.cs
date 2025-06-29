@@ -1,160 +1,174 @@
-using System.Collections;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text;                // <- necessário para NormalizationForm
-using System.Globalization;
-using CareHub.Data;
-using CareHub.Models;
-using Microsoft.AspNetCore.Authorization; // <- necessário para CharUnicodeInfo
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
+using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
+using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
+using CareHub.Data; // Importa o namespace CareHub.Data
+using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
 
-
-namespace CareHub.Controllers;
-[Authorize]
-public class FormulariosController :  Controller
+namespace CareHub.Controllers; // Declara o namespace para o controller.
+[Authorize] // Atributo que garante que apenas utilizadores autenticados podem aceder a qualquer action deste controller.
+public class FormulariosController : Controller // Declara a classe FormulariosController
 {
-        private readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _context; // Declara uma variavel  para a instância applicationdbcontext.
 
-        public FormulariosController(ApplicationDbContext context)
+    // Construtor da classe FormulariosController.
+    // Recebe uma instância de ApplicationDbContext.
+    // A instância é atribuída a variavel _context, permitindo a interação com a base de dados.
+    public FormulariosController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    // GET: Formulário
+    // action method que responde a requisições HTTP GET para exibir a view "Criar".
+    public IActionResult Criar()
+    {
+        return View("Criar"); // Retorna a view nomeada "Criar".
+    }
+
+    // GET: onlineForm
+    // action method que responde a requisições HTTP GET para exibir o formulário tipo online.
+    // Aceita parâmetros opcionais 'id' e 'termo' (para pesquisa/filtragem).
+    public async Task<IActionResult> onlineForm(string? id, string? termo)
+    {
+        // lê o json regioes.json na pasta wwwroot
+        var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
+        // Desserializa o conteúdo JSON para uma lista de objetos InfoRegiao.
+        var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
+
+        // Se um 'termo' de pesquisa for fornecido, filtra as regiões.
+        if (!string.IsNullOrEmpty(termo))
         {
-            _context = context;
+            termo = termo.ToLower(); // Converte o termo para minúsculas para comparação case-insensitive.
+            regioes = regioes
+                .Where(r => // Filtra as regiões onde qualquer um dos campos (Provincia, Distritos, Regioes, Nome) contém o termo.
+                    r.Provincia.ToLower().Contains(termo) ||
+                    r.Distritos.ToLower().Contains(termo) ||
+                    r.Regioes.ToLower().Contains(termo) ||
+                    r.Nome.ToLower().Contains(termo))
+                .ToList(); // Converte o resultado para uma lista.
         }
 
-        // GET: Formulário
-        public IActionResult Criar()
+        // Processa a lista de objetos InfoRegiao para extrair todos os nomes, distritos, províncias e regiões
+        // como uma única lista de strings distintas e ordenadas. 
+        var regioesDropdown = regioes
+            .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes }) // Acha todos os campos relevantes para cada região.
+            .Distinct() // Remove duplicados.
+            .OrderBy(x => x) // Ordena alfabeticamente.
+            .ToList(); // Converte o resultado para uma lista.
+
+        // Armazena a lista de regiões filtradas (para o dropdown) na ViewBag.
+        // Se regioesDropdown for null, inicializa uma lista vazia.
+        ViewBag.Regioes = regioesDropdown ?? new List<string>();
+        // Armazena o termo de pesquisa na ViewBag para que possa ser exibido na view.
+        ViewBag.Termo = termo;
+
+        // Retorna a view nomeada "onlineForm".
+        return View("onlineForm");
+    }
+
+    // GET: presencialForm
+    //action method que responde a requisições HTTP GET para exibir o formulário tipo presencial.
+    // É muito similar ao onlineForm, diferindo apenas na view que retorna.
+    public async Task<IActionResult> presencialForm(string? id, string? termo)
+    {
+        var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
+        var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
+
+        if (!string.IsNullOrEmpty(termo))
         {
-            return View("Criar");
-        }
-
-
-
-        public async Task<IActionResult> onlineForm(string? id, string? termo)
-        {
-                var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
-                var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
-
-                if (!string.IsNullOrEmpty(termo))
-                {
-                    termo = termo.ToLower();
-                    regioes = regioes
-                        .Where(r =>
-                            r.Provincia.ToLower().Contains(termo) ||
-                            r.Distritos.ToLower().Contains(termo) ||
-                            r.Regioes.ToLower().Contains(termo) ||
-                            r.Nome.ToLower().Contains(termo))
-                        .ToList();
-                }
-
-                // Junta todas as strings únicas (nome, distrito, provincia)
-                var regioesDropdown = regioes
-                    .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
-                    .Distinct()
-                    .OrderBy(x => x)
-                    .ToList();
-
-                ViewBag.Regioes = regioesDropdown ?? new List<string>();
-                ViewBag.Termo = termo;
-
-                return View("onlineForm");
-
-        }
-
-
-        public async Task<IActionResult> presencialForm(string? id , string? termo)
-        {
-           
-            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
-            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
-
-            if (!string.IsNullOrEmpty(termo))
-            {
-                termo = termo.ToLower();
-                regioes = regioes
-                    .Where(r =>
-                        r.Provincia.ToLower().Contains(termo) ||
-                        r.Distritos.ToLower().Contains(termo) ||
-                        r.Regioes.ToLower().Contains(termo) ||
-                        r.Nome.ToLower().Contains(termo))
-                    .ToList();
-            }
-
-            // Junta todas as strings únicas (nome, distrito, provincia)
-            var regioesDropdown = regioes
-                .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
-                .Distinct()
-                .OrderBy(x => x)
+            termo = termo.ToLower();
+            regioes = regioes
+                .Where(r =>
+                    r.Provincia.ToLower().Contains(termo) ||
+                    r.Distritos.ToLower().Contains(termo) ||
+                    r.Regioes.ToLower().Contains(termo) ||
+                    r.Nome.ToLower().Contains(termo))
                 .ToList();
-
-            ViewBag.Regioes = regioesDropdown ?? new List<string>();
-            ViewBag.Termo = termo;
-
-            return View("presencialForm");
- 
-        }
-        
-        // POST: Recebe os dados
-        [HttpPost]
-        public IActionResult onlineForm(Models.Formularios form)
-        {
-            form.presencial = false;
-
-            var identityUserName = User.Identity.Name;
-            var utilizador = _context.Utilizadores.FirstOrDefault(u => u.IdentityUserName == identityUserName);
-
-            if (utilizador == null)
-            {
-                return Unauthorized();
-            }
-
-            form.IdUtil = utilizador.IdUtil;
-
-            if (ModelState.IsValid)
-            {
-                _context.Add(form);
-                _context.SaveChanges();
-
-                // Redirecione para uma página de sucesso ou outra ação
-                return RedirectToAction("Obrigado"); 
-            }
-
-            // Se ModelState não é válido, popula ViewBag.Regioes para a view
-            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
-            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
-            var regioesDropdown = regioes
-                .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
-                .Distinct()
-                .OrderBy(x => x)
-                .ToList();
-
-            ViewBag.Regioes = regioesDropdown ?? new List<string>();
-
-            return View(form); // retorna a view com o model e ViewBag preenchidos
         }
 
-        
-        // POST: Recebe os dados
-        [HttpPost]
-        public IActionResult presencialForm(Models.Formularios form)
-        {
-            form.presencial = true;
+        var regioesDropdown = regioes
+            .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
+            .Distinct()
+            .OrderBy(x => x)
+            .ToList();
+
+        ViewBag.Regioes = regioesDropdown ?? new List<string>();
+        ViewBag.Termo = termo;
+
+        return View("presencialForm");
+    }
     
-            var identityUserName = User.Identity.Name;
-            var utilizador = _context.Utilizadores.FirstOrDefault(u => u.IdentityUserName == identityUserName);
+    // POST: Recebe os dados do formulário tipo online
+    //action method que responde a requisições HTTP POST quando o formulário tipo online é submetido.
+    [HttpPost]
+    public IActionResult onlineForm(Models.Formularios form) // O objeto 'form' é preenchido automaticamente com os dados do formulário.
+    {
+        form.presencial = false; // Define a propriedade 'presencial' como falso, indicando que é um formulário online.
 
-            if (utilizador == null)
-            {
-                return Unauthorized();
-            }
+        // Obtém o nome do utilizador atualmente autenticado.
+        var identityUserName = User.Identity.Name;
+        // Procura o utilizador na base de dados com base no IdentityUserName.
+        var utilizador = _context.Utilizadores.FirstOrDefault(u => u.IdentityUserName == identityUserName);
 
-            form.IdUtil = utilizador.IdUtil;
+        // Se o utilizador não for encontrado, retorna um status de não autorizado.
+        if (utilizador == null)
+        {
+            return Unauthorized();
+        }
 
-            if (ModelState.IsValid)
-            {
-                _context.Add(form);
-                _context.SaveChanges();
-            }
+        form.IdUtil = utilizador.IdUtil; // Associa o formulário ao Id do utilizador que está autenticado.
 
-            // Se o ModelState não é válido, repopular regioes para mostrar a view
+        // Verifica se todas as validações do modelo foram bem-sucedidas.
+        if (ModelState.IsValid)
+        {
+            _context.Add(form); // Adiciona o objeto 'form' ao contexto para ser inserido na base de dados.
+            _context.SaveChanges(); // guarda as mudanças na base de dados.
+            var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
+            var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
+            var regioesDropdown = regioes
+                .SelectMany(r => new[] { r.Nome, r.Distritos, r.Provincia, r.Regioes })
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+
+            ViewBag.Regioes = regioesDropdown ?? new List<string>(); // preenche a ViewBag.Regioes para a view.
+
+        
+            ViewBag.MensagemCorpo = "Obrigada por efetuar a submissão de formulário, será contactado em breve..";
+
+        }
+        else
+        {
+            ViewBag.MensagemCorpo = "Dados Inválidos. Por favor tente novamente";
+
+        }
+
+        // Retorna a view "Aviso" onde vai ser exibida as mensagens.
+        return View("Aviso");
+    }
+
+    // POST: Recebe os dados do formulário presencial
+    //  action method que responde a requisições HTTP POST quando o formulário presencial é submetido.
+    //praticamente igual ao anterior so muda a view
+    [HttpPost]
+    public IActionResult presencialForm(Models.Formularios form) 
+    {
+        form.presencial = true; 
+    
+       
+        var identityUserName = User.Identity.Name;
+        var utilizador = _context.Utilizadores.FirstOrDefault(u => u.IdentityUserName == identityUserName);
+
+        if (utilizador == null)
+        {
+            return Unauthorized();
+        }
+
+        form.IdUtil = utilizador.IdUtil; 
+        if (ModelState.IsValid)
+        {
+            _context.Add(form); 
+            _context.SaveChanges(); 
             var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
             var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
             var regioesDropdown = regioes
@@ -165,22 +179,28 @@ public class FormulariosController :  Controller
 
             ViewBag.Regioes = regioesDropdown ?? new List<string>();
 
-            return View(form); // retorna a view com o model e ViewBag preenchido
+            ViewBag.MensagemCorpo = "Obrigada por efetuar a submissão de formulário, será contactado em breve..";
         }
-
-
-        public class InfoRegiao
+        else
         {
-            [JsonPropertyName("name")] 
-            public string Nome { get; set; }
-            [JsonPropertyName("district")] 
-            public string Distritos { get; set; }
-            [JsonPropertyName("region")] 
-            public string Regioes { get; set; }
-            [JsonPropertyName("province")] 
-            public string Provincia { get; set; }
+            ViewBag.MensagemCorpo = "Dados Inválidos. Por favor tente novamente.";
 
-      
         }
+        return View("Aviso");
 
+    }
+
+    // Classe interna  para desserializar as informações de região de um arquivo JSON.
+    public class InfoRegiao
+    {
+        // Atributos JsonPropertyName mapeiam as propriedades para os nomes dos campos JSON.
+        [JsonPropertyName("name")] 
+        public string Nome { get; set; } // Nome da região/localidade.
+        [JsonPropertyName("district")] 
+        public string Distritos { get; set; } // Distrito.
+        [JsonPropertyName("region")] 
+        public string Regioes { get; set; } // Região (macro).
+        [JsonPropertyName("province")] 
+        public string Provincia { get; set; } // Província.
+    }
 }

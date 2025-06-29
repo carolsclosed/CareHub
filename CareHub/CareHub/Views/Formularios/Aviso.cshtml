@@ -1,0 +1,11 @@
+@{
+    ViewBag.Title = "Aviso";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-info text-center">
+        <p>@ViewBag.MensagemCorpo</p>
+        <a asp-controller="Formularios" asp-action="Criar" style="background-color: antiquewhite; border-radius: 2%; padding: 10px">Voltar ao formulário...</a>
+    </div>
+</div>

@@ -17,10 +17,10 @@ public class Formularios
       
     public string nome { get; set; }
     
-    [RegularExpression("^(?:(?:\\+|00)351)?\\s?(9[1236]\\d{7}|2\\d{8})$\n")]
+    [RegularExpression("^(?:(?:\\+|00)351)?\\s?(9[1236]\\d{7}|2\\d{8})$\n", ErrorMessage = "Formato incorreto")]
     public int telefone { get; set; }
     
-    [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n")]
+    [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n", ErrorMessage = "Formato incorreto")]
     public string email { get; set; }
     
     public bool presencial { get; set; }
