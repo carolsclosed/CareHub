@@ -163,7 +163,7 @@ namespace CareHub.Controllers // Declara o namespace do controller.
             {
                 // Validação de segurança com o ID da sessão.
                 var utilizadorDaSessao = HttpContext.Session.GetInt32("utilizadorId");
-                if (utilizadorDaSessao != id)
+                if (utilizadorDaSessao != id || id == 1)
                 {
                     // Se houver tentativa de manipulação, redireciona para a Index sem apagar.
                     return RedirectToAction(nameof(Index));

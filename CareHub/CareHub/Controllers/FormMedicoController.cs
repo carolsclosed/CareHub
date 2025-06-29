@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNe
 using CareHub.Data; // Importa o namespace CareHub.Data
 using CareHub.Models; // Importa o namespace CareHub.Models
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
-using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
+using System.Text.Json.Serialization;
+using CareHub.Services.MailKit;
+using Microsoft.AspNetCore.Routing.Constraints; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
 using Microsoft.EntityFrameworkCore; // Importa o namespace Microsoft.EntityFrameworkCore, que fornece classes e funcionalidades para trabalhar com o Entity Framework Core (ORM).
 
 namespace CareHub.Controllers // Declara o namespace para o controller.
@@ -12,13 +14,15 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
     public class FormMedicoController : Controller // Declara a classe FormMedicoController
     {
         private readonly ApplicationDbContext _context; // Declara uma variavel para a instância applicationdbcontext.
-
+        private readonly IMailer _mailer;
+        
         // Construtor da classe FormMedicoController.
         // Recebe uma instância de ApplicationDbContext.
         // A instância é atribuída a variavel _context para poder interagir com a base de dados.
-        public FormMedicoController(ApplicationDbContext context)
+        public FormMedicoController(ApplicationDbContext context, IMailer mailer)
         {
             _context = context;
+            _mailer = mailer;
         }
 
         // GET: Formulário
@@ -83,9 +87,9 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
 
         // POST: Submete o formulário do doutor
         //action method que responde a requisições HTTP POST para submeter os dados do formulário do médico.
-        [HttpPost] // especifica que este método responde a requisições HTTP POST.
+        [HttpPost] 
         [ValidateAntiForgeryToken] // Atributo de segurança que ajuda a prevenir ataques CSRF (Cross-Site Request Forgery).
-        public IActionResult FormMedico(Doutores doutor) // O parâmetro 'doutor' é preenchido automaticamente com os dados do formulário.
+        public async Task<IActionResult>  FormMedico(Doutores doutor) // O parâmetro 'doutor' é preenchido automaticamente com os dados do formulário.
         {
             // Obtém o nome de utilizador do utilizador atualmente autenticado.
             var identityUserName = User.Identity.Name;
@@ -109,14 +113,40 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             {
                 // Se não houver registo de doutor, associa o IdUtil do utilizador ao novo objeto Doutores.
                 doutor.IdUtil = utilizador.IdUtil;
-                // Adiciona o novo objeto Doutores a base de dados.
-                _context.Doutores.Add(doutor);
-                // guarda as mudanças na base de dados.
-                _context.SaveChanges();
+                
+                
+                //preparar o email para o candidato
+                
+                var emailCorpo = $"Olá {doutor.Nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos você. <br><br>Detalhes: <br>Porquê da candidatura: : {doutor.Descricao}<br>Região: {doutor.DistritoProfissional}<br>Especialidade: {doutor.Especialidade}<br>Número cédula: {doutor.nCedula} <br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+                var emailAssunto = "Confirmação do formulário";
+                
+                
+                try
+                {
+                
+                    //enviar email de confirmação
+                    await _mailer.SendEmailAsync(doutor.email, emailAssunto, emailCorpo);
+                    // Define mensagens de sucesso para a ViewBag.
+                    ViewBag.MensagemTitulo = "O seu registo como doutor foi submetido com sucesso!";
+                    ViewBag.MensagemCorpo = "Agradecemos o seu interesse na CareHub.";
+                    //email para carehub
+                    emailCorpo = $"Um doutor candidatou-se<br><br>Detalhes<br><br>Nome: {doutor.Nome}<br>Região: {doutor.DistritoProfissional}<br>Especialidade: {doutor.Especialidade}<br>Email: {doutor.email}<br>Porquê da candidatura: {doutor.Descricao}<br><br>";
+                    var emailCarehub = "carehubprofessionals@gmail.com";
+                    emailAssunto = "Nova candidatura";
+                    
+                    await _mailer.SendEmailAsync(emailCarehub, emailAssunto, emailCorpo);
+                    _context.Add(doutor); // Adiciona o objeto 'form' ao contexto para ser inserido na base de dados.
+                    await _context.SaveChangesAsync(); // guarda as mudanças na base de dados.
+                
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.MensagemCorpo =
+                        "Ocurreu um erro na submissão por favor tente novamente mais tarde";
+                }
+                
 
-                // Define mensagens de sucesso para a ViewBag.
-                ViewBag.MensagemTitulo = "O seu registo como doutor foi submetido com sucesso!";
-                ViewBag.MensagemCorpo = "Agradecemos o seu interesse na CareHub.";
+                
                 // Retorna a view "Aviso" para informar o utilizador sobre o sucesso da submissão.
                 return View("Aviso");
             }

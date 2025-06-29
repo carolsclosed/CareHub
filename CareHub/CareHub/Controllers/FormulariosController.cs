@@ -19,9 +19,10 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
     // Construtor da classe FormulariosController.
     // Recebe uma instância de ApplicationDbContext.
     // A instância é atribuída a variavel _context, permitindo a interação com a base de dados.
-    public FormulariosController(ApplicationDbContext context)
+    public FormulariosController(ApplicationDbContext context, IMailer mailer)
     {
         _context = context;
+        _mailer = mailer;
     }
 
     // GET: Formulário
@@ -104,7 +105,7 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         return View("presencialForm");
     }
     
-    // POST: Recebe os dados do formulário tipo online
+    // POST: Recebe os dados do formulário
     //action method que responde a requisições HTTP POST quando o formulário tipo online é submetido.
     [HttpPost]
     public async Task<IActionResult> onlineForm(Models.Formularios form) // O objeto 'form' é preenchido automaticamente com os dados do formulário.
@@ -127,8 +128,7 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         // Verifica se todas as validações do modelo foram bem-sucedidas.
         if (ModelState.IsValid)
         {
-            _context.Add(form); // Adiciona o objeto 'form' ao contexto para ser inserido na base de dados.
-            _context.SaveChanges(); // guarda as mudanças na base de dados.
+            
             var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
             var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
             var regioesDropdown = regioes
@@ -139,24 +139,35 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
 
             ViewBag.Regioes = regioesDropdown ?? new List<string>(); // preenche a ViewBag.Regioes para a view.
 
+            var emailCorpo = "";
             //preparar o email
-            var emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos o seu doutor para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: {form.presencial}<br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            if (form.presencial == false)
+            {
+                emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos um doutor disponíve para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: Falso <br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            }
+            else
+            {
+                emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos um doutor disponíve para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: Verdadeiro<br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            }
+            
             var emailAssunto = "Confirmação do formulário";
 
             try
             {
+                
                 //enviar email de confirmação
                 await _mailer.SendEmailAsync(form.email, emailAssunto, emailCorpo);
                 ViewBag.MensagemCorpo =
                     "Obrigada por efetuar a submissão irá receber um email de confirmação brevemente";
+                _context.Add(form); // Adiciona o objeto 'form' ao contexto para ser inserido na base de dados.
+                await _context.SaveChangesAsync(); // guarda as mudanças na base de dados.
+                
             }
             catch (Exception ex)
             {
                 ViewBag.MensagemCorpo =
-                    "Formulário submitido com sucesso, mas ocorreu um erro ao enviar o email de confirmação";
+                    "Ocurreu um erro na submissão por favor tente novamente mais tarde";
             }
-                
-            ViewBag.MensagemCorpo = "Obrigada por efetuar a submissão de formulário, será contactado em breve..";
 
         }
         else
@@ -169,11 +180,11 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         return View("Aviso");
     }
 
-    // POST: Recebe os dados do formulário presencial
+    // POST: Recebe os dados do formulário para consulta presencial.
     //  action method que responde a requisições HTTP POST quando o formulário presencial é submetido.
     //praticamente igual ao anterior so muda a view
     [HttpPost]
-    public IActionResult presencialForm(Models.Formularios form) 
+    public async Task<IActionResult> presencialForm(Models.Formularios form) 
     {
         form.presencial = true; 
     
@@ -189,8 +200,7 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         form.IdUtil = utilizador.IdUtil; 
         if (ModelState.IsValid)
         {
-            _context.Add(form); 
-            _context.SaveChanges(); 
+
             var jsonContent = System.IO.File.ReadAllText("./wwwroot/regioes.json");
             var regioes = JsonSerializer.Deserialize<List<InfoRegiao>>(jsonContent);
             var regioesDropdown = regioes
@@ -200,8 +210,38 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
                 .ToList();
 
             ViewBag.Regioes = regioesDropdown ?? new List<string>();
+            
+            var emailCorpo = "";
+            //preparar o email
+            if (form.presencial == false)
+            {
+                emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos um doutor disponíve para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: Falso <br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            }
+            else
+            {
+                emailCorpo = $"Olá {form.nome},<br><br>Obrigado por submeter formulário. Assim que possível, contactaremos um doutor disponíve para agendar uma consulta online. <br><br>Detalhes: <br><br>Descrição: {form.descricao}<br><br>Presencial: Verdadeiro<br><br>Região: {form.regiao}<br><br>Telefone: {form.telefone}<br><br>Se houver algo de errado na informação disposta não exite em contactar-nos <br><br>Atenciosamente,<br>Equipa CareHub";
+            }
+            
+            var emailAssunto = "Confirmação do formulário";
 
-            ViewBag.MensagemCorpo = "Obrigada por efetuar a submissão de formulário, será contactado em breve..";
+            try
+            {
+
+                //enviar email de confirmação
+                await _mailer.SendEmailAsync(form.email, emailAssunto, emailCorpo);
+                ViewBag.MensagemCorpo =
+                    "Obrigada por efetuar a submissão irá receber um email de confirmação brevemente";
+                _context.Add(form); // Adiciona o objeto 'form' ao contexto para ser inserido na base de dados.
+                await _context.SaveChangesAsync(); // guarda as mudanças na base de dados.
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MensagemCorpo =
+                    "Ocurreu um erro na submissão por favor tente novamente mais tarde";
+            }
+            
+
         }
         else
         {
@@ -211,26 +251,7 @@ public class FormulariosController : Controller // Declara a classe FormulariosC
         return View("Aviso");
 
     }
-
-    [HttpPost]
-    public async Task<IActionResult> EnviarEmail([FromForm] string email, [FromForm] string subject,
-        [FromForm] string body)
-    {
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(body))
-        {
-            return BadRequest("All fields are required.");
-        }
-
-        try
-        {
-            await _mailer.SendEmailAsync(email, subject, body);
-            return Ok("Email has been sent successfully.");
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Failed to send email: {ex.Message}");
-        }
-    }
+    
 
 
     // Classe interna  para desserializar as informações de região de um arquivo JSON.

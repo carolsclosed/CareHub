@@ -67,8 +67,11 @@ namespace CareHub.Data
                 .HasOne(c => c.Utilizador) // cada comentario tem um utilizador
                 .WithMany(u => u.ListaComentarios) // um utilzador pode ter muitos comentarios
                 .HasForeignKey(c => c.IdUtil); // chave estrangeira para o utilizador
-
+            
+            
         }
+        
+        
 
         
         // Em termos da base de dados, cada DbSet geralmente mapeia para uma tabela na base de dados.

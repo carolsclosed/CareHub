@@ -8,13 +8,25 @@
     var categorias = Model.GroupBy(p => p.Categoria).ToList();
 }       
     
-    <input list="sugestoes" name="termo" class="form-control" style="margin-bottom: 30px" />
-    <datalist id="sugestoes">
-        @foreach (var d in Model.DistinctBy(x => x.Nome))
-        {
-            <option value="@d.Nome">@d.Nome (@d.Categoria)</option>
-        }
-    </datalist>
+<head>
+    <title>Diagonósticos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<div class="input-group" style="margin-bottom: 30px">
+    <span class="input-group-text">
+        <i class="bi bi-search"></i> 
+    </span>
+    <input list="sugestoes" name="termo" class="form-control" />
+</div>
+
+<datalist id="sugestoes">
+    
+    @foreach (var d in Model.DistinctBy(x => x.Nome))
+    {
+        <option value="@d.Nome">@d.Nome (@d.Categoria)</option>
+    }
+</datalist>
 
         
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
@@ -24,7 +36,7 @@
 
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <div class="card-body">
+                        <div class="card-body-${{collapseId}}">
                             <h5 class="card-title">
                                 <a class="text-decoration-none text-black" data-bs-toggle="collapse" href="#@collapseId" role="button" aria-expanded="false">
                                     @grupo.Key
