@@ -16,7 +16,6 @@
                 <span asp-validation-for="Input.Utilizador.Nome" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <!-- <input asp-for="Input.Utilizador.Regiao" class="form-control" autocomplete="username" aria-required="true" placeholder="Região" /> -->
                 <select style="cursor: pointer" asp-for="Input.Utilizador.Regiao" asp-controller="Formularios" class="form-control" id="regiao">
                     <option value="" >Selecione uma região</option>
                     @foreach (var regiao in ViewData["Regioes"] as List<string>)
