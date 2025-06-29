@@ -87,7 +87,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             bool haImagem = false; // Flag para indicar se uma imagem foi enviada e é válida.
             var nomeImagem = ""; // Variável para armazenar o nome único da imagem.
 
-            // Obtém o utilizador autenticado do banco de dados.
+            // Obtém o utilizador autenticado da base de dados.
             var utilizador = await _context.Utilizadores
                 .FirstOrDefaultAsync(u => u.IdentityUserName == User.Identity.Name);
 
@@ -100,7 +100,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             post.Utilizador = utilizador; // Associa o utilizador encontrado ao post.
             post.IdUtil = utilizador.IdUtil; // Define o IdUtil do post.
 
-            // Verifica se o estado do modelo é válido (validações do lado do servidor).
+            // Verifica se o estado do modelo é válido.
             if (ModelState.IsValid)
             {
                 post.DataPost = DateOnly.FromDateTime(DateTime.Now); // Define a data da publicação como a data atual.
@@ -115,7 +115,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                     post.Foto = "imagens/" + nomeImagem; // Define o caminho da foto no modelo (relativo à wwwroot).
                 }
 
-                // Se houver uma imagem válida, salva-a no sistema de arquivos.
+                // Se houver uma imagem válida, guarda-a no sistema.
                 if (haImagem)
                 {
                     // Constrói o caminho completo para o diretório de imagens.
@@ -132,8 +132,8 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                     }
                 }
 
-                _context.Add(post); // Adiciona o novo post ao contexto do banco de dados.
-                await _context.SaveChangesAsync(); // Salva as mudanças no banco de dados.
+                _context.Add(post); // Adiciona o novo post ao a applicationdbcontext.
+                await _context.SaveChangesAsync(); // gaurda as mudanças na base de dados.
                 return RedirectToAction(nameof(Index)); // Redireciona para a action Index (lista de publicações).
             }
 
@@ -146,9 +146,8 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 .OrderBy(x => x)
                 .ToList();
 
-            ViewBag.Categorias = categoriasDropdown ?? new List<string>(); // Popula a ViewBag com as categorias.
+            ViewBag.Categorias = categoriasDropdown ?? new List<string>(); // preenche a ViewBag com as categorias.
             
-            // Retorna a view 'Criar' com o objeto 'post' (contendo os dados submetidos e os erros).
             return View(post);
         }
         
@@ -158,7 +157,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
         {
             if (id == null) return NotFound(); // Se o ID for nulo, retorna NotFound.
 
-            // Busca o post no banco de dados, incluindo o utilizador associado.
+            // procura o post na base de dados, incluindo o utilizador associado.
             var post = await _context.Posts
                 .Include(p => p.Utilizador)
                 .FirstOrDefaultAsync(p => p.IdPost == id);
@@ -178,7 +177,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 return NotFound(); // Se o ID for nulo, retorna NotFound.
             }
 
-            // Busca a publicação no banco de dados, incluindo o utilizador.
+            // procura a publicação na base de dados, incluindo o utilizador.
             var Publicacao =  _context.Posts
                 .Include(f => f.Utilizador)
                 .FirstOrDefault(f => f.IdPost == id);
@@ -192,16 +191,14 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             if (Publicacao.Utilizador.IdentityUserName != User.Identity.Name)
             {
                 // Se não for o proprietário, redireciona para a lista de publicações (Index).
-                // Uma alternativa mais robusta seria retornar Forbid() ou uma view de "acesso negado".
                 return RedirectToAction(nameof(Index)); 
             }
             
-            // Retorna a view 'Editar' com o objeto 'Publicacao'.
             return View(Publicacao);
         }
 
         // POST: Fotografias/Edit/5
-        // Processa a submissão do formulário de edição de publicação.
+        // submissão do formulário de edição de publicação.
         [HttpPost] // Indica que este método responde a requisições HTTP POST.
         [ValidateAntiForgeryToken] // Proteção CSRF.
         [Authorize] // Apenas utilizadores autenticados podem editar.
@@ -227,7 +224,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 publicacao.Foto = "imagens/" + nomeImagem; // Atualiza o caminho da foto no objeto 'publicacao'.
             }
             
-            // Se houver uma nova imagem válida, salva-a no sistema de arquivos.
+            // Se houver uma nova imagem válida, guarda-a no sistema.
             if (haImagem)
             {
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
@@ -242,7 +239,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 }
             }
             
-            // Busca a publicação existente no banco de dados para atualização.
+            // procura a publicação existente na base de dados para atualização.
             var publicacaoExistente = await _context.Posts
                 .FirstOrDefaultAsync(p => p.IdPost == id);
 
@@ -283,7 +280,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 
                 try
                 {
-                    await _context.SaveChangesAsync(); // Tenta salvar as mudanças no banco de dados.
+                    await _context.SaveChangesAsync(); // Tenta guardar as mudanças na base de dados.
                 }
                 catch (DbUpdateConcurrencyException) // Captura exceções de concorrência (se o registro foi modificado por outro utilizador).
                 {
@@ -312,7 +309,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
         {
             if (id == null) return NotFound(); // Se o ID for nulo, retorna NotFound.
 
-            // Busca o post no banco de dados, incluindo o utilizador associado.
+            // procura o post na base de dados, incluindo o utilizador associado.
             var post = await _context.Posts
                 .Include(p => p.Utilizador)
                 .FirstOrDefaultAsync(p => p.IdPost == id);
@@ -329,13 +326,13 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
         [Authorize] // Apenas utilizadores autenticados podem apagar.
         public async Task<IActionResult> DeleteConfirmed(int id) // 'id' é o ID do post a ser apagado.
         {
-            // Busca o post no banco de dados pelo ID.
+            // procura o post na base de dados pelo ID.
             var post = await _context.Posts.FindAsync(id);
 
             // Se o post for encontrado.
             if (post != null)
             {
-                // Se o post tiver uma imagem associada, tenta apagá-la do sistema de arquivos.
+                // Se o post tiver uma imagem associada, tenta apagá-la do sistema.
                 if (post.Foto != null)
                 {
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", post.Foto);
@@ -344,16 +341,16 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
                 }
 
                 _context.Posts.Remove(post); // Remove o post do contexto.
-                await _context.SaveChangesAsync(); // Salva as mudanças (executa a exclusão no banco de dados).
+                await _context.SaveChangesAsync(); // guarda as mudanças (executa a exclusão na base de dados).
             }
 
             return RedirectToAction(nameof(Index)); // Redireciona para a lista de publicações após a exclusão.
         }
         
-        // Classe interna pública para desserializar as informações de categoria de um arquivo JSON.
+        // Classe interna para desserializar as informações de categoria do JSON.
         public class InfoCategoria
         {
-            // Atributos JsonPropertyName mapeiam as propriedades C# para os nomes dos campos JSON.
+            // Atributos JsonPropertyName mapeiam as propriedades para os nomes dos campos JSON.
             [JsonPropertyName("nome")] 
             public string Nome { get; set; } // Nome da doença (no contexto do JSON de doenças).
             [JsonPropertyName("categoria")] 
