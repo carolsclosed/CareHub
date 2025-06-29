@@ -14,8 +14,6 @@ namespace CareHub.Data
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // 'importa' todo o comportamento do método, 
-            // aquando da sua definição na SuperClasse
             base.OnModelCreating(modelBuilder);
 
             // criar os perfis de utilizador da nossa app
@@ -42,17 +40,21 @@ namespace CareHub.Data
             );
 
             modelBuilder.Entity<Utilizadores>()
+                // Acessa a propriedade 'Foto' da entidade 'Utilizadores'.
                 .Property(u => u.Foto)
+                // Configura o tipo de coluna na base de dados para a propriedade 'Foto'.
                 .HasColumnType("nvarchar(255)"); // ou "TEXT" para SQLite
 
+           //adicionar dados que serão inseridos na base de dados
             modelBuilder.Entity<Utilizadores>().HasData(
+                // Cria uma nova instância da entidade 'Utilizadores' com valores predefinidos.
                 new Utilizadores
                 {
-                    IdUtil = 1,
-                    IdentityRole = "Administrator",
-                    IdentityUserName = "admin@mail.pt",
-                    Nome = "Administrador",
-                    Foto = "/ImagensUtilizadores/user.jpg"
+                    IdUtil = 1, // Define o ID único do utilizador como 1.
+                    IdentityRole = "Administrator", // Atribui a role "Administrator" a este utilizador 
+                    IdentityUserName = "admin@mail.pt", // Define o nome de utilizador do Identity.
+                    Nome = "Administrador", // Define o nome de exibição do utilizador.
+                    Foto = "/ImagensUtilizadores/user.jpg" // Define o caminho da foto de perfil padrão para este utilizador.
                 });
             
             
@@ -68,6 +70,8 @@ namespace CareHub.Data
 
         }
 
+        
+        // Em termos da base de dados, cada DbSet geralmente mapeia para uma tabela na base de dados.
         public DbSet<Comentarios> Comentarios { get; set; }
         public DbSet<Doutores> Doutores { get; set; }
         public DbSet<Pacientes> Pacientes { get; set; }
