@@ -1,6 +1,8 @@
+using CareHub.Data;
 using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
 using Microsoft.EntityFrameworkCore; // Importa o namespace Microsoft.EntityFrameworkCore, que fornece classes e funcionalidades para trabalhar com o Entity Framework Core (ORM).
-using CareHub.Data; // Importa o namespace CareHub.Data - applicationdbcontext
+
+// Importa o namespace CareHub.Data - applicationdbcontext
 
 namespace CareHub.Controllers; // Declara o namespace para o controller. 
 

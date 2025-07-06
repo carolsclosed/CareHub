@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
-using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
-using CareHub.Data; // Importa o namespace CareHub.Data
-using CareHub.Models; // Importa o namespace CareHub.Models
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
 using System.Text.Json.Serialization;
+using CareHub.Data; // Importa o namespace CareHub.Data
+using CareHub.Models; // Importa o namespace CareHub.Models
 using CareHub.Services.MailKit;
+using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
 using Microsoft.AspNetCore.Routing.Constraints; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
 using Microsoft.EntityFrameworkCore; // Importa o namespace Microsoft.EntityFrameworkCore, que fornece classes e funcionalidades para trabalhar com o Entity Framework Core (ORM).
 

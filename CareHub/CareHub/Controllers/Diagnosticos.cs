@@ -1,9 +1,11 @@
 using System.Collections; // Importa o namespace System.Collections, que fornece interfaces e classes que definem coleções de objetos.
-using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
+using System.Globalization;
+using System.Text; // Importa o namespace System.Text, necessário para classes como NormalizationForm .
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
 using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
-using System.Text;                // Importa o namespace System.Text, necessário para classes como NormalizationForm .
-using System.Globalization;       // Importa o namespace System.Globalization, necessário para classes como CharUnicodeInfo .
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
+
+// Importa o namespace System.Globalization, necessário para classes como CharUnicodeInfo .
 
 
 namespace CareHub.Controllers; // Declara o namespace para o controller.

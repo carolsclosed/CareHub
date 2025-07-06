@@ -1,9 +1,9 @@
 using System.Diagnostics; // Importa o namespace System.Diagnostics, que fornece classes para interagir com processos do sistema, registos de eventos e contadores de desempenho. Usado aqui para Activity.
-using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
-using CareHub.Models; // Importa o namespace CareHub.Models
+using System.Globalization; // Importa o namespace System.Globalization, necessário para CharUnicodeInfo e UnicodeCategory.
+using System.Text; // Importa o namespace System.Text, necessário para a classe StringBuilder e NormalizationForm.
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
-using System.Text;                // Importa o namespace System.Text, necessário para a classe StringBuilder e NormalizationForm.
-using System.Globalization;       // Importa o namespace System.Globalization, necessário para CharUnicodeInfo e UnicodeCategory.
+using CareHub.Models; // Importa o namespace CareHub.Models
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
 using static CareHub.Controllers.Diagnosticos; // Importa estaticamente a classe Diagnosticos do namespace CareHub.Controllers, permitindo o uso direto de membros estáticos (como InfoDiagnostico) sem qualificação completa.
 
 namespace CareHub.Controllers; // Declara o namespace para o controller.

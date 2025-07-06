@@ -1,13 +1,16 @@
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
 using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
-using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
-using Microsoft.EntityFrameworkCore; // Importa o namespace Microsoft.EntityFrameworkCore, que fornece classes e funcionalidades para trabalhar com o Entity Framework Core (ORM).
 using CareHub.Data; // Importa o namespace CareHub.Data
 using CareHub.Models; // Importa o namespace CareHub.Models
-using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
+using Microsoft.EntityFrameworkCore; // Importa o namespace Microsoft.EntityFrameworkCore, que fornece classes e funcionalidades para trabalhar com o Entity Framework Core (ORM).
+
+// Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
 
 namespace CareHub.Controllers // Declara o namespace para o controller.
 {
+    
     public class PublicacoesController : Controller // Declara a classe PublicacoesController
     {
         private readonly ApplicationDbContext _context; // Declara uma variavel para a instância applicationdbcontext.
@@ -19,7 +22,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
         {
             _context = context;
         }
-
+   
         // GET: Publicacoes
         // action method que responde a requisições HTTP GET para exibir a lista de publicações.
         public async Task<IActionResult> Index()
@@ -36,7 +39,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             // Executa a consulta e retorna a lista de posts para a view.
             return View(await listaPosts.ToListAsync());
         }
-
+        [HttpGet]
         // GET: Publicacoes/Criar
         // Este método exibe o formulário para criar uma nova publicação.
         [Authorize] // Garante que apenas utilizadores autenticados possam aceder a esta action.
@@ -150,7 +153,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             
             return View(post);
         }
-        
+        [HttpGet]
         // GET: Publicacoes/Detalhes/5
         // Exibe os detalhes de uma publicação específica.
         public async Task<IActionResult> Detalhes(int? id) // 'id' é o ID do post a ser exibido.
@@ -166,7 +169,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
 
             return View(post); // Retorna a view 'Detalhes' com o objeto 'post'.
         }
-        
+        [HttpGet]
         // GET: Fotografias/Editar/5
         // Exibe o formulário para editar uma publicação existente.
         [Authorize] // Apenas utilizadores autenticados podem editar.
@@ -301,7 +304,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
             // para que os erros possam ser exibidos.
             return View(publicacaoExistente);
         }
-        
+        [HttpGet]
         // GET: Publicacoes/Delete/5
         // Exibe a página de confirmação de exclusão de uma publicação.
         [Authorize] // Apenas utilizadores autenticados podem aceder a esta página.
@@ -318,7 +321,7 @@ namespace CareHub.Controllers // Declara o namespace para o controller.
 
             return View(post); // Retorna a view 'Delete' com o objeto 'post'.
         }
-
+        [HttpPost]
         // POST: Publicacoes/Delete/5
         // Processa a exclusão de uma publicação.
         [HttpPost, ActionName("Delete")] // Responde a POSTs, mas a action é nomeada "Delete" (para chamar com URL /Delete).

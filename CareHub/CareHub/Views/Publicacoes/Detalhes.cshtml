@@ -28,7 +28,7 @@
             @Model.Utilizador.Nome
             @if (isAdmin)
             {
-                <a asp-action="Detalhes" asp-controller="Utilizadores" asp-route-id="@Model.IdUtil" class="ms-2 btn btn-sm btn-outline-secondary rounded-pill">Ver Perfil</a>
+                <a asp-action="Detalhes" asp-controller="UtilizadoresApi" asp-route-id="@Model.IdUtil" class="ms-2 btn btn-sm btn-outline-secondary rounded-pill">Ver Perfil</a>
             }
         </dd>
 

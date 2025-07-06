@@ -7,6 +7,9 @@ namespace CareHub.Models; // Modelos da aplicação.
 // Entidade para dados de formulários submetidos.
 public class Formularios
 {
+    /// <summary>
+    /// Modelo para formularios para marcação de consulta 
+    /// </summary>
     [Key]  // Chave primária.
     public int IdForm { get; set; } // ID do formulário.
         

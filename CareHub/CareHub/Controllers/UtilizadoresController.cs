@@ -1,10 +1,12 @@
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Para interações com o Entity Framework Core e a base de dados.
 using CareHub.Data; // O namespace para applicationdbcontext
 using CareHub.Models; // O namespace para os modelos de dados da aplicação (e.g., Utilizadores, Posts).
 using Microsoft.AspNetCore.Authorization; // Para controlo de acesso baseado em autorização.
-using Microsoft.AspNetCore.Identity; // Para gerenciar utilizadores e roles do ASP.NET Core Identity.
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore; // Para interações com o Entity Framework Core e a base de dados.
+
+// Para gerenciar utilizadores e roles do ASP.NET Core Identity.
 
 
 namespace CareHub.Controllers // Declara o namespace do controller.

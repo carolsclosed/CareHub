@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
 using System.Text.Json; // Importa o namespace System.Text.Json para funcionalidade de serialização e desserialização JSON.
 using System.Text.Json.Serialization; // Importa o namespace System.Text.Json.Serialization para atributos de serialização JSON.
-using CareHub.Data; // Importa o namespace CareHub.Data
-using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using CareHub.Data; // Importa o namespace CareHub.Data
 using CareHub.Services.MailKit;
+using Microsoft.AspNetCore.Authorization; // Importa o namespace Microsoft.AspNetCore.Authorization, usado para controlo de acesso e autorização.
+using Microsoft.AspNetCore.Mvc; // Importa o namespace Microsoft.AspNetCore.Mvc, que contém classes e interfaces para construir aplicações web MVC no ASP.NET Core.
+using Microsoft.AspNetCore.Mvc;
 
 namespace CareHub.Controllers; // Declara o namespace para o controller.
 [Authorize] // Atributo que garante que apenas utilizadores autenticados podem aceder a qualquer action deste controller.
