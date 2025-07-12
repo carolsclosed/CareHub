@@ -163,7 +163,7 @@ public class UtilizadoresApiController :ControllerBase
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [HttpDelete("/apagar/{id}")]
+    [HttpDelete("apagar/{id}")]
     public async Task<ActionResult> ApagarUtilizador(int id)
     {
         
