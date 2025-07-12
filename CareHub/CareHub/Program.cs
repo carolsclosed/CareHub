@@ -61,7 +61,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1",new OpenApiInfo {
-        Title="Gerir API",
+        Title="Carehub API",
         Version="v1",
         Description="API para gerir utilizadores, publicações e formulários"
     });

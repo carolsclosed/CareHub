@@ -22,6 +22,12 @@ public class AuthController : ControllerBase
         _tokenService = tokenService;
     }
 
+    /// <summary>
+    /// método para fazer login
+    /// se correto recebe o token JWT
+    /// </summary>
+    /// <param name="loginRequest"></param>
+    /// <returns></returns>
     //GET: api/auth/login
     [HttpPost]
     [Route("login")]
@@ -41,9 +47,10 @@ public class AuthController : ControllerBase
             return BadRequest("Palavra-passe ou utilizador errado");
         }
         
-        var token = _tokenService.GenerateToken(identityuser);
+        var token = await _tokenService.GenerateToken(identityuser);
         
-        return Ok(token);
+        return Ok (token);
+
         
         
         /* autenticação por sessão -> Identity
@@ -67,7 +74,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> TerminarSessao()
     {
         await _signInManager.SignOutAsync();
-        return NoContent();
+        return Ok("");
     }
     
 }

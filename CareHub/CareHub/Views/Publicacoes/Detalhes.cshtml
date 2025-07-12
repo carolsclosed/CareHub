@@ -4,7 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Detalhes Publicação";
     var currentUser = await UserManager.GetUserAsync(User);
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }

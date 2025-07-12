@@ -1,7 +1,11 @@
 namespace CareHub.Models.ApiModels;
 
+/// <summary>
+/// Modelo de publicações da API
+/// </summary>
 public class PublicacoesApi
 {
+    public int Id { get; set; }
     public string Titulo { get; set; }
     
     public string Categoria { get; set; }

@@ -1,10 +1,12 @@
 namespace CareHub.Models; // Modelos da aplicação.
 
-// ViewModel para exibir informações de erro.
+/// <summary>
+/// modelo de erro
+/// </summary>
 public class ErrorViewModel
 {
-    public string? RequestId { get; set; } // ID da requisição, pode ser null.
+    public string? RequestId { get; set; } 
 
-    // Verdadeiro se o RequestId tiver um valor e não for vazio; caso contrário, falso.
+    
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }

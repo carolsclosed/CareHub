@@ -1,10 +1,11 @@
 namespace CareHub.Models.ApiModels;
 
+/// <summary>
+/// formulários de consulta usados pela API
+/// </summary>
 public class FormularioApi
 {
-    /// <summary>
-    /// formulários de consulta usados pela API
-    /// </summary>
+    
     public int IdForm { get; set; }
     public int IdUtilizador { get; set; }
     

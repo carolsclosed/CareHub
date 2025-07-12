@@ -3,7 +3,7 @@
 @inject UserManager<IdentityUser> UserManager 
 
 @{
-    ViewData["Title"] = "Índice";
+    ViewData["Title"] = "Índice de Utilizadores";
     var currentUser = await UserManager.GetUserAsync(User);
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
