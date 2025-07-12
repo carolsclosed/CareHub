@@ -3,7 +3,7 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Detalhes Utilizador";
     var currentUser = await UserManager.GetUserAsync(User); 
     var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrador");
 }
@@ -30,7 +30,7 @@
                 <div class="col-md-6 d-flex align-items-start gap-3">
                     <img src="/@publicacao.Foto" alt="@publicacao.TituloPost" class="img-thumbnail" style="max-width: 120px; height: auto;" />
                     <div>
-                        <a asp-action="Detalhes" asp-controller="Publicacoes" asp-route-id="@publicacao.IdPost" class="h6 text-decoration-none">
+                        <a asp-action="Detalhes" asp-controller="PublicacoesApi" asp-route-id="@publicacao.IdPost" class="h6 text-decoration-none">
                             @publicacao.TituloPost
                         </a>
                     </div>
@@ -41,7 +41,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center">
-    <a asp-controller="Utilizadores" asp-action="Index" class="btn btn-secondary">&larr; Voltar aos Utilizadores</a>
+    <a asp-controller="UtilizadoresApi" asp-action="Index" class="btn btn-secondary">&larr; Voltar aos Utilizadores</a>
 
     @if (Model.IdentityUserName == User.Identity.Name || isAdmin)
     {

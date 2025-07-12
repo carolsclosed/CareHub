@@ -28,7 +28,7 @@ public class UpHub : Hub
     }
 
 
-    [Authorize]
+    
     public void AtualizarUpvotes(int idPublicacao)
     {
         // ver se a publicação existe
@@ -37,7 +37,7 @@ public class UpHub : Hub
             return;
         
         //utilizador
-        var utilizador = _context.Utilizadores.Include(u => u.ListaUp).First(u => u.IdentityUserName == Context.User.Identity.Name);
+        var utilizador = _context.Utilizadores.Include(u => u.ListaUp).FirstOrDefault(u => u.IdentityUserName == Context.User.Identity.Name);
         if (utilizador == null)
         {
             Clients.Caller.SendAsync("IniciarSessao");
@@ -76,7 +76,7 @@ public class UpHub : Hub
         var utilizador = _context.Utilizadores.First(u => u.IdentityUserName == Context.User.Identity.Name);
         if (utilizador == null)
         { 
-            await Clients.Caller.SendAsync("Erro", "Utilizador inválido");
+            await Clients.Caller.SendAsync("IniciarSessao");
             return;
         }
     

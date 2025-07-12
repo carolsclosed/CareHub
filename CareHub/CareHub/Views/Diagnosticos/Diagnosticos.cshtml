@@ -3,7 +3,7 @@
 @model List<CareHub.Controllers.Diagnosticos.InfoDiagnostico>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Diagonósticos";
     Layout = "_Layout";
     var categorias = Model.GroupBy(p => p.Categoria).ToList();
 }       

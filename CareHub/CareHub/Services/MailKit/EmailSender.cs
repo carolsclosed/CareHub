@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Threading.Tasks;
 using CareHub.Services.MailKit;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace CareHub.Services.MailKit
 {

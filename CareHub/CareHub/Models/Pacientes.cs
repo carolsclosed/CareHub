@@ -1,17 +1,19 @@
-using System.ComponentModel.DataAnnotations; // Para [Key].
-using System.ComponentModel.DataAnnotations.Schema; // Para [ForeignKey].
+using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations.Schema; 
 
-namespace CareHub.Models { // Modelos da aplicação.
+namespace CareHub.Models { 
 
-    // Entidade Paciente na base de dados.
+    /// <summary>
+    /// modelo dos pacientes
+    /// </summary>
     public class Pacientes {
 
-        [Key]  // Chave primária.
-        public int IdPaciente { get; set; } // ID do paciente.
+        [Key]  
+        public int IdPaciente { get; set; } 
         
-        [ForeignKey(nameof(Utilizador))] // Chave estrangeira para Utilizador.
-        public int IdUtil { get; set; } // ID do utilizador associado.
+        [ForeignKey(nameof(Utilizador))] 
+        public int IdUtil { get; set; } 
         
-        public Utilizadores Utilizador { get; set; } // Objeto Utilizador relacionado.
+        public Utilizadores Utilizador { get; set; } 
     }
 }

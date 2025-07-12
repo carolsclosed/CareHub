@@ -1,12 +1,12 @@
+using System;
+using System.Threading.Tasks;
+using CareHub.Services;
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using System;
-using System.Threading.Tasks;
-using CareHub.Services;
-using MailKit.Security;
 
 namespace CareHub.Services.MailKit
 {
